@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Matte Graphite Monoliths</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; background-color: #FAFCFD; margin: 0; padding: 0; }
+    input:focus { outline: none; }
+    
+    .site-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: #FAFCFD;
+    }
+  </style>
+</head>
+<body>
+  <div class="site-bg"></div>
+
+  <div class="py-16 text-center border-b border-[#C5D6E0]">
+    <h1 class="text-4xl font-bold mb-4 text-[#182025]">Matte Graphite (Матовый монолит)</h1>
+    <p class="text-[#577E95] text-lg max-w-3xl mx-auto">10 вариаций выбранного матового концепта. Никакого стекла, никаких градиентов. Только сплошная заливка, инженерная строгость и наша палитра.</p>
+  </div>
+
+  <section class="py-20 border-b border-[#C5D6E0]/50">
+    <div class="container mx-auto px-4 max-w-6xl">
+      
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-2 text-[#182025]">1. Classic Monolith (Базовый матовый)</h2>
+        <p class="text-[#577E95] max-w-2xl">Тот самый выбранный вариант. Сплошной графит (#182025), вдавленные поля ввода (#11171A), акцентная светлая кнопка.</p>
+      </div>
+
+
+      <div class="bg-[#182025] border-none p-8 md:p-12" style="box-shadow: 0 30px 60px -15px rgba(24,32,37,0.5);">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10">
+          <div>
+            <div class="mb-6 w-12 h-12 flex items-center justify-center border bg-[#11171A] border-none text-[#577E95]">
+              <i data-lucide="download" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-3xl font-bold mb-4 text-[#E6F0F4]">Когда шкаф автоматики пора модернизировать?</h3>
+            <p class="text-[#E6F0F4] opacity-80 leading-relaxed text-[#C5D6E0]">Не уверены, нужен ли новый шкаф или достаточно модернизации? Подготовили короткий чек-лист признаков, по которым эксплуатация может оценить состояние автоматики.</p>
+          </div>
+          <div class="">
+            <h4 class="text-lg font-bold mb-6 text-[#E6F0F4]">Получить чек-лист (PDF)</h4>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <input type="text" placeholder="Имя *" class="w-full px-4 py-3 outline-none bg-[#11171A] border border-[#11171A] text-[#E6F0F4] focus:border-[#577E95]">
+              <input type="text" placeholder="Компания *" class="w-full px-4 py-3 outline-none bg-[#11171A] border border-[#11171A] text-[#E6F0F4] focus:border-[#577E95]">
+            </div>
+            <input type="text" placeholder="Email или телефон *" class="w-full px-4 py-3 mb-6 outline-none bg-[#11171A] border border-[#11171A] text-[#E6F0F4] focus:border-[#577E95]">
+            <button class="w-full py-3 px-4 transition-colors bg-[#E6F0F4] text-[#182025] hover:bg-[#FAFCFD] font-medium">Скачать материал</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="py-20 border-b border-[#C5D6E0]/50">
+    <div class="container mx-auto px-4 max-w-6xl">
+      
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-2 text-[#182025]">2. Monolith + Primary Button (С синей кнопкой)</h2>
+        <p class="text-[#577E95] max-w-2xl">Матовый графит, но кнопка использует фирменный синий (#30637A). Поля ввода с тонкими рамками вместо заливки.</p>
+      </div>
+
+
+      <div class="bg-[#182025] border-none p-8 md:p-12" style="box-shadow: 0 20px 40px rgba(15,20,23,0.4);">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10">
+          <div>
+            <div class="mb-6 w-12 h-12 flex items-center justify-center border bg-transparent border border-[#577E95]/50 text-[#30637A]">
+              <i data-lucide="download" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-3xl font-bold mb-4 text-[#FAFCFD]">Когда шкаф автоматики пора модернизировать?</h3>
+            <p class="text-[#FAFCFD] opacity-80 leading-relaxed text-[#C5D6E0]">Не уверены, нужен ли новый шкаф или достаточно модернизации? Подготовили короткий чек-лист признаков, по которым эксплуатация может оценить состояние автоматики.</p>
+          </div>
+          <div class="">
+            <h4 class="text-lg font-bold mb-6 text-[#FAFCFD]">Получить чек-лист (PDF)</h4>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <input type="text" placeholder="Имя *" class="w-full px-4 py-3 outline-none bg-transparent border border-[#577E95]/50 text-[#FAFCFD] focus:border-[#C5D6E0]">
+              <input type="text" placeholder="Компания *" class="w-full px-4 py-3 outline-none bg-transparent border border-[#577E95]/50 text-[#FAFCFD] focus:border-[#C5D6E0]">
+            </div>
+            <input type="text" placeholder="Email или телефон *" class="w-full px-4 py-3 mb-6 outline-none bg-transparent border border-[#577E95]/50 text-[#FAFCFD] focus:border-[#C5D6E0]">
+            <button class="w-full py-3 px-4 transition-colors bg-[#30637A] text-[#FAFCFD] hover:bg-[#577E95] font-medium">Скачать материал</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="py-20 border-b border-[#C5D6E0]/50">
+    <div class="container mx-auto px-4 max-w-6xl">
+      
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-2 text-[#182025]">3. Split Monolith (Разделенный матовый)</h2>
+        <p class="text-[#577E95] max-w-2xl">Слева — самый темный оттенок (#11171A), справа — графит (#182025). Жесткий архитектурный стык.</p>
+      </div>
+
+
+      <div class="flex flex-col md:flex-row p-0 overflow-hidden border-none" style="box-shadow: 0 25px 50px rgba(15,20,23,0.6);">
+        <div class="bg-[#11171A] text-[#FAFCFD] p-8 md:p-12 w-full md:w-1/2">
+          <div class="mb-6 w-12 h-12 flex items-center justify-center border bg-[#182025] border-none text-[#577E95]">
+            <i data-lucide="download" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-3xl font-bold mb-4 text-[#FAFCFD]">Когда шкаф автоматики пора модернизировать?</h3>
+          <p class="opacity-80 leading-relaxed text-[#FAFCFD]">Не уверены, нужен ли новый шкаф или достаточно модернизации? Подготовили короткий чек-лист признаков.</p>
+        </div>
+        <div class="bg-[#182025] p-8 md:p-12 w-full md:w-1/2 border-l border-[#11171A]">
+          <h4 class="text-lg font-bold mb-6 text-[#E6F0F4]">Получить чек-лист (PDF)</h4>
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <input type="text" placeholder="Имя *" class="w-full px-4 py-3 outline-none bg-[#11171A] border-none text-[#FAFCFD] focus:border-[#577E95]">
+            <input type="text" placeholder="Компания *" class="w-full px-4 py-3 outline-none bg-[#11171A] border-none text-[#FAFCFD] focus:border-[#577E95]">
+          </div>
+          <input type="text" placeholder="Email или телефон *" class="w-full px-4 py-3 mb-6 outline-none bg-[#11171A] border-none text-[#FAFCFD] focus:border-[#577E95]">
+          <button class="w-full py-3 px-4 transition-colors bg-[#577E95] text-[#FAFCFD] hover:bg-[#C5D6E0] hover:text-[#182025]">Скачать материал</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="py-20 border-b border-[#C5D6E0]/50">
+    <div class="container mx-auto px-4 max-w-6xl">
+      
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-2 text-[#182025]">4. Outlined Inputs (Подчеркнутые поля)</h2>
+        <p class="text-[#577E95] max-w-2xl">Матовый монолит, где поля ввода не имеют заливки, только нижнюю границу. Максимум чистоты.</p>
+      </div>
+
+
+      <div class="bg-[#182025] border-none p-8 md:p-12" style="box-shadow: 0 15px 35px rgba(24,32,37,0.3);">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10">
+          <div>
+            <div class="mb-6 w-12 h-12 flex items-center justify-center border bg-transparent border border-[#577E95] text-[#FAFCFD]">
+              <i data-lucide="download" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-3xl font-bold mb-4 text-[#E6F0F4]">Когда шкаф автоматики пора модернизировать?</h3>
+            <p class="text-[#E6F0F4] opacity-80 leading-relaxed text-[#C5D6E0]">Не уверены, нужен ли новый шкаф или достаточно модернизации? Подготовили короткий чек-лист признаков, по которым эксплуатация может оценить состояние автоматики.</p>
+          </div>
+          <div class="">
+            <h4 class="text-lg font-bold mb-6 text-[#E6F0F4]">Получить чек-лист (PDF)</h4>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <input type="text" placeholder="Имя *" class="w-full px-4 py-3 outline-none bg-transparent border-b border-[#577E95] border-t-0 border-x-0 rounded-none px-0 focus:border-[#C5D6E0] focus:ring-0 text-[#FAFCFD]">
+              <input type="text" placeholder="Компания *" class="w-full px-4 py-3 outline-none bg-transparent border-b border-[#577E95] border-t-0 border-x-0 rounded-none px-0 focus:border-[#C5D6E0] focus:ring-0 text-[#FAFCFD]">
+            </div>
+            <input type="text" placeholder="Email или телефон *" class="w-full px-4 py-3 mb-6 outline-none bg-transparent border-b border-[#577E95] border-t-0 border-x-0 rounded-none px-0 focus:border-[#C5D6E0] focus:ring-0 text-[#FAFCFD]">
+            <button class="w-full py-3 px-4 transition-colors bg-[#FAFCFD] text-[#182025] hover:bg-[#C5D6E0] font-bold uppercase">Скачать материал</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="py-20 border-b border-[#C5D6E0]/50">
+    <div class="container mx-auto px-4 max-w-6xl">
+      
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-2 text-[#182025]">5. Elevated Form (Блок в блоке)</h2>
+        <p class="text-[#577E95] max-w-2xl">Матовый фон, но сама форма визуально приподнята на отдельном темном подиуме (#11171A).</p>
+      </div>
+
+
+      <div class="bg-[#182025] border-none p-8 md:p-12" style="box-shadow: 0 30px 60px rgba(15,20,23,0.5);">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10">
+          <div>
+            <div class="mb-6 w-12 h-12 flex items-center justify-center border bg-[#11171A] border-none text-[#577E95]">
+              <i data-lucide="download" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-3xl font-bold mb-4 text-[#FAFCFD]">Когда шкаф автоматики пора модернизировать?</h3>
+            <p class="text-[#FAFCFD] opacity-80 leading-relaxed text-[#C5D6E0]">Не уверены, нужен ли новый шкаф или достаточно модернизации? Подготовили короткий чек-лист признаков, по которым эксплуатация может оценить состояние автоматики.</p>
+          </div>
+          <div class="bg-[#11171A] p-8 shadow-2xl">
+            <h4 class="text-lg font-bold mb-6 text-[#FAFCFD]">Получить чек-лист (PDF)</h4>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <input type="text" placeholder="Имя *" class="w-full px-4 py-3 outline-none bg-[#182025] border border-[#182025] text-[#FAFCFD] focus:border-[#577E95]">
+              <input type="text" placeholder="Компания *" class="w-full px-4 py-3 outline-none bg-[#182025] border border-[#182025] text-[#FAFCFD] focus:border-[#577E95]">
+            </div>
+            <input type="text" placeholder="Email или телефон *" class="w-full px-4 py-3 mb-6 outline-none bg-[#182025] border border-[#182025] text-[#FAFCFD] focus:border-[#577E95]">
+            <button class="w-full py-3 px-4 transition-colors bg-[#30637A] text-[#FAFCFD] hover:bg-[#577E95]">Скачать материал</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="py-20 border-b border-[#C5D6E0]/50">
+    <div class="container mx-auto px-4 max-w-6xl">
+      
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-2 text-[#182025]">6. Accent Bar (Верхний акцент)</h2>
+        <p class="text-[#577E95] max-w-2xl">Абсолютно глухой графит с мощной верхней линией фирменного синего цвета (#30637A).</p>
+      </div>
+
+
+      <div class="bg-[#182025] border-t-4 border-[#30637A] p-8 md:p-12" style="box-shadow: 0 20px 40px rgba(24,32,37,0.4);">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10">
+          <div>
+            <div class="mb-6 w-12 h-12 flex items-center justify-center border bg-[#11171A] border-none text-[#30637A]">
+              <i data-lucide="download" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-3xl font-bold mb-4 text-[#E6F0F4]">Когда шкаф автоматики пора модернизировать?</h3>
+            <p class="text-[#E6F0F4] opacity-80 leading-relaxed text-[#C5D6E0]">Не уверены, нужен ли новый шкаф или достаточно модернизации? Подготовили короткий чек-лист признаков, по которым эксплуатация может оценить состояние автоматики.</p>
+          </div>
+          <div class="">
+            <h4 class="text-lg font-bold mb-6 text-[#E6F0F4]">Получить чек-лист (PDF)</h4>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <input type="text" placeholder="Имя *" class="w-full px-4 py-3 outline-none bg-[#11171A] border-none text-[#FAFCFD] focus:ring-1 focus:ring-[#30637A]">
+              <input type="text" placeholder="Компания *" class="w-full px-4 py-3 outline-none bg-[#11171A] border-none text-[#FAFCFD] focus:ring-1 focus:ring-[#30637A]">
+            </div>
+            <input type="text" placeholder="Email или телефон *" class="w-full px-4 py-3 mb-6 outline-none bg-[#11171A] border-none text-[#FAFCFD] focus:ring-1 focus:ring-[#30637A]">
+            <button class="w-full py-3 px-4 transition-colors bg-[#30637A] text-[#FAFCFD] hover:bg-[#577E95]">Скачать материал</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="py-20 border-b border-[#C5D6E0]/50">
+    <div class="container mx-auto px-4 max-w-6xl">
+      
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-2 text-[#182025]">7. Blueprint Matte (Сетка под матовым)</h2>
+        <p class="text-[#577E95] max-w-2xl">Матовый графит с едва заметной светлой сеткой. Инженерная строгая эстетика.</p>
+      </div>
+
+
+      <div class="bg-[#182025] border-none relative overflow-hidden p-8 md:p-12" style="box-shadow: 0 25px 50px rgba(15,20,23,0.5);">
+        <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none" style="background-image: linear-gradient(to right, #FAFCFD 1px, transparent 1px), linear-gradient(to bottom, #FAFCFD 1px, transparent 1px); background-size: 24px 24px;"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10">
+          <div>
+            <div class="mb-6 w-12 h-12 flex items-center justify-center border bg-[#11171A]/90 border border-[#577E95]/30 text-[#577E95] relative z-10">
+              <i data-lucide="download" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-3xl font-bold mb-4 text-[#FAFCFD] relative z-10">Когда шкаф автоматики пора модернизировать?</h3>
+            <p class="text-[#FAFCFD] relative z-10 opacity-80 leading-relaxed text-[#C5D6E0]">Не уверены, нужен ли новый шкаф или достаточно модернизации? Подготовили короткий чек-лист признаков, по которым эксплуатация может оценить состояние автоматики.</p>
+          </div>
+          <div class="">
+            <h4 class="text-lg font-bold mb-6 text-[#FAFCFD] relative z-10">Получить чек-лист (PDF)</h4>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <input type="text" placeholder="Имя *" class="w-full px-4 py-3 outline-none bg-[#11171A]/90 border border-[#577E95]/30 text-[#FAFCFD] focus:border-[#C5D6E0] relative z-10">
+              <input type="text" placeholder="Компания *" class="w-full px-4 py-3 outline-none bg-[#11171A]/90 border border-[#577E95]/30 text-[#FAFCFD] focus:border-[#C5D6E0] relative z-10">
+            </div>
+            <input type="text" placeholder="Email или телефон *" class="w-full px-4 py-3 mb-6 outline-none bg-[#11171A]/90 border border-[#577E95]/30 text-[#FAFCFD] focus:border-[#C5D6E0] relative z-10">
+            <button class="w-full py-3 px-4 transition-colors bg-[#E6F0F4] text-[#182025] hover:bg-[#FAFCFD] relative z-10">Скачать материал</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="py-20 border-b border-[#C5D6E0]/50">
+    <div class="container mx-auto px-4 max-w-6xl">
+      
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-2 text-[#182025]">8. Framed Monolith (В стальной рамке)</h2>
+        <p class="text-[#577E95] max-w-2xl">Графит, обведенный тонкой рамкой светлого металла (#C5D6E0). Выглядит как деталь прибора.</p>
+      </div>
+
+
+      <div class="bg-[#182025] border-2 border-[#C5D6E0]/20 p-8 md:p-12" style="box-shadow: 10px 10px 0px rgba(24,32,37,0.2);">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10">
+          <div>
+            <div class="mb-6 w-12 h-12 flex items-center justify-center border bg-transparent border border-[#C5D6E0]/20 text-[#C5D6E0]">
+              <i data-lucide="download" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-3xl font-bold mb-4 text-[#FAFCFD]">Когда шкаф автоматики пора модернизировать?</h3>
+            <p class="text-[#FAFCFD] opacity-80 leading-relaxed text-[#C5D6E0]">Не уверены, нужен ли новый шкаф или достаточно модернизации? Подготовили короткий чек-лист признаков, по которым эксплуатация может оценить состояние автоматики.</p>
+          </div>
+          <div class="">
+            <h4 class="text-lg font-bold mb-6 text-[#FAFCFD]">Получить чек-лист (PDF)</h4>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <input type="text" placeholder="Имя *" class="w-full px-4 py-3 outline-none bg-[#11171A] border border-[#C5D6E0]/10 text-[#FAFCFD] focus:border-[#C5D6E0]/50">
+              <input type="text" placeholder="Компания *" class="w-full px-4 py-3 outline-none bg-[#11171A] border border-[#C5D6E0]/10 text-[#FAFCFD] focus:border-[#C5D6E0]/50">
+            </div>
+            <input type="text" placeholder="Email или телефон *" class="w-full px-4 py-3 mb-6 outline-none bg-[#11171A] border border-[#C5D6E0]/10 text-[#FAFCFD] focus:border-[#C5D6E0]/50">
+            <button class="w-full py-3 px-4 transition-colors bg-[#C5D6E0]/10 text-[#C5D6E0] border border-[#C5D6E0]/30 hover:bg-[#C5D6E0]/20">Скачать материал</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="py-20 border-b border-[#C5D6E0]/50">
+    <div class="container mx-auto px-4 max-w-6xl">
+      
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-2 text-[#182025]">9. Darkest Obsidian (Черный монолит)</h2>
+        <p class="text-[#577E95] max-w-2xl">Максимально темный вариант на базе #11171A. Форма ввода светлее (#182025) для контраста.</p>
+      </div>
+
+
+      <div class="bg-[#11171A] border-none p-8 md:p-12" style="box-shadow: 0 40px 80px -20px rgba(15,20,23,0.8);">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10">
+          <div>
+            <div class="mb-6 w-12 h-12 flex items-center justify-center border bg-[#182025] border-none text-[#FAFCFD]">
+              <i data-lucide="download" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-3xl font-bold mb-4 text-[#FAFCFD]">Когда шкаф автоматики пора модернизировать?</h3>
+            <p class="text-[#FAFCFD] opacity-80 leading-relaxed text-[#C5D6E0]">Не уверены, нужен ли новый шкаф или достаточно модернизации? Подготовили короткий чек-лист признаков, по которым эксплуатация может оценить состояние автоматики.</p>
+          </div>
+          <div class="">
+            <h4 class="text-lg font-bold mb-6 text-[#FAFCFD]">Получить чек-лист (PDF)</h4>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <input type="text" placeholder="Имя *" class="w-full px-4 py-3 outline-none bg-[#182025] border-none text-[#FAFCFD] focus:border-[#577E95]">
+              <input type="text" placeholder="Компания *" class="w-full px-4 py-3 outline-none bg-[#182025] border-none text-[#FAFCFD] focus:border-[#577E95]">
+            </div>
+            <input type="text" placeholder="Email или телефон *" class="w-full px-4 py-3 mb-6 outline-none bg-[#182025] border-none text-[#FAFCFD] focus:border-[#577E95]">
+            <button class="w-full py-3 px-4 transition-colors bg-[#30637A] text-[#FAFCFD] hover:bg-[#577E95]">Скачать материал</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="py-20 border-b border-[#C5D6E0]/50">
+    <div class="container mx-auto px-4 max-w-6xl">
+      
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-2 text-[#182025]">10. Brutal Typographic (Брутальная верстка)</h2>
+        <p class="text-[#577E95] max-w-2xl">Упор на крупные шрифты и гигантскую кнопку на всю ширину. Поля ввода во всю ширину блока.</p>
+      </div>
+
+
+      <div class="bg-[#182025] border border-[#577E95]/30 p-8 md:p-12" style="box-shadow: 0 20px 40px rgba(15,20,23,0.6);">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10">
+          <div>
+            <div class="mb-8 w-16 h-16 flex items-center justify-center border bg-[#11171A] border-none text-[#FAFCFD]">
+              <i data-lucide="download" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-4xl font-bold mb-6 text-[#FAFCFD] leading-tight">Когда шкаф автоматики пора модернизировать?</h3>
+            <p class="text-[#FAFCFD] opacity-80 text-lg leading-relaxed text-[#C5D6E0]">Короткий чек-лист признаков, по которым эксплуатация может оценить состояние автоматики.</p>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold mb-8 text-[#FAFCFD]">Получить чек-лист (PDF)</h4>
+            <div class="space-y-4 mb-8">
+              <input type="text" placeholder="Имя и Фамилия *" class="w-full px-4 py-3 outline-none bg-[#11171A] border-none text-[#FAFCFD] px-6 py-4 text-lg focus:border-[#C5D6E0]">
+              <input type="text" placeholder="Название компании *" class="w-full px-4 py-3 outline-none bg-[#11171A] border-none text-[#FAFCFD] px-6 py-4 text-lg focus:border-[#C5D6E0]">
+              <input type="text" placeholder="Email или телефон *" class="w-full px-4 py-3 outline-none bg-[#11171A] border-none text-[#FAFCFD] px-6 py-4 text-lg focus:border-[#C5D6E0]">
+            </div>
+            <button class="w-full transition-colors bg-[#FAFCFD] text-[#182025] hover:bg-[#C5D6E0] text-lg font-bold uppercase tracking-widest py-6">Скачать материал</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

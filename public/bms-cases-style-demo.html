@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMS Variants (Cases Style)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; background-color: #FAFCFD; color: #182025; overflow-x: hidden; }
+    
+    .variant-section {
+      margin-bottom: 6rem;
+      padding: 3rem;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      background: #FAFCFD;
+    }
+
+    h2.v-title { margin-bottom: 1rem; font-size: 1.5rem; font-weight: bold; color: #182025; }
+    .v-desc { margin-bottom: 2rem; color: #577E95; }
+
+    .bms-heading {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      color: #182025;
+      text-align: center;
+    }
+
+    /* Base Card Style matching the screenshot */
+    .case-card {
+      background: white;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .badge {
+      background-color: #30637A;
+      color: white;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-center;
+      font-weight: 300;
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .sub-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #577E95;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .sub-label::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background-color: #C5D6E0;
+    }
+
+    /* No scrollbar */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Custom Animations for variants */
+    .marquee-linear {
+      display: flex;
+      width: max-content;
+      animation: scroll-left 30s linear infinite;
+    }
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+</head>
+<body class="p-8 md:p-16 max-w-7xl mx-auto">
+
+  <h1 class="text-4xl font-bold mb-4 text-center">10 Вариантов (В стиле карточек кейсов)</h1>
+  <p class="text-center text-[#577E95] mb-16 max-w-2xl mx-auto">Адаптация эстетики крупных белых карточек с синими квадратами-номерами и эффектами расфокуса специально для списка диспетчеризации.</p>
+
+  <!-- Variant 1: Classic Cover Flow -->
+  <div class="variant-section">
+    <h2 class="v-title">1. Классический Cover Flow</h2>
+    <p class="v-desc">Центральная карточка крупная и четкая, боковые уменьшены и полупрозрачны. Прокрутка по центру.</p>
+    <div>
+      <h3 class="bms-heading">Что можно передавать в диспетчеризацию:</h3>
+      <div class="flex justify-center items-center gap-6 py-8 overflow-hidden relative w-full h-[300px]">
+        
+        <!-- Left Card (Faded) -->
+        <div class="case-card w-[300px] h-[200px] opacity-40 scale-75 transform transition-all cursor-pointer hover:opacity-60 absolute left-[-10%] md:left-[10%]">
+          <div class="badge justify-center">08</div>
+          <h4 class="text-xl font-medium">Параметры температуры</h4>
+        </div>
+
+        <!-- Center Card (Active) -->
+        <div class="case-card w-[350px] h-[250px] opacity-100 scale-100 transform transition-all z-10 flex flex-col shadow-xl">
+          <div class="badge justify-center">01</div>
+          <div class="sub-label">Параметр</div>
+          <h4 class="text-2xl font-medium text-[#182025]">Состояние вентиляторов</h4>
+          <div class="mt-auto pt-4 border-t border-black/5 flex items-center gap-3">
+            <div class="w-8 h-8 bg-[#F3F7F9] rounded-full flex items-center justify-center text-[#30637A]">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <span class="text-xs text-[#577E95]">Передается онлайн</span>
+          </div>
+        </div>
+
+        <!-- Right Card (Faded) -->
+        <div class="case-card w-[300px] h-[200px] opacity-40 scale-75 transform transition-all cursor-pointer hover:opacity-60 absolute right-[-10%] md:right-[10%]">
+          <div class="badge justify-center">02</div>
+          <h4 class="text-xl font-medium">Аварии оборудования</h4>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant 2: Blurred Sides (Like Screenshot) -->
+  <div class="variant-section">
+    <h2 class="v-title">2. Сильный расфокус по бокам (Blur)</h2>
+    <p class="v-desc">Имитация скриншота. Карточки одинакового размера, но боковые сильно размыты (blur) и светлее.</p>
+    <div>
+      <h3 class="bms-heading">Что можно передавать в диспетчеризацию:</h3>
+      <div class="flex justify-center items-center gap-8 py-8 overflow-hidden relative w-full h-[300px]">
+        
+        <!-- Left Card (Blurred) -->
+        <div class="case-card w-[320px] h-[220px] opacity-60 filter blur-[4px] absolute left-0 md:left-[15%] transition-all pointer-events-none">
+          <div class="badge justify-center">08</div>
+          <div class="sub-label">Параметр</div>
+          <h4 class="text-xl font-medium">Температура и давление</h4>
+        </div>
+
+        <!-- Center Card (Active) -->
+        <div class="case-card w-[350px] h-[250px] z-10 shadow-2xl relative bg-white">
+          <div class="badge justify-center">01</div>
+          <div class="sub-label">Данные в BMS</div>
+          <h4 class="text-2xl font-medium text-[#182025]">Аварии оборудования</h4>
+          <p class="text-sm text-[#577E95] mt-4 line-clamp-2">Мгновенное уведомление диспетчера о сбоях в работе системы.</p>
+        </div>
+
+        <!-- Right Card (Blurred) -->
+        <div class="case-card w-[320px] h-[220px] opacity-60 filter blur-[4px] absolute right-0 md:right-[15%] transition-all pointer-events-none">
+          <div class="badge justify-center">02</div>
+          <div class="sub-label">Параметр</div>
+          <h4 class="text-xl font-medium">Режимы работы</h4>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant 3: 3x3 Grid of Mini-Cases -->
+  <div class="variant-section">
+    <h2 class="v-title">3. Сетка Мини-Кейсов (3x3)</h2>
+    <p class="v-desc">Превращаем каждый пункт в маленькую карточку в стиле кейсов. Отлично смотрится без прокрутки.</p>
+    <div class="max-w-4xl mx-auto">
+      <h3 class="bms-heading !text-left mb-8">Что можно передавать в диспетчеризацию:</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="case-card hover:-translate-y-1 transition-transform cursor-default">
+          <div class="badge justify-center mb-4">01</div>
+          <h4 class="text-lg font-medium">Состояние вентиляторов</h4>
+        </div>
+        <div class="case-card hover:-translate-y-1 transition-transform cursor-default">
+          <div class="badge justify-center mb-4">02</div>
+          <h4 class="text-lg font-medium">Аварии оборудования</h4>
+        </div>
+        <div class="case-card hover:-translate-y-1 transition-transform cursor-default">
+          <div class="badge justify-center mb-4">03</div>
+          <h4 class="text-lg font-medium">Режимы работы</h4>
+        </div>
+        <div class="case-card hover:-translate-y-1 transition-transform cursor-default">
+          <div class="badge justify-center mb-4">04</div>
+          <h4 class="text-lg font-medium">Клапаны и заслонки</h4>
+        </div>
+        <div class="case-card hover:-translate-y-1 transition-transform cursor-default">
+          <div class="badge justify-center mb-4">05</div>
+          <h4 class="text-lg font-medium">Сигналы датчиков</h4>
+        </div>
+        <div class="case-card hover:-translate-y-1 transition-transform cursor-default">
+          <div class="badge justify-center mb-4">06</div>
+          <h4 class="text-lg font-medium">Состояние фильтров</h4>
+        </div>
+        <div class="case-card hover:-translate-y-1 transition-transform cursor-default">
+          <div class="badge justify-center mb-4">07</div>
+          <h4 class="text-lg font-medium">Команды пуск / стоп</h4>
+        </div>
+        <div class="case-card hover:-translate-y-1 transition-transform cursor-default">
+          <div class="badge justify-center mb-4">08</div>
+          <h4 class="text-lg font-medium">Параметры температуры</h4>
+        </div>
+        <div class="case-card hover:-translate-y-1 transition-transform cursor-default bg-[#F3F7F9]">
+          <div class="badge justify-center mb-4 !bg-[#182025]">09</div>
+          <h4 class="text-lg font-medium">Сигналы ПЧ</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant 4: Split Focus (Left Detail, Right Scroll) -->
+  <div class="variant-section">
+    <h2 class="v-title">4. Разделенный фокус (Детали слева, список справа)</h2>
+    <p class="v-desc">Слева — одна крупная карточка в стиле кейса (активная). Справа — скроллящийся список остальных пунктов.</p>
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-8">
+      <!-- Active Focus -->
+      <div class="case-card w-full md:w-1/2 flex flex-col shadow-lg">
+        <div class="badge justify-center">01</div>
+        <div class="sub-label">Мониторинг</div>
+        <h4 class="text-3xl font-medium text-[#182025] mb-6">Состояние вентиляторов</h4>
+        <p class="text-[#577E95] text-sm leading-relaxed mb-8">Постоянный контроль за работой главных агрегатов. В диспетчеризацию передаются данные о включении, выключении и оборотах двигателей в реальном времени.</p>
+        <div class="mt-auto border-l-2 border-[#30637A] pl-4">
+          <div class="text-xs text-[#577E95] uppercase mb-1">Что получает эксплуатация</div>
+          <div class="font-medium text-sm">Полный контроль над воздухообменом</div>
+        </div>
+      </div>
+      
+      <!-- List -->
+      <div class="w-full md:w-1/2 flex flex-col gap-3 h-[400px] overflow-y-auto pr-4 custom-scrollbar">
+        <div class="p-4 bg-white border border-[#30637A] border-opacity-50 shadow-sm flex items-center gap-4 cursor-pointer">
+          <div class="w-8 h-8 bg-[#30637A] text-white flex items-center justify-center text-xs">01</div>
+          <span class="font-medium">Состояние вентиляторов</span>
+        </div>
+        <div class="p-4 bg-white/50 hover:bg-white border border-transparent hover:border-black/5 transition-colors flex items-center gap-4 cursor-pointer opacity-70 hover:opacity-100">
+          <div class="w-8 h-8 bg-black/5 text-[#182025] flex items-center justify-center text-xs">02</div>
+          <span class="font-medium">Аварии оборудования</span>
+        </div>
+        <div class="p-4 bg-white/50 hover:bg-white border border-transparent hover:border-black/5 transition-colors flex items-center gap-4 cursor-pointer opacity-70 hover:opacity-100">
+          <div class="w-8 h-8 bg-black/5 text-[#182025] flex items-center justify-center text-xs">03</div>
+          <span class="font-medium">Режимы работы</span>
+        </div>
+        <div class="p-4 bg-white/50 hover:bg-white border border-transparent hover:border-black/5 transition-colors flex items-center gap-4 cursor-pointer opacity-70 hover:opacity-100">
+          <div class="w-8 h-8 bg-black/5 text-[#182025] flex items-center justify-center text-xs">04</div>
+          <span class="font-medium">Клапаны и заслонки</span>
+        </div>
+        <div class="p-4 bg-white/50 hover:bg-white border border-transparent hover:border-black/5 transition-colors flex items-center gap-4 cursor-pointer opacity-70 hover:opacity-100">
+          <div class="w-8 h-8 bg-black/5 text-[#182025] flex items-center justify-center text-xs">05</div>
+          <span class="font-medium">Сигналы датчиков</span>
+        </div>
+        <div class="p-4 bg-white/50 hover:bg-white border border-transparent hover:border-black/5 transition-colors flex items-center gap-4 cursor-pointer opacity-70 hover:opacity-100">
+          <div class="w-8 h-8 bg-black/5 text-[#182025] flex items-center justify-center text-xs">06</div>
+          <span class="font-medium">Состояние фильтров</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant 5: Horizontal Accordion (Cards) -->
+  <div class="variant-section">
+    <h2 class="v-title">5. Горизонтальный Аккордеон из Карточек</h2>
+    <p class="v-desc">При наведении карточка расширяется, показывая текст. Остальные сжимаются, оставляя только синий квадрат.</p>
+    <div class="max-w-5xl mx-auto flex h-[300px] gap-2">
+      <!-- Active -->
+      <div class="case-card flex-grow-[5] overflow-hidden flex flex-col shadow-lg transition-all duration-500 min-w-[300px]">
+        <div class="badge justify-center shrink-0">01</div>
+        <h4 class="text-xl font-medium whitespace-nowrap mb-4">Состояние вентиляторов</h4>
+        <p class="text-sm text-[#577E95] mt-auto">Анимация разворачивает эту карточку, показывая подробности.</p>
+      </div>
+      <!-- Inactive -->
+      <div class="case-card flex-grow-[1] overflow-hidden flex flex-col items-center py-6 px-0 transition-all duration-500 min-w-[80px] bg-white/50 hover:bg-white cursor-pointer group">
+        <div class="badge justify-center mx-auto transition-colors group-hover:bg-[#182025]">02</div>
+        <div class="writing-vertical text-xs tracking-widest text-[#577E95] mt-8 whitespace-nowrap opacity-0 md:opacity-100" style="writing-mode: vertical-rl; transform: rotate(180deg);">АВАРИИ ОБОРУДОВАНИЯ</div>
+      </div>
+      <div class="case-card flex-grow-[1] overflow-hidden flex flex-col items-center py-6 px-0 transition-all duration-500 min-w-[80px] bg-white/50 hover:bg-white cursor-pointer group">
+        <div class="badge justify-center mx-auto transition-colors group-hover:bg-[#182025]">03</div>
+        <div class="writing-vertical text-xs tracking-widest text-[#577E95] mt-8 whitespace-nowrap opacity-0 md:opacity-100" style="writing-mode: vertical-rl; transform: rotate(180deg);">РЕЖИМЫ РАБОТЫ</div>
+      </div>
+      <div class="case-card flex-grow-[1] overflow-hidden flex flex-col items-center py-6 px-0 transition-all duration-500 min-w-[80px] bg-white/50 hover:bg-white cursor-pointer group">
+        <div class="badge justify-center mx-auto transition-colors group-hover:bg-[#182025]">04</div>
+        <div class="writing-vertical text-xs tracking-widest text-[#577E95] mt-8 whitespace-nowrap opacity-0 md:opacity-100" style="writing-mode: vertical-rl; transform: rotate(180deg);">СИГНАЛЫ ДАТЧИКОВ</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant 6: Infinite Marquee of Cases Tiles -->
+  <div class="variant-section">
+    <h2 class="v-title">6. Бегущая лента из Case-плиток</h2>
+    <p class="v-desc">Бесконечная карусель из квадратных карточек в стиле кейсов. Динамично и сохраняет премиальный вид.</p>
+    <div class="relative overflow-hidden py-8 -mx-8 w-[calc(100%+4rem)]">
+      <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#FAFCFD] to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#FAFCFD] to-transparent z-10 pointer-events-none"></div>
+      <div class="marquee-linear gap-6 px-6 hover:[animation-play-state:paused]">
+        <!-- Set 1 -->
+        <div class="flex gap-6">
+          <div class="case-card w-[220px] h-[220px] flex flex-col hover:-translate-y-2 transition-transform cursor-pointer">
+            <div class="badge justify-center">01</div>
+            <h4 class="text-base font-medium mt-auto">Состояние вентиляторов</h4>
+          </div>
+          <div class="case-card w-[220px] h-[220px] flex flex-col hover:-translate-y-2 transition-transform cursor-pointer">
+            <div class="badge justify-center">02</div>
+            <h4 class="text-base font-medium mt-auto">Аварии оборудования</h4>
+          </div>
+          <div class="case-card w-[220px] h-[220px] flex flex-col hover:-translate-y-2 transition-transform cursor-pointer">
+            <div class="badge justify-center">03</div>
+            <h4 class="text-base font-medium mt-auto">Режимы работы</h4>
+          </div>
+          <div class="case-card w-[220px] h-[220px] flex flex-col hover:-translate-y-2 transition-transform cursor-pointer">
+            <div class="badge justify-center">04</div>
+            <h4 class="text-base font-medium mt-auto">Состояние клапанов</h4>
+          </div>
+        </div>
+        <!-- Set 2 -->
+        <div class="flex gap-6">
+          <div class="case-card w-[220px] h-[220px] flex flex-col hover:-translate-y-2 transition-transform cursor-pointer">
+            <div class="badge justify-center">01</div>
+            <h4 class="text-base font-medium mt-auto">Состояние вентиляторов</h4>
+          </div>
+          <div class="case-card w-[220px] h-[220px] flex flex-col hover:-translate-y-2 transition-transform cursor-pointer">
+            <div class="badge justify-center">02</div>
+            <h4 class="text-base font-medium mt-auto">Аварии оборудования</h4>
+          </div>
+          <div class="case-card w-[220px] h-[220px] flex flex-col hover:-translate-y-2 transition-transform cursor-pointer">
+            <div class="badge justify-center">03</div>
+            <h4 class="text-base font-medium mt-auto">Режимы работы</h4>
+          </div>
+          <div class="case-card w-[220px] h-[220px] flex flex-col hover:-translate-y-2 transition-transform cursor-pointer">
+            <div class="badge justify-center">04</div>
+            <h4 class="text-base font-medium mt-auto">Состояние клапанов</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant 7: Stacked Deck (Depth) -->
+  <div class="variant-section">
+    <h2 class="v-title">7. Стопка карточек (Stacked Deck)</h2>
+    <p class="v-desc">Карточки лежат друг за другом, создавая эффект глубины. При клике "верхняя" улетает, открывая следующую.</p>
+    <div class="flex justify-center py-16">
+      <div class="relative w-[350px] h-[250px]">
+        <!-- Card 3 (Back) -->
+        <div class="case-card absolute inset-0 transform scale-90 translate-y-8 opacity-40 z-0 border-black/10"></div>
+        <!-- Card 2 (Middle) -->
+        <div class="case-card absolute inset-0 transform scale-95 translate-y-4 opacity-70 z-10 border-black/10"></div>
+        <!-- Card 1 (Front) -->
+        <div class="case-card absolute inset-0 z-20 shadow-2xl hover:-translate-y-2 transition-transform cursor-pointer flex flex-col">
+          <div class="badge justify-center">01</div>
+          <div class="sub-label">Диспетчеризация</div>
+          <h4 class="text-2xl font-medium text-[#182025]">Состояние вентиляторов</h4>
+          <p class="text-xs text-[#577E95] mt-auto">Кликните, чтобы перевернуть карточку</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant 8: Cascading Tiles -->
+  <div class="variant-section">
+    <h2 class="v-title">8. Каскадная сетка Кейсов</h2>
+    <p class="v-desc">Карточки разной высоты с единой шапкой. Элегантная альтернатива карусели.</p>
+    <div class="max-w-6xl mx-auto columns-1 md:columns-3 gap-6 space-y-6">
+      <div class="case-card break-inside-avoid shadow-md border-t-4 border-t-[#30637A]">
+        <div class="badge justify-center">01</div>
+        <h4 class="text-xl font-medium mb-4">Состояние вентиляторов</h4>
+        <p class="text-sm text-[#577E95]">Точный контроль оборотов и питания в реальном времени.</p>
+      </div>
+      <div class="case-card break-inside-avoid">
+        <div class="badge justify-center !bg-black/5 !text-[#182025]">02</div>
+        <h4 class="text-lg font-medium">Аварии</h4>
+      </div>
+      <div class="case-card break-inside-avoid shadow-md border-t-4 border-t-[#30637A]">
+        <div class="badge justify-center">03</div>
+        <h4 class="text-xl font-medium mb-4">Режимы работы</h4>
+        <p class="text-sm text-[#577E95]">Переключение Зима/Лето, Авто/Ручной прямо из диспетчерской.</p>
+      </div>
+      <div class="case-card break-inside-avoid">
+        <div class="badge justify-center !bg-black/5 !text-[#182025]">04</div>
+        <h4 class="text-lg font-medium">Клапаны и заслонки</h4>
+      </div>
+      <div class="case-card break-inside-avoid">
+        <div class="badge justify-center !bg-black/5 !text-[#182025]">05</div>
+        <h4 class="text-lg font-medium">Сигналы датчиков</h4>
+      </div>
+      <div class="case-card break-inside-avoid">
+        <div class="badge justify-center !bg-black/5 !text-[#182025]">06</div>
+        <h4 class="text-lg font-medium">Фильтры</h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant 9: Vertical Elevator -->
+  <div class="variant-section">
+    <h2 class="v-title">9. Вертикальный Лифт (Elevator Focus)</h2>
+    <p class="v-desc">Прокрутка происходит по вертикали. Центральный элемент увеличивается и становится белой карточкой.</p>
+    <div class="max-w-md mx-auto relative h-[400px] overflow-hidden flex flex-col justify-center gap-4">
+      <div class="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#FAFCFD] to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#FAFCFD] to-transparent z-10 pointer-events-none"></div>
+      
+      <div class="flex items-center gap-6 opacity-30 scale-90 px-8 transform transition-all cursor-pointer">
+        <div class="text-xl font-light text-[#30637A]">08</div>
+        <div class="text-lg font-medium text-[#182025]">Параметры температуры</div>
+      </div>
+      
+      <div class="case-card flex items-center gap-6 scale-100 opacity-100 z-10 shadow-lg !p-6 mx-4">
+        <div class="w-12 h-12 bg-[#30637A] text-white flex items-center justify-center font-light text-xl">01</div>
+        <div>
+          <div class="sub-label !mb-1">Мониторинг</div>
+          <div class="text-xl font-medium text-[#182025]">Состояние вентиляторов</div>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-6 opacity-30 scale-90 px-8 transform transition-all cursor-pointer">
+        <div class="text-xl font-light text-[#30637A]">02</div>
+        <div class="text-lg font-medium text-[#182025]">Аварии оборудования</div>
+      </div>
+      <div class="flex items-center gap-6 opacity-10 scale-75 px-8 transform transition-all cursor-pointer">
+        <div class="text-xl font-light text-[#30637A]">03</div>
+        <div class="text-lg font-medium text-[#182025]">Режимы работы</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant 10: Horizontal Line Nodes -->
+  <div class="variant-section">
+    <h2 class="v-title">10. Узлы на линии (Timeline Nodes)</h2>
+    <p class="v-desc">Все элементы соединены линией. Активный элемент превращается в полноценную карточку кейса.</p>
+    <div class="relative py-16">
+      <div class="absolute top-[80px] left-0 w-full h-0.5 bg-black/10 z-0"></div>
+      <div class="flex items-start justify-between relative z-10 max-w-6xl mx-auto px-4">
+        
+        <!-- Node Inactive -->
+        <div class="flex flex-col items-center gap-4 cursor-pointer group">
+          <div class="w-4 h-4 rounded-full bg-white border-2 border-[#30637A] group-hover:scale-150 transition-transform"></div>
+          <span class="text-xs font-medium text-[#577E95] text-center w-20">Аварии</span>
+        </div>
+        
+        <!-- Node Active -->
+        <div class="flex flex-col items-center gap-4 -mt-12 relative">
+          <div class="case-card shadow-xl w-[280px] h-[180px] flex flex-col z-20">
+            <div class="badge justify-center absolute -top-4 -left-4 shadow-md">02</div>
+            <h4 class="text-lg font-medium mb-auto mt-4">Состояние вентиляторов</h4>
+            <div class="w-full h-1 bg-[#30637A] mt-auto opacity-50"></div>
+          </div>
+        </div>
+        
+        <!-- Node Inactive -->
+        <div class="flex flex-col items-center gap-4 cursor-pointer group">
+          <div class="w-4 h-4 rounded-full bg-white border-2 border-black/20 group-hover:border-[#30637A] transition-colors"></div>
+          <span class="text-xs font-medium text-[#577E95] text-center w-20">Режимы</span>
+        </div>
+        <div class="flex flex-col items-center gap-4 cursor-pointer group">
+          <div class="w-4 h-4 rounded-full bg-white border-2 border-black/20 group-hover:border-[#30637A] transition-colors"></div>
+          <span class="text-xs font-medium text-[#577E95] text-center w-20">Клапаны</span>
+        </div>
+        <div class="flex flex-col items-center gap-4 cursor-pointer group">
+          <div class="w-4 h-4 rounded-full bg-white border-2 border-black/20 group-hover:border-[#30637A] transition-colors"></div>
+          <span class="text-xs font-medium text-[#577E95] text-center w-20">Датчики</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

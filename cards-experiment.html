@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Миксы плашек (Прямые углы)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: '#FAFCFD',
+            foreground: '#182025',
+            primary: '#30637A',
+            'primary-foreground': '#FFFFFF',
+            secondary: '#E6F0F4',
+            muted: '#E6F0F4',
+            'muted-foreground': '#577E95',
+            border: '#C5D6E0',
+            card: '#FFFFFF',
+          },
+          fontFamily: {
+            display: ['Inter', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #FAFCFD; color: #182025; }
+    .card-base { position: relative; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; aspect-ratio: 1/1; cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 0 !important; }
+    .card-base:hover { transform: translateY(-4px); }
+    .arrow { position: absolute; bottom: 1rem; right: 1rem; width: 1.25rem; height: 1.25rem; transition: transform 0.3s ease; }
+    .card-base:hover .arrow { transform: translate(4px, 4px); }
+  </style>
+</head>
+<body class="py-24 px-4 md:px-12 antialiased">
+
+  <div class="max-w-7xl mx-auto space-y-32">
+    <div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Комбинации (Миксы)</h1>
+      <p class="text-xl text-muted-foreground">Только прямые углы. Смешиваем Dark (3), Glass (4) и Neumorphism (7).</p>
+    </div>
+
+    <!-- МИКС 1: Glassmorphism + Neumorphism (Светлый) -->
+    <section class="relative p-12 -mx-12 overflow-hidden bg-[#FAFCFD]">
+      <!-- Фоновые градиентные пятна для эффекта стекла -->
+      <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#E6F0F4] via-[#BACED9]/20 to-[#E6F0F4] opacity-50 z-0"></div>
+      <div class="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#30637A] rounded-full blur-[120px] opacity-10 z-0"></div>
+      <div class="absolute top-1/2 right-1/4 translate-x-1/4 -translate-y-1/2 w-[400px] h-[400px] bg-[#577E95] rounded-full blur-[100px] opacity-10 z-0"></div>
+      
+      <h2 class="relative z-10 text-2xl font-medium mb-8 border-b border-border/50 pb-4">Микс 1: Светлое стекло + Объем (Glass + Neumorphism)</h2>
+      <div class="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <!-- Генерируем 5 карточек -->
+        <div class="card-base border border-white/60 bg-white/40 backdrop-blur-md group" style="box-shadow: 10px 10px 30px rgba(48,99,122,0.05), -10px -10px 30px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.8);">
+          <div class="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-500"></div>
+          <div class="relative z-10 text-4xl font-bold text-primary/40 group-hover:text-primary transition-colors">01</div>
+          <h4 class="relative z-10 font-medium leading-tight pr-8 text-foreground group-hover:text-primary transition-colors">Анализ исходных данных</h4>
+          <svg class="arrow text-primary/40 group-hover:text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+        <div class="card-base border border-white/60 bg-white/40 backdrop-blur-md group" style="box-shadow: 10px 10px 30px rgba(48,99,122,0.05), -10px -10px 30px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.8);">
+          <div class="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-500"></div>
+          <div class="relative z-10 text-4xl font-bold text-primary/40 group-hover:text-primary transition-colors">02</div>
+          <h4 class="relative z-10 font-medium leading-tight pr-8 text-foreground group-hover:text-primary transition-colors">Обследование шкафа</h4>
+          <svg class="arrow text-primary/40 group-hover:text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+        <div class="card-base border border-white/60 bg-white/40 backdrop-blur-md group" style="box-shadow: 10px 10px 30px rgba(48,99,122,0.05), -10px -10px 30px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.8);">
+          <div class="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-500"></div>
+          <div class="relative z-10 text-4xl font-bold text-primary/40 group-hover:text-primary transition-colors">03</div>
+          <h4 class="relative z-10 font-medium leading-tight pr-8 text-foreground group-hover:text-primary transition-colors">Разработка схемного решения</h4>
+          <svg class="arrow text-primary/40 group-hover:text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+        <div class="card-base border border-white/60 bg-white/40 backdrop-blur-md group" style="box-shadow: 10px 10px 30px rgba(48,99,122,0.05), -10px -10px 30px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.8);">
+          <div class="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-500"></div>
+          <div class="relative z-10 text-4xl font-bold text-primary/40 group-hover:text-primary transition-colors">04</div>
+          <h4 class="relative z-10 font-medium leading-tight pr-8 text-foreground group-hover:text-primary transition-colors">Подбор компонентов</h4>
+          <svg class="arrow text-primary/40 group-hover:text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+        <div class="card-base border border-white/60 bg-white/40 backdrop-blur-md group" style="box-shadow: 10px 10px 30px rgba(48,99,122,0.05), -10px -10px 30px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.8);">
+          <div class="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-500"></div>
+          <div class="relative z-10 text-4xl font-bold text-primary/40 group-hover:text-primary transition-colors">05</div>
+          <h4 class="relative z-10 font-medium leading-tight pr-8 text-foreground group-hover:text-primary transition-colors">Сборка шкафа</h4>
+          <svg class="arrow text-primary/40 group-hover:text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- МИКС 2: Dark + Radial + Glassmorphism -->
+    <section class="relative p-12 -mx-12 overflow-hidden bg-[#182025]">
+      <!-- Заблюренные цветные шары на черном фоне -->
+      <div class="absolute top-1/2 left-1/3 w-[600px] h-[600px] bg-[#30637A] rounded-full blur-[150px] opacity-30 -translate-x-1/2 -translate-y-1/2 z-0"></div>
+      <div class="absolute top-1/2 right-1/4 w-[500px] h-[500px] bg-[#577E95] rounded-full blur-[150px] opacity-20 -translate-y-1/2 z-0"></div>
+
+      <h2 class="relative z-10 text-2xl font-medium mb-8 border-b border-white/10 pb-4 text-white">Микс 2: Тёмное стекло + Свечение (Dark + Glass + Radial)</h2>
+      <div class="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <!-- Карточки -->
+        <div class="card-base border border-white/10 bg-black/40 backdrop-blur-xl group overflow-hidden" style="box-shadow: inset 1px 1px 1px rgba(255,255,255,0.05), 0 10px 40px rgba(0,0,0,0.5);">
+          <!-- Hover свечение -->
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0" style="background: radial-gradient(circle at 100% 100%, rgba(48,99,122,0.8) 0%, transparent 70%)"></div>
+          <div class="relative z-10 text-4xl font-bold text-white/20 group-hover:text-white/50 transition-colors">01</div>
+          <h4 class="relative z-10 font-medium leading-tight text-white/80 pr-8 group-hover:text-white transition-colors">Анализ исходных данных</h4>
+          <svg class="arrow text-white/20 group-hover:text-white/60 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+        <div class="card-base border border-white/10 bg-black/40 backdrop-blur-xl group overflow-hidden" style="box-shadow: inset 1px 1px 1px rgba(255,255,255,0.05), 0 10px 40px rgba(0,0,0,0.5);">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0" style="background: radial-gradient(circle at 100% 100%, rgba(48,99,122,0.8) 0%, transparent 70%)"></div>
+          <div class="relative z-10 text-4xl font-bold text-white/20 group-hover:text-white/50 transition-colors">02</div>
+          <h4 class="relative z-10 font-medium leading-tight text-white/80 pr-8 group-hover:text-white transition-colors">Обследование шкафа</h4>
+          <svg class="arrow text-white/20 group-hover:text-white/60 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+        <div class="card-base border border-white/10 bg-black/40 backdrop-blur-xl group overflow-hidden" style="box-shadow: inset 1px 1px 1px rgba(255,255,255,0.05), 0 10px 40px rgba(0,0,0,0.5);">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0" style="background: radial-gradient(circle at 100% 100%, rgba(48,99,122,0.8) 0%, transparent 70%)"></div>
+          <div class="relative z-10 text-4xl font-bold text-white/20 group-hover:text-white/50 transition-colors">03</div>
+          <h4 class="relative z-10 font-medium leading-tight text-white/80 pr-8 group-hover:text-white transition-colors">Разработка схемного решения</h4>
+          <svg class="arrow text-white/20 group-hover:text-white/60 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+        <div class="card-base border border-white/10 bg-black/40 backdrop-blur-xl group overflow-hidden" style="box-shadow: inset 1px 1px 1px rgba(255,255,255,0.05), 0 10px 40px rgba(0,0,0,0.5);">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0" style="background: radial-gradient(circle at 100% 100%, rgba(48,99,122,0.8) 0%, transparent 70%)"></div>
+          <div class="relative z-10 text-4xl font-bold text-white/20 group-hover:text-white/50 transition-colors">04</div>
+          <h4 class="relative z-10 font-medium leading-tight text-white/80 pr-8 group-hover:text-white transition-colors">Подбор компонентов</h4>
+          <svg class="arrow text-white/20 group-hover:text-white/60 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+        <div class="card-base border border-white/10 bg-black/40 backdrop-blur-xl group overflow-hidden" style="box-shadow: inset 1px 1px 1px rgba(255,255,255,0.05), 0 10px 40px rgba(0,0,0,0.5);">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0" style="background: radial-gradient(circle at 100% 100%, rgba(48,99,122,0.8) 0%, transparent 70%)"></div>
+          <div class="relative z-10 text-4xl font-bold text-white/20 group-hover:text-white/50 transition-colors">05</div>
+          <h4 class="relative z-10 font-medium leading-tight text-white/80 pr-8 group-hover:text-white transition-colors">Сборка шкафа</h4>
+          <svg class="arrow text-white/20 group-hover:text-white/60 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- МИКС 3: Темный Neumorphism (Вдавленность/Выпуклость) -->
+    <section class="relative p-12 -mx-12 bg-[#1b242a]">
+      <h2 class="relative z-10 text-2xl font-medium mb-8 border-b border-white/5 pb-4 text-white">Микс 3: Тёмный Neumorphism + Свечение</h2>
+      <div class="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <!-- Карточки -->
+        <div class="card-base bg-[#1b242a] group" style="box-shadow: 12px 12px 24px #12181c, -12px -12px 24px #243038;">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0" style="background: radial-gradient(circle at 50% 50%, rgba(48,99,122,0.15) 0%, transparent 70%)"></div>
+          <div class="relative z-10 text-4xl font-bold text-white/10 group-hover:text-primary transition-colors">01</div>
+          <h4 class="relative z-10 font-medium leading-tight text-white/60 pr-8 group-hover:text-white transition-colors">Анализ исходных данных</h4>
+          <svg class="arrow text-white/10 group-hover:text-primary relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+        <div class="card-base bg-[#1b242a] group" style="box-shadow: 12px 12px 24px #12181c, -12px -12px 24px #243038;">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0" style="background: radial-gradient(circle at 50% 50%, rgba(48,99,122,0.15) 0%, transparent 70%)"></div>
+          <div class="relative z-10 text-4xl font-bold text-white/10 group-hover:text-primary transition-colors">02</div>
+          <h4 class="relative z-10 font-medium leading-tight text-white/60 pr-8 group-hover:text-white transition-colors">Обследование шкафа</h4>
+          <svg class="arrow text-white/10 group-hover:text-primary relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+        <div class="card-base bg-[#1b242a] group" style="box-shadow: 12px 12px 24px #12181c, -12px -12px 24px #243038;">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0" style="background: radial-gradient(circle at 50% 50%, rgba(48,99,122,0.15) 0%, transparent 70%)"></div>
+          <div class="relative z-10 text-4xl font-bold text-white/10 group-hover:text-primary transition-colors">03</div>
+          <h4 class="relative z-10 font-medium leading-tight text-white/60 pr-8 group-hover:text-white transition-colors">Разработка схемного решения</h4>
+          <svg class="arrow text-white/10 group-hover:text-primary relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+        <div class="card-base bg-[#1b242a] group" style="box-shadow: 12px 12px 24px #12181c, -12px -12px 24px #243038;">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0" style="background: radial-gradient(circle at 50% 50%, rgba(48,99,122,0.15) 0%, transparent 70%)"></div>
+          <div class="relative z-10 text-4xl font-bold text-white/10 group-hover:text-primary transition-colors">04</div>
+          <h4 class="relative z-10 font-medium leading-tight text-white/60 pr-8 group-hover:text-white transition-colors">Подбор компонентов</h4>
+          <svg class="arrow text-white/10 group-hover:text-primary relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+        <div class="card-base bg-[#1b242a] group" style="box-shadow: 12px 12px 24px #12181c, -12px -12px 24px #243038;">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0" style="background: radial-gradient(circle at 50% 50%, rgba(48,99,122,0.15) 0%, transparent 70%)"></div>
+          <div class="relative z-10 text-4xl font-bold text-white/10 group-hover:text-primary transition-colors">05</div>
+          <h4 class="relative z-10 font-medium leading-tight text-white/60 pr-8 group-hover:text-white transition-colors">Сборка шкафа</h4>
+          <svg class="arrow text-white/10 group-hover:text-primary relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>

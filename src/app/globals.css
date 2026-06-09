@@ -1,26 +1,191 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+  
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Slate/Teal Engineering Light Theme */
+  --background: #FAFCFD; /* Very light ice/white */
+  --foreground: #182025; /* Very dark navy/slate for high contrast text */
+  
+  --card: #FFFFFF; /* Pure white for cards to pop slightly off background */
+  --card-foreground: #182025;
+  
+  --popover: #FFFFFF;
+  --popover-foreground: #182025;
+  
+  --primary: #30637A; /* Deep sea blue for strong buttons */
+  --primary-foreground: #FFFFFF;
+  
+  --secondary: #E6F0F4; /* Very light slate blue for secondary elements */
+  --secondary-foreground: #30637A;
+  
+  --muted: #E6F0F4; /* Light grey-blue for muted backgrounds */
+  --muted-foreground: #577E95; /* Darker slate for secondary text */
+  
+  --accent: #E6F0F4;
+  --accent-foreground: #182025;
+  
+  --destructive: #d95c5c;
+  
+  --border: #C5D6E0; /* Light slate grey for borders */
+  --input: #C5D6E0;
+  --ring: #30637A;
+  
+  /* Very subtle rounding for brutalist feel */
+  --radius: 0.25rem;
+  
+  --sidebar: #FAFCFD;
+  --sidebar-foreground: #182025;
+  --sidebar-primary: #30637A;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E6F0F4;
+  --sidebar-accent-foreground: #182025;
+  --sidebar-border: #C5D6E0;
+  --sidebar-ring: #30637A;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom glow effects for the light theme */
+.glow-primary {
+  background: radial-gradient(circle, rgba(48,99,122,0.15) 0%, rgba(250,252,253,0) 70%);
 }
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted-foreground);
+  border-radius: var(--radius);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Scoped scrollbar for custom containers */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--muted-foreground);
+  border-radius: var(--radius);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Preloader FLIP & Matrix Animations */
+.dummy-box {
+  border-radius: 0px; min-height: 4px; min-width: 4px;
+  transition: top 0.8s cubic-bezier(0.76, 0, 0.24, 1), 
+              left 0.8s cubic-bezier(0.76, 0, 0.24, 1), 
+              width 0.8s cubic-bezier(0.76, 0, 0.24, 1), 
+              height 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.dummy-white { border: 1px solid rgba(24,32,37,0.2); background: #ffffff; }
+.dummy-blue { background: #30637A; }
+.dummy-dark { background: #182025; }
+
+.anim-box {
+  animation-iteration-count: 1, 1 !important; 
+  animation-fill-mode: both, forwards !important;
+}
+.anim-col {
+  animation-iteration-count: 1 !important; 
+  animation-fill-mode: forwards !important;
+}
+
+/* Chaotic Delays: 1st is Entrance, 2nd is Deformation */
+.cd-1 { animation-delay: 0.3s, 1.2s !important; }
+.cd-2 { animation-delay: 0.1s, 1.4s !important; }
+.cd-3 { animation-delay: 0.0s, 1.0s !important; }
+.cd-4 { animation-delay: 0.4s, 1.1s !important; }
+.cd-5 { animation-delay: 0.2s, 1.3s !important; }
+
+/* Specific Keyframes to prevent jumping from default flex values */
+@keyframes entrance {
+  0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes h-grow-1   { 0%, 100% { flex-grow: 1; } 50% { flex-grow: 3; } }
+@keyframes h-grow-08  { 0%, 100% { flex-grow: 0.8; } 50% { flex-grow: 2.8; } }
+
+@keyframes v-grow-2   { 0%, 100% { flex-grow: 2; } 50% { flex-grow: 5; } }
+@keyframes v-grow-1   { 0%, 100% { flex-grow: 1; } 50% { flex-grow: 4; } }
+@keyframes v-grow-08  { 0%, 100% { flex-grow: 0.8; } 50% { flex-grow: 3.8; } }
+@keyframes v-grow-15  { 0%, 100% { flex-grow: 1.5; } 50% { flex-grow: 4.5; } }
+
+.left-col { animation: h-grow-1 1.5s ease-in-out 1.1s forwards; }
+.right-col { animation: h-grow-08 1.5s ease-in-out 1.0s forwards; }
+
+#dummy-1 { animation: entrance 0.6s cubic-bezier(0.16, 1, 0.3, 1), v-grow-2 1.5s ease-in-out; }
+#dummy-3 { animation: entrance 0.6s cubic-bezier(0.16, 1, 0.3, 1), v-grow-1 1.5s ease-in-out; }
+#dummy-2 { animation: entrance 0.6s cubic-bezier(0.16, 1, 0.3, 1), v-grow-08 1.5s ease-in-out; }
+#dummy-4 { animation: entrance 0.6s cubic-bezier(0.16, 1, 0.3, 1), v-grow-1 1.5s ease-in-out; }
+#dummy-5 { animation: entrance 0.6s cubic-bezier(0.16, 1, 0.3, 1), v-grow-15 1.5s ease-in-out; }
+
+.perspective-1000 { perspective: 1000px; }
+.preserve-3d { transform-style: preserve-3d; }

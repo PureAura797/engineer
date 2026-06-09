@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMS Variants</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; background-color: #FAFCFD; color: #182025; }
+    
+    .variant-section {
+      margin-bottom: 6rem;
+      padding: 3rem;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      background: white;
+    }
+
+    /* Container replicating the exact box from the site */
+    .bms-container {
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      max-width: 600px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h2.v-title { margin-bottom: 1rem; font-size: 1.5rem; font-weight: bold; color: #182025; }
+    .v-desc { margin-bottom: 2rem; color: #577E95; }
+
+    .bms-heading {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      color: #182025;
+    }
+
+    /* Animations */
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes scroll-right {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+    
+    .animate-marquee { animation: scroll-left 30s linear infinite; }
+    .animate-marquee-slow { animation: scroll-left 40s linear infinite; }
+    .animate-marquee-reverse { animation: scroll-right 35s linear infinite; }
+    
+    /* Hide scrollbar */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="p-8 md:p-16 max-w-7xl mx-auto bg-[#F3F7F9]">
+
+  <h1 class="text-4xl font-bold mb-16 text-center">10 Вариантов блока "Диспетчеризация"</h1>
+
+  <!-- Variant 1: Sleek Typography Ticker -->
+  <div class="variant-section">
+    <h2 class="v-title">1. Типографический Ticker (Premium Apple Style)</h2>
+    <p class="v-desc">Никаких плашек и рамок. Только крупная красивая типографика, которая плавно плывет. Разделитель — лаконичная точка.</p>
+    <div class="bms-container">
+      <h3 class="bms-heading">Что можно передавать в диспетчеризацию:</h3>
+      <div class="relative overflow-hidden w-[calc(100%+4rem)] -mx-8 py-4 border-y border-black/5">
+        <div class="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white/40 to-transparent z-10"></div>
+        <div class="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white/40 to-transparent z-10"></div>
+        <div class="flex w-max animate-marquee">
+          <!-- Duplicated for infinite scroll -->
+          <div class="flex items-center gap-6 px-3">
+            <span class="text-lg font-medium text-[#30637A]">состояние вентиляторов</span><div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <span class="text-lg font-medium text-[#30637A]">аварии оборудования</span><div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <span class="text-lg font-medium text-[#30637A]">режимы работы</span><div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <span class="text-lg font-medium text-[#30637A]">состояние клапанов и заслонок</span><div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <span class="text-lg font-medium text-[#30637A]">сигналы датчиков</span><div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <span class="text-lg font-medium text-[#30637A]">состояние фильтров</span><div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <span class="text-lg font-medium text-[#30637A]">команды пуск / стоп</span><div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <span class="text-lg font-medium text-[#30637A]">параметры температуры</span><div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <span class="text-lg font-medium text-[#30637A]">сигналы ПЧ</span><div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+          </div>
+          <div class="flex items-center gap-6 px-3">
+            <span class="text-lg font-medium text-[#30637A]">состояние вентиляторов</span><div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <span class="text-lg font-medium text-[#30637A]">аварии оборудования</span><div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <span class="text-lg font-medium text-[#30637A]">режимы работы</span><div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <span class="text-lg font-medium text-[#30637A]">состояние клапанов и заслонок</span><div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <span class="text-lg font-medium text-[#30637A]">сигналы датчиков</span><div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <span class="text-lg font-medium text-[#30637A]">состояние фильтров</span><div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <span class="text-lg font-medium text-[#30637A]">команды пуск / стоп</span><div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <span class="text-lg font-medium text-[#30637A]">параметры температуры</span><div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+            <span class="text-lg font-medium text-[#30637A]">сигналы ПЧ</span><div class="w-1.5 h-1.5 rounded-full bg-black/20"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant 2: Minimalist Pills Grid -->
+  <div class="variant-section">
+    <h2 class="v-title">2. Сетка "Стеклянных таблеток" (Pills)</h2>
+    <p class="v-desc">Никакой прокрутки. Все элементы аккуратно упакованы в теги с легким фоном. Читается моментально.</p>
+    <div class="bms-container">
+      <h3 class="bms-heading">Что можно передавать в диспетчеризацию:</h3>
+      <div class="flex flex-wrap gap-2">
+        <span class="px-4 py-2 bg-white/60 border border-white/80 rounded-full text-sm text-[#182025] shadow-sm hover:bg-white transition-colors cursor-default">состояние вентиляторов</span>
+        <span class="px-4 py-2 bg-white/60 border border-white/80 rounded-full text-sm text-[#182025] shadow-sm hover:bg-white transition-colors cursor-default">аварии оборудования</span>
+        <span class="px-4 py-2 bg-white/60 border border-white/80 rounded-full text-sm text-[#182025] shadow-sm hover:bg-white transition-colors cursor-default">режимы работы</span>
+        <span class="px-4 py-2 bg-white/60 border border-white/80 rounded-full text-sm text-[#182025] shadow-sm hover:bg-white transition-colors cursor-default">состояние клапанов и заслонок</span>
+        <span class="px-4 py-2 bg-white/60 border border-white/80 rounded-full text-sm text-[#182025] shadow-sm hover:bg-white transition-colors cursor-default">сигналы датчиков</span>
+        <span class="px-4 py-2 bg-white/60 border border-white/80 rounded-full text-sm text-[#182025] shadow-sm hover:bg-white transition-colors cursor-default">состояние фильтров</span>
+        <span class="px-4 py-2 bg-[#30637A] text-white rounded-full text-sm shadow-sm cursor-default">команды пуск / стоп</span>
+        <span class="px-4 py-2 bg-white/60 border border-white/80 rounded-full text-sm text-[#182025] shadow-sm hover:bg-white transition-colors cursor-default">температура и давление</span>
+        <span class="px-4 py-2 bg-white/60 border border-white/80 rounded-full text-sm text-[#182025] shadow-sm hover:bg-white transition-colors cursor-default">сигналы ПЧ</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant 3: Interactive Brutalist List -->
+  <div class="variant-section">
+    <h2 class="v-title">3. Интерактивный Бруталистский Список</h2>
+    <p class="v-desc">Вертикальный список с мощным ховер-эффектом. Полосы-разделители и стрелочки. Никаких лишних плашек.</p>
+    <div class="bms-container !p-0">
+      <div class="p-8 pb-4"><h3 class="bms-heading !mb-0">Что можно передавать в диспетчеризацию:</h3></div>
+      <div class="flex flex-col">
+        <div class="group flex items-center justify-between px-8 py-3 border-t border-black/5 hover:bg-white transition-colors cursor-pointer">
+          <span class="text-[#577E95] group-hover:text-[#182025] transition-colors">Состояние вентиляторов</span>
+          <svg class="w-4 h-4 text-transparent group-hover:text-[#30637A] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </div>
+        <div class="group flex items-center justify-between px-8 py-3 border-t border-black/5 hover:bg-white transition-colors cursor-pointer">
+          <span class="text-[#577E95] group-hover:text-[#182025] transition-colors">Аварии оборудования</span>
+          <svg class="w-4 h-4 text-transparent group-hover:text-[#30637A] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </div>
+        <div class="group flex items-center justify-between px-8 py-3 border-t border-black/5 hover:bg-white transition-colors cursor-pointer">
+          <span class="text-[#577E95] group-hover:text-[#182025] transition-colors">Режимы работы</span>
+          <svg class="w-4 h-4 text-transparent group-hover:text-[#30637A] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </div>
+        <div class="group flex items-center justify-between px-8 py-3 border-t border-black/5 hover:bg-white transition-colors cursor-pointer">
+          <span class="text-[#577E95] group-hover:text-[#182025] transition-colors">Состояние клапанов и заслонок</span>
+          <svg class="w-4 h-4 text-transparent group-hover:text-[#30637A] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </div>
+        <div class="group flex items-center justify-between px-8 py-3 border-t border-black/5 hover:bg-white transition-colors cursor-pointer text-sm text-[#30637A]">
+          <span>+ еще 5 параметров</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant 4: Clean 3x3 Bento Mini-Grid -->
+  <div class="variant-section">
+    <h2 class="v-title">4. Аккуратная 3x3 Сетка (Bento Mini)</h2>
+    <p class="v-desc">Идеальная симметрия. 9 элементов образуют идеальный квадрат 3x3. Только иконка и текст под ней.</p>
+    <div class="bms-container">
+      <h3 class="bms-heading">Что можно передавать в диспетчеризацию:</h3>
+      <div class="grid grid-cols-3 gap-4">
+        <div class="bg-white/50 border border-white/60 p-4 flex flex-col items-center justify-center text-center gap-2 hover:bg-white transition-colors">
+          <div class="w-8 h-8 rounded-full bg-[#E6F0F4] text-[#30637A] flex items-center justify-center">1</div>
+          <span class="text-xs font-medium text-[#182025]">Состояние вентиляторов</span>
+        </div>
+        <div class="bg-white/50 border border-white/60 p-4 flex flex-col items-center justify-center text-center gap-2 hover:bg-white transition-colors">
+          <div class="w-8 h-8 rounded-full bg-[#E6F0F4] text-[#30637A] flex items-center justify-center">2</div>
+          <span class="text-xs font-medium text-[#182025]">Аварии оборудования</span>
+        </div>
+        <div class="bg-white/50 border border-white/60 p-4 flex flex-col items-center justify-center text-center gap-2 hover:bg-white transition-colors">
+          <div class="w-8 h-8 rounded-full bg-[#E6F0F4] text-[#30637A] flex items-center justify-center">3</div>
+          <span class="text-xs font-medium text-[#182025]">Режимы работы</span>
+        </div>
+        <div class="bg-white/50 border border-white/60 p-4 flex flex-col items-center justify-center text-center gap-2 hover:bg-white transition-colors">
+          <div class="w-8 h-8 rounded-full bg-[#E6F0F4] text-[#30637A] flex items-center justify-center">4</div>
+          <span class="text-xs font-medium text-[#182025]">Клапаны и заслонки</span>
+        </div>
+        <div class="bg-white/50 border border-white/60 p-4 flex flex-col items-center justify-center text-center gap-2 hover:bg-white transition-colors">
+          <div class="w-8 h-8 rounded-full bg-[#E6F0F4] text-[#30637A] flex items-center justify-center">5</div>
+          <span class="text-xs font-medium text-[#182025]">Сигналы датчиков</span>
+        </div>
+        <div class="bg-white/50 border border-white/60 p-4 flex flex-col items-center justify-center text-center gap-2 hover:bg-white transition-colors">
+          <div class="w-8 h-8 rounded-full bg-[#E6F0F4] text-[#30637A] flex items-center justify-center">6</div>
+          <span class="text-xs font-medium text-[#182025]">Состояние фильтров</span>
+        </div>
+        <div class="bg-white/50 border border-white/60 p-4 flex flex-col items-center justify-center text-center gap-2 hover:bg-white transition-colors">
+          <div class="w-8 h-8 rounded-full bg-[#E6F0F4] text-[#30637A] flex items-center justify-center">7</div>
+          <span class="text-xs font-medium text-[#182025]">Команды пуск/стоп</span>
+        </div>
+        <div class="bg-white/50 border border-white/60 p-4 flex flex-col items-center justify-center text-center gap-2 hover:bg-white transition-colors">
+          <div class="w-8 h-8 rounded-full bg-[#E6F0F4] text-[#30637A] flex items-center justify-center">8</div>
+          <span class="text-xs font-medium text-[#182025]">Температура и давление</span>
+        </div>
+        <div class="bg-white/50 border border-white/60 p-4 flex flex-col items-center justify-center text-center gap-2 hover:bg-white transition-colors">
+          <div class="w-8 h-8 rounded-full bg-[#E6F0F4] text-[#30637A] flex items-center justify-center">9</div>
+          <span class="text-xs font-medium text-[#182025]">Сигналы ПЧ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant 5: Infinite Pill Tickers (Two Directions) -->
+  <div class="variant-section">
+    <h2 class="v-title">5. Двойная бегущая строка (Встречное движение)</h2>
+    <p class="v-desc">Современный SaaS-паттерн. Две строки плашек плывут навстречу друг другу. Выглядит очень динамично.</p>
+    <div class="bms-container !pb-8">
+      <h3 class="bms-heading">Что можно передавать в диспетчеризацию:</h3>
+      <div class="relative overflow-hidden w-[calc(100%+4rem)] -mx-8 flex flex-col gap-3">
+        <!-- Row 1 -->
+        <div class="flex w-max animate-marquee">
+          <div class="flex gap-3 px-1.5">
+            <span class="px-5 py-2.5 bg-white border border-black/5 text-sm font-medium">состояние вентиляторов</span>
+            <span class="px-5 py-2.5 bg-white border border-black/5 text-sm font-medium">аварии оборудования</span>
+            <span class="px-5 py-2.5 bg-white border border-black/5 text-sm font-medium">режимы работы</span>
+            <span class="px-5 py-2.5 bg-white border border-black/5 text-sm font-medium">клапаны и заслонки</span>
+            <span class="px-5 py-2.5 bg-[#30637A] text-white text-sm font-medium">сигналы датчиков</span>
+          </div>
+          <div class="flex gap-3 px-1.5">
+            <span class="px-5 py-2.5 bg-white border border-black/5 text-sm font-medium">состояние вентиляторов</span>
+            <span class="px-5 py-2.5 bg-white border border-black/5 text-sm font-medium">аварии оборудования</span>
+            <span class="px-5 py-2.5 bg-white border border-black/5 text-sm font-medium">режимы работы</span>
+            <span class="px-5 py-2.5 bg-white border border-black/5 text-sm font-medium">клапаны и заслонки</span>
+            <span class="px-5 py-2.5 bg-[#30637A] text-white text-sm font-medium">сигналы датчиков</span>
+          </div>
+        </div>
+        <!-- Row 2 -->
+        <div class="flex w-max animate-marquee-reverse">
+          <div class="flex gap-3 px-1.5">
+            <span class="px-5 py-2.5 bg-white border border-black/5 text-sm font-medium">состояние фильтров</span>
+            <span class="px-5 py-2.5 bg-white border border-black/5 text-sm font-medium">команды пуск / стоп</span>
+            <span class="px-5 py-2.5 bg-white border border-black/5 text-sm font-medium">температура и давление</span>
+            <span class="px-5 py-2.5 bg-white border border-black/5 text-sm font-medium">сигналы ПЧ</span>
+            <span class="px-5 py-2.5 bg-white border border-black/5 text-sm font-medium">и многое другое</span>
+          </div>
+          <div class="flex gap-3 px-1.5">
+            <span class="px-5 py-2.5 bg-white border border-black/5 text-sm font-medium">состояние фильтров</span>
+            <span class="px-5 py-2.5 bg-white border border-black/5 text-sm font-medium">команды пуск / стоп</span>
+            <span class="px-5 py-2.5 bg-white border border-black/5 text-sm font-medium">температура и давление</span>
+            <span class="px-5 py-2.5 bg-white border border-black/5 text-sm font-medium">сигналы ПЧ</span>
+            <span class="px-5 py-2.5 bg-white border border-black/5 text-sm font-medium">и многое другое</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant 6: Glass Tiles Horizontal Scroll -->
+  <div class="variant-section">
+    <h2 class="v-title">6. Стеклянные плитки (Горизонтальный скролл ручной)</h2>
+    <p class="v-desc">Пользователь сам может прокрутить список. Плитки крупные, с красивой полутенью.</p>
+    <div class="bms-container">
+      <h3 class="bms-heading">Что можно передавать в диспетчеризацию:</h3>
+      <div class="flex gap-4 overflow-x-auto no-scrollbar pb-4 -mx-8 px-8 snap-x">
+        <div class="shrink-0 w-32 h-32 bg-white/70 border border-white/80 flex flex-col justify-between p-4 snap-start hover:-translate-y-1 transition-transform">
+          <div class="w-8 h-8 bg-[#E6F0F4] rounded-full"></div>
+          <span class="text-xs font-semibold leading-tight">Состояние вентиляторов</span>
+        </div>
+        <div class="shrink-0 w-32 h-32 bg-white/70 border border-white/80 flex flex-col justify-between p-4 snap-start hover:-translate-y-1 transition-transform">
+          <div class="w-8 h-8 bg-[#E6F0F4] rounded-full"></div>
+          <span class="text-xs font-semibold leading-tight">Аварии оборудования</span>
+        </div>
+        <div class="shrink-0 w-32 h-32 bg-white/70 border border-white/80 flex flex-col justify-between p-4 snap-start hover:-translate-y-1 transition-transform">
+          <div class="w-8 h-8 bg-[#E6F0F4] rounded-full"></div>
+          <span class="text-xs font-semibold leading-tight">Режимы работы</span>
+        </div>
+        <div class="shrink-0 w-32 h-32 bg-white/70 border border-white/80 flex flex-col justify-between p-4 snap-start hover:-translate-y-1 transition-transform">
+          <div class="w-8 h-8 bg-[#E6F0F4] rounded-full"></div>
+          <span class="text-xs font-semibold leading-tight">Клапаны и заслонки</span>
+        </div>
+        <div class="shrink-0 w-32 h-32 bg-white/70 border border-white/80 flex flex-col justify-between p-4 snap-start hover:-translate-y-1 transition-transform">
+          <div class="w-8 h-8 bg-[#E6F0F4] rounded-full"></div>
+          <span class="text-xs font-semibold leading-tight">Сигналы датчиков</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant 7: The Matrix (Staggered Grid) -->
+  <div class="variant-section">
+    <h2 class="v-title">7. Сетка вразбежку (Staggered)</h2>
+    <p class="v-desc">2 колонки, правая колонка немного смещена вниз. Придает легкость и разрушает жесткую "коробочную" структуру.</p>
+    <div class="bms-container pb-16">
+      <h3 class="bms-heading">Что можно передавать в диспетчеризацию:</h3>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="space-y-4">
+          <div class="bg-white p-4 border border-black/5 shadow-sm text-sm">Состояние вентиляторов</div>
+          <div class="bg-white p-4 border border-black/5 shadow-sm text-sm">Режимы работы</div>
+          <div class="bg-white p-4 border border-black/5 shadow-sm text-sm">Сигналы датчиков</div>
+          <div class="bg-white p-4 border border-black/5 shadow-sm text-sm">Команды пуск / стоп</div>
+        </div>
+        <div class="space-y-4 mt-8">
+          <div class="bg-white p-4 border border-black/5 shadow-sm text-sm">Аварии оборудования</div>
+          <div class="bg-white p-4 border border-black/5 shadow-sm text-sm">Состояние клапанов</div>
+          <div class="bg-white p-4 border border-black/5 shadow-sm text-sm">Состояние фильтров</div>
+          <div class="bg-[#30637A] text-white p-4 border border-black/5 shadow-sm text-sm">Температура и давление</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant 8: Clean List with Numbers -->
+  <div class="variant-section">
+    <h2 class="v-title">8. Инженерный нумерованный список</h2>
+    <p class="v-desc">Максимально технично. Две колонки, крупные прозрачные цифры, текст сбоку. Ничего лишнего.</p>
+    <div class="bms-container">
+      <h3 class="bms-heading">Что можно передавать в диспетчеризацию:</h3>
+      <div class="grid grid-cols-2 gap-y-6 gap-x-8">
+        <div class="flex items-start gap-3">
+          <span class="text-2xl font-light text-black/20">01</span>
+          <span class="text-sm font-medium pt-1">Состояние вентиляторов</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-2xl font-light text-black/20">02</span>
+          <span class="text-sm font-medium pt-1">Аварии оборудования</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-2xl font-light text-black/20">03</span>
+          <span class="text-sm font-medium pt-1">Режимы работы</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-2xl font-light text-black/20">04</span>
+          <span class="text-sm font-medium pt-1">Состояние клапанов</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-2xl font-light text-black/20">05</span>
+          <span class="text-sm font-medium pt-1">Сигналы датчиков</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-2xl font-light text-black/20">06</span>
+          <span class="text-sm font-medium pt-1">Состояние фильтров</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant 9: Continuous Marquee + Glow -->
+  <div class="variant-section">
+    <h2 class="v-title">9. Монолитная лента (Без зазоров)</h2>
+    <p class="v-desc">Лента из карточек, прилегающих вплотную друг к другу без отступов. Выглядит как единый интерфейс.</p>
+    <div class="bms-container !p-0">
+      <div class="p-8 pb-4"><h3 class="bms-heading">Что можно передавать в диспетчеризацию:</h3></div>
+      <div class="relative overflow-hidden w-full flex border-y border-black/5 bg-white">
+        <div class="flex w-max animate-marquee-slow">
+          <div class="flex">
+            <div class="w-40 p-4 border-r border-black/5 text-sm text-center font-medium">Состояние вентиляторов</div>
+            <div class="w-40 p-4 border-r border-black/5 text-sm text-center font-medium bg-[#FAFCFD]">Аварии оборудования</div>
+            <div class="w-40 p-4 border-r border-black/5 text-sm text-center font-medium">Режимы работы</div>
+            <div class="w-40 p-4 border-r border-black/5 text-sm text-center font-medium bg-[#FAFCFD]">Состояние клапанов</div>
+            <div class="w-40 p-4 border-r border-black/5 text-sm text-center font-medium">Сигналы датчиков</div>
+            <div class="w-40 p-4 border-r border-black/5 text-sm text-center font-medium bg-[#FAFCFD]">Состояние фильтров</div>
+          </div>
+          <div class="flex">
+            <div class="w-40 p-4 border-r border-black/5 text-sm text-center font-medium">Состояние вентиляторов</div>
+            <div class="w-40 p-4 border-r border-black/5 text-sm text-center font-medium bg-[#FAFCFD]">Аварии оборудования</div>
+            <div class="w-40 p-4 border-r border-black/5 text-sm text-center font-medium">Режимы работы</div>
+            <div class="w-40 p-4 border-r border-black/5 text-sm text-center font-medium bg-[#FAFCFD]">Состояние клапанов</div>
+            <div class="w-40 p-4 border-r border-black/5 text-sm text-center font-medium">Сигналы датчиков</div>
+            <div class="w-40 p-4 border-r border-black/5 text-sm text-center font-medium bg-[#FAFCFD]">Состояние фильтров</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant 10: Simple Chip Grid -->
+  <div class="variant-section">
+    <h2 class="v-title">10. Сетка простых тегов (Без анимации, максимум чистоты)</h2>
+    <p class="v-desc">Иногда лучшая анимация — это ее отсутствие. Четкие теги с тонкими обводками, расположенные по ширине.</p>
+    <div class="bms-container">
+      <h3 class="bms-heading">Что можно передавать в диспетчеризацию:</h3>
+      <div class="flex flex-wrap gap-3">
+        <div class="px-3 py-1.5 border border-[#30637A]/30 rounded text-[#30637A] text-sm bg-white/50">Состояние вентиляторов</div>
+        <div class="px-3 py-1.5 border border-[#30637A]/30 rounded text-[#30637A] text-sm bg-white/50">Аварии</div>
+        <div class="px-3 py-1.5 border border-[#30637A]/30 rounded text-[#30637A] text-sm bg-white/50">Режимы</div>
+        <div class="px-3 py-1.5 border border-[#30637A]/30 rounded text-[#30637A] text-sm bg-white/50">Клапаны и заслонки</div>
+        <div class="px-3 py-1.5 border border-[#30637A]/30 rounded text-[#30637A] text-sm bg-white/50">Датчики</div>
+        <div class="px-3 py-1.5 border border-[#30637A]/30 rounded text-[#30637A] text-sm bg-white/50">Фильтры</div>
+        <div class="px-3 py-1.5 border border-[#30637A]/30 rounded text-[#30637A] text-sm bg-white/50">Пуск / стоп</div>
+        <div class="px-3 py-1.5 border border-[#30637A]/30 rounded text-[#30637A] text-sm bg-white/50">Температура</div>
+        <div class="px-3 py-1.5 border border-[#30637A]/30 rounded text-[#30637A] text-sm bg-[#30637A] text-white">ПЧ</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
