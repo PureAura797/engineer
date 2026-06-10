@@ -14,7 +14,7 @@ export function FocusScrollBlock({
   shadowClass = "" 
 }: FocusScrollBlockProps) {
   return (
-    <div className="relative w-full bg-transparent z-10 -my-8 md:-my-12 lg:-my-16">
+    <div className="relative w-full bg-transparent z-10">
       <div className="w-full flex items-center justify-center overflow-visible">
         
         {/* Interactive plate */}

@@ -43,7 +43,7 @@ export function Cases() {
   return (
     <div id="cases-wrapper" className="bg-background relative z-50">
       {/* Section 9: Cases */}
-      <section id="cases" className="py-24 border-t border-border/50 overflow-hidden">
+      <section id="cases" className="py-16 md:py-24 border-t border-border/50 overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -52,7 +52,7 @@ export function Cases() {
             transition={{ duration: 0.6 }}
             className="mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
               Примеры задач, <span className="text-muted-foreground">с которыми обращаются</span>
             </h2>
           </motion.div>

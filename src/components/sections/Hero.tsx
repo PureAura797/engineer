@@ -14,18 +14,17 @@ const initialFeatures = [
   { id: 5, num: "05", title: "Документация для эксплуатации" },
 ];
 
-export function Hero() {
-  const [activeIndex, setActiveIndex] = useState(2);
+const extendedFeatures = [
+  ...initialFeatures, 
+  ...initialFeatures.map(f => ({ ...f, id: f.id + 5 }))
+];
 
-  const extendedFeatures = useMemo(() => {
-    return Array.from({ length: 30 }).flatMap((_, loopIndex) => 
-      initialFeatures.map(f => ({ ...f, uniqueId: `${loopIndex}-${f.id}` }))
-    );
-  }, []);
+export function Hero() {
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIndex(prev => prev + 1);
+      setActiveIndex(prev => (prev + 1) % extendedFeatures.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
@@ -123,63 +122,63 @@ export function Hero() {
                   maskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)' 
                 }}
               >
-                <motion.div
-                  className="w-full flex flex-col absolute top-0 left-0"
-                  animate={{ y: -(activeIndex - 1) * 104 }}
-                  transition={{ duration: 0.8, ease: "easeInOut" }}
-                >
-                  {extendedFeatures.map((feature, index) => {
-                    const isActive = index === activeIndex;
+                <div className="relative flex flex-col items-center justify-center h-full w-full">
+                  {extendedFeatures.map((feature, i) => {
+                    const diff = (i - activeIndex + extendedFeatures.length) % extendedFeatures.length;
+                    let offset = diff;
+                    if (offset > extendedFeatures.length / 2) offset -= extendedFeatures.length;
+
+                    if (Math.abs(offset) > 2) return null;
+
+                    const isActive = offset === 0;
+                    let translateY = offset * 104;
 
                     return (
-                      <motion.div
-                        key={feature.uniqueId}
-                        className="w-full h-[104px] flex items-center border-y border-transparent"
-                        animate={{
+                      <div
+                        key={feature.id}
+                        className="absolute w-full h-[104px] flex items-center border-y transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]"
+                        style={{
+                          transform: `translateY(${translateY}px)`,
                           opacity: isActive ? 1 : 0.3,
                           backgroundColor: isActive ? 'rgba(24,32,37,0.05)' : 'transparent',
                           borderTopColor: isActive ? 'rgba(24,32,37,0.2)' : 'transparent',
                           borderBottomColor: isActive ? 'rgba(24,32,37,0.2)' : 'transparent',
+                          zIndex: isActive ? 20 : 10,
                         }}
-                        transition={{ duration: 0.8, ease: "easeInOut" }}
                       >
                         <div className="flex items-center gap-6 pl-8 md:pl-16 w-full">
-                          <motion.div 
-                            className="text-[#182025] font-light w-8"
-                            animate={{ fontSize: isActive ? '1.5rem' : '1.25rem' }} 
-                            transition={{ duration: 0.8, ease: "easeInOut" }}
+                          <div 
+                            className="text-[#182025] font-light w-8 transition-all duration-700"
+                            style={{ fontSize: isActive ? '1.5rem' : '1.25rem' }} 
                           >
                             {feature.num}
-                          </motion.div>
+                          </div>
                           <div className="flex flex-col justify-center h-full">
-                            <motion.div 
-                              className="text-[10px] tracking-widest text-[#577E95] uppercase overflow-hidden"
-                              initial={false}
-                              animate={{ 
+                            <div 
+                              className="text-[10px] tracking-widest text-[#577E95] uppercase overflow-hidden transition-all duration-700"
+                              style={{ 
                                 opacity: isActive ? 1 : 0, 
-                                height: isActive ? 'auto' : 0, 
+                                height: isActive ? '14px' : 0, 
                                 marginBottom: isActive ? '0.25rem' : 0 
                               }}
-                              transition={{ duration: 0.8, ease: "easeInOut" }}
                             >
                               — Вариант решения
-                            </motion.div>
-                            <motion.div 
-                              className="text-[#182025] leading-none"
-                              animate={{ 
+                            </div>
+                            <div 
+                              className="text-[#182025] leading-none transition-all duration-700"
+                              style={{ 
                                 fontSize: isActive ? '1.25rem' : '1.125rem',
                                 fontWeight: isActive ? 500 : 400
                               }} 
-                              transition={{ duration: 0.8, ease: "easeInOut" }}
                             >
                               {feature.title}
-                            </motion.div>
+                            </div>
                           </div>
                         </div>
-                      </motion.div>
+                      </div>
                     );
                   })}
-                </motion.div>
+                </div>
               </div>
             </motion.div>
             

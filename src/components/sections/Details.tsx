@@ -52,33 +52,29 @@ function BMSElevator({ data }: { data: string[] }) {
               }}
               onClick={() => setActiveIndex(i)}
             >
-              {isActive ? (
-                <div className="bg-white border border-black/5 shadow-xl p-6 flex items-center gap-6 rounded-none w-full">
-                  <div className="w-12 h-12 bg-primary flex items-center justify-center shrink-0">
-                    <span className="text-primary-foreground font-light text-xl">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+              <div 
+                className={`w-full h-[104px] flex items-center border-y transition-colors duration-700 ${isActive ? 'border-[#182025]/20 bg-[#182025]/5' : 'border-transparent bg-transparent'}`}
+              >
+                <div className="flex items-center gap-6 pl-8 w-full text-[#182025]">
+                  <div 
+                    className={`font-light transition-all duration-700 w-8 ${isActive ? 'text-2xl' : 'text-xl'}`}
+                  >
+                    {String(i + 1).padStart(2, "0")}
                   </div>
-                  <div>
-                    <div className="text-[0.65rem] uppercase tracking-widest text-muted-foreground mb-1 flex items-center gap-2">
-                      <div className="w-4 h-[1px] bg-border" />
-                      Мониторинг
+                  <div className="flex flex-col justify-center h-full">
+                    <div 
+                      className={`text-[10px] tracking-widest text-[#577E95] uppercase overflow-hidden transition-all duration-700 ${isActive ? 'opacity-100 h-4 mb-1' : 'opacity-0 h-0 mb-0'}`}
+                    >
+                      — Мониторинг
                     </div>
-                    <div className="text-lg font-medium text-foreground leading-tight">
+                    <div 
+                      className={`leading-tight transition-all duration-700 ${isActive ? 'text-xl font-medium' : 'text-lg font-normal'}`}
+                    >
                       {item}
                     </div>
                   </div>
                 </div>
-              ) : (
-                <div className="flex items-center gap-6 justify-center w-full">
-                  <div className="text-xl font-light text-primary">
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                  <div className="text-lg font-medium text-foreground text-center">
-                    {item}
-                  </div>
-                </div>
-              )}
+              </div>
             </div>
           );
         })}
@@ -99,11 +95,11 @@ export function Details() {
   ];
 
   const components = [
-    { title: "Контроллеры", desc: "Подбираются под количество сигналов, требуемую логику управления и необходимость обмена с диспетчеризацией.", icon: <Cpu className="w-6 h-6" /> },
-    { title: "Частотные преобразователи", desc: "Используются для управления скоростью вентиляторов и настройки режимов работы.", icon: <Activity className="w-6 h-6" /> },
-    { title: "Защитная автоматика", desc: "Предусматривается для защиты цепей питания, двигателей и исполнительных механизмов.", icon: <Shield className="w-6 h-6" /> },
-    { title: "Панели оператора", desc: "Применяются, если требуется локальное управление, индикация режимов, аварий и параметров.", icon: <MonitorSpeaker className="w-6 h-6" /> },
-    { title: "Датчики и механизмы", desc: "Интегрируются в систему управления в зависимости от состава вентиляционного оборудования.", icon: <Radio className="w-6 h-6" /> }
+    { title: "Контроллеры", desc: "Подбираются под количество сигналов, требуемую логику управления и необходимость обмена с диспетчеризацией.", img: "/images/components/первая.png" },
+    { title: "Частотные преобразователи", desc: "Используются для управления скоростью вентиляторов и настройки режимов работы.", img: "/images/components/вторая.png" },
+    { title: "Защитная автоматика", desc: "Предусматривается для защиты цепей питания, двигателей и исполнительных механизмов.", img: "/images/components/тертья.png" },
+    { title: "Панели оператора", desc: "Применяются, если требуется локальное управление, индикация режимов, аварий и параметров.", img: "/images/components/четвертая.png" },
+    { title: "Датчики и механизмы", desc: "Интегрируются в систему управления в зависимости от состава вентиляционного оборудования.", img: "/images/components/пятая.png" }
   ];
 
   const processSteps = [
@@ -120,7 +116,7 @@ export function Details() {
   return (
     <div id="details" className="bg-muted relative z-20">
       {/* Section 6: BMS */}
-      <section className="pt-24 md:pt-32 lg:pt-40 pb-24 border-t border-border/50">
+      <section className="py-16 md:py-24 border-t border-border/50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <motion.div
@@ -160,7 +156,7 @@ export function Details() {
               transition={{ duration: 0.6 }}
               className="py-4"
             >
-              <div className="text-[0.65rem] uppercase tracking-widest text-muted-foreground flex items-center justify-center gap-4 w-full">
+              <div className="text-[0.65rem] uppercase tracking-widest text-muted-foreground flex items-center justify-center gap-4 w-full mb-4">
                 <div className="flex-1 h-[1px] bg-border/50" />
                 <span className="whitespace-nowrap">ДАННЫЕ В BMS</span>
                 <div className="flex-1 h-[1px] bg-border/50" />
@@ -172,7 +168,7 @@ export function Details() {
       </section>
 
       {/* Section 7: Components */}
-      <section className="py-24 bg-card/10 border-t border-border/50 overflow-hidden relative">
+      <section className="py-16 md:py-24 bg-card/10 border-t border-border/50 overflow-hidden relative">
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -193,9 +189,13 @@ export function Details() {
 
           <div className="relative overflow-hidden py-10 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12 mb-8">
 
-            <div className="flex flex-col md:flex-row w-full h-[600px] md:h-[400px] gap-4 relative z-10">
+            <div className="flex flex-col md:flex-row w-full h-[600px] md:h-[450px] gap-4 relative z-10">
               {components.map((comp, i) => {
                 const isActive = activeComponent === i;
+                const imgClasses = isActive 
+                    ? "opacity-100 scale-100 object-right translate-x-0" 
+                    : "opacity-30 scale-100 object-right translate-x-12 md:translate-x-20 grayscale-[50%]";
+
                 return (
                   <motion.div
                     key={i}
@@ -205,23 +205,49 @@ export function Details() {
                     }}
                     initial={false}
                     animate={{
-                      flex: isActive ? (typeof window !== 'undefined' && window.innerWidth < 768 ? 3 : 5) : 1,
+                      flex: isActive ? (typeof window !== 'undefined' && window.innerWidth < 768 ? 3 : 4.5) : 1,
                     }}
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     onClick={() => setActiveComponent(i)}
                   >
-                  <div className="flex items-center gap-4 mb-2">
-                    <div className={`w-12 h-12 flex items-center justify-center shrink-0 border transition-colors ${isActive ? 'bg-background text-primary border-border' : 'bg-transparent text-muted-foreground border-border/50'}`}>
-                      {comp.icon}
+                    <div 
+                        className="absolute top-6 left-6 md:top-8 md:left-8 z-10 pointer-events-none"
+                        style={{
+                          opacity: isActive ? 1 : 0,
+                          transform: isActive ? 'translateY(0)' : 'translateY(10px)',
+                          transition: `all 400ms ease ${isActive ? '150ms' : '0s'}`
+                        }}
+                    >
+                        <span className="text-5xl md:text-6xl font-display font-bold text-primary/15">
+                            {String(i + 1).padStart(2, '0')}
+                        </span>
                     </div>
-                    <h4 className="font-display font-medium text-lg whitespace-nowrap overflow-hidden text-ellipsis">
-                      {comp.title}
-                    </h4>
-                  </div>
+
+                    <div className="absolute top-8 right-0 flex items-start justify-end pointer-events-none z-0">
+                        <img 
+                            src={comp.img} 
+                            className={`w-[200px] md:w-[300px] h-auto max-w-none object-contain mix-blend-darken transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${imgClasses}`} 
+                            alt={comp.title} 
+                        />
+                    </div>
                   
-                  <div className={`overflow-hidden transition-all duration-300 ${isActive ? 'max-h-[200px] mt-4 opacity-100 delay-200' : 'max-h-0 mt-0 opacity-0'}`}>
-                    <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-sm">{comp.desc}</p>
-                  </div>
+                    <div className="relative z-10 w-full mt-auto">
+                        <h4 className={`font-display font-medium text-lg whitespace-nowrap overflow-hidden text-ellipsis text-foreground transition-all duration-500 ${isActive ? 'opacity-100' : 'opacity-70'}`}>
+                            {comp.title}
+                        </h4>
+                        
+                        <div 
+                          className="overflow-hidden" 
+                          style={{
+                            maxHeight: isActive ? '200px' : '0px',
+                            marginTop: isActive ? '1rem' : '0px',
+                            opacity: isActive ? 1 : 0,
+                            transition: `all 300ms ease ${isActive ? '100ms' : '0s'}`
+                          }}
+                        >
+                            <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-sm">{comp.desc}</p>
+                        </div>
+                    </div>
                 </motion.div>
               );
             })}
@@ -250,7 +276,7 @@ export function Details() {
       </section>
 
       {/* Section 8: Process */}
-      <section className="py-24 border-t border-border/50 relative overflow-hidden bg-transparent">
+      <section className="py-16 md:py-24 border-t border-border/50 relative overflow-hidden bg-transparent">
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div 
@@ -313,7 +339,7 @@ export function Details() {
 
       {/* Lead Magnet 3 */}
       <FocusScrollBlock bgClass="bg-[#182025]" shadowClass="shadow-[0_30px_60px_-15px_rgba(24,32,37,0.5)]">
-        <div className="container mx-auto px-4 md:px-12 flex flex-col lg:flex-row w-full max-w-6xl py-24">
+        <div className="container mx-auto px-4 md:px-6 flex flex-col lg:flex-row w-full max-w-6xl py-16 md:py-24">
           <div className="p-8 md:p-12 lg:w-3/5 text-center lg:text-left flex flex-col items-center lg:items-start justify-center">
             <Badge variant="outline" className="mb-6 rounded-none bg-[#11171A] border-none text-[#577E95]">Предварительный разбор</Badge>
             <h3 className="text-2xl md:text-4xl font-display font-bold mb-6 text-[#E6F0F4]">

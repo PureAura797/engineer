@@ -29,7 +29,7 @@ export function Final() {
   return (
     <div id="final-wrapper" className="bg-card relative z-40">
       {/* Section 11: FAQ */}
-      <section className="py-24 border-t border-border/50">
+      <section className="py-16 md:py-24 border-t border-border/50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             <motion.div 
@@ -73,7 +73,7 @@ export function Final() {
 
       {/* Lead Magnet 4 (Focus Mode) */}
       <FocusScrollBlock bgClass="bg-[#182025]" shadowClass="shadow-[0_30px_60px_-15px_rgba(24,32,37,0.5)]">
-        <div className="container mx-auto px-4 md:px-12 flex flex-col lg:flex-row items-center justify-between gap-12 w-full max-w-7xl py-24">
+        <div className="container mx-auto px-4 md:px-6 flex flex-col lg:flex-row items-center justify-between gap-12 w-full max-w-7xl py-16 md:py-24">
           <div className="max-w-2xl text-center lg:text-left">
             <Badge variant="outline" className="mb-6 rounded-none bg-[#11171A] border-none text-[#577E95]">Инструмент для подготовки</Badge>
             <h3 className="text-2xl md:text-4xl font-display font-bold mb-6 text-[#E6F0F4]">
@@ -118,7 +118,7 @@ export function Final() {
 
       {/* Section 12: Final Form (Focus Mode) */}
       <FocusScrollBlock bgClass="bg-[#30637A]" shadowClass="shadow-2xl">
-        <div className="container mx-auto px-4 md:px-12 w-full max-w-6xl py-24">
+        <div className="container mx-auto px-4 md:px-6 w-full max-w-6xl py-16 md:py-24">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 tracking-tight text-white">
               Отправьте данные инженеру

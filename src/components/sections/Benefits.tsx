@@ -47,20 +47,20 @@ export function Benefits() {
   ];
 
   const steps = [
-    { id: "01", title: "Анализ исходных данных" },
-    { id: "02", title: "Обследование шкафа" },
-    { id: "03", title: "Разработка схемного решения" },
-    { id: "04", title: "Подбор компонентов" },
-    { id: "05", title: "Сборка шкафа" },
-    { id: "06", title: "Программирование ПЛК" },
-    { id: "07", title: "Тестирование" },
-    { id: "08", title: "Монтаж и подключение" },
-    { id: "09", title: "Пусконаладка" },
-    { id: "10", title: "Документация" },
+    { id: "01", title: "Анализ исходных\nданных", icon: "/images/process-icons/step-1.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "-translate-y-8 pl-12" },
+    { id: "02", title: "Обследование\nшкафа", icon: "/images/process-icons/step-2.png", scale: "scale-[1.5]", hoverScale: "group-hover:scale-[1.65]", pos: "-translate-y-6 pl-12" },
+    { id: "03", title: "Разработка\nсхемного решения", icon: "/images/process-icons/step-3.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "-translate-y-8 pl-12" },
+    { id: "04", title: "Подбор\nкомпонентов", icon: "/images/process-icons/step-4.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "-translate-y-8 pl-12" },
+    { id: "05", title: "Сборка\nшкафа", icon: "/images/process-icons/step-5.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "-translate-y-8 pl-12" },
+    { id: "06", title: "Программирование\nПЛК", icon: "/images/process-icons/step-6.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "-translate-y-8 pl-12" },
+    { id: "07", title: "Тестирование", icon: "/images/process-icons/step-7.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "-translate-y-8 pl-12" },
+    { id: "08", title: "Монтаж и\nподключение", icon: "/images/process-icons/step-8.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "-translate-y-8 pl-12" },
+    { id: "09", title: "Пусконаладка", icon: "/images/process-icons/step-9.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "-translate-y-8 pl-12" },
+    { id: "10", title: "Документация", icon: "/images/process-icons/step-10.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "-translate-y-8 pl-12" },
   ];
 
   return (
-    <section id="benefits" className="pt-24 md:pt-32 lg:pt-40 pb-0 bg-transparent relative z-30 border-t border-border/50">
+    <section id="benefits" className="pt-16 md:pt-24 pb-0 bg-transparent relative z-30 border-t border-border/50">
       <div className="container mx-auto px-4 md:px-6">
         {/* Section 4: Benefits */}
         <div className="mb-24">
@@ -185,23 +185,31 @@ export function Benefits() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="relative p-6 border border-white/60 bg-white/40 backdrop-blur-md flex flex-col justify-between aspect-square group transition-transform duration-300 hover:-translate-y-1"
+                className="relative p-8 border border-white/60 bg-white/40 backdrop-blur-md flex flex-col justify-between aspect-square group transition-transform duration-300 hover:-translate-y-1 glass-panel overflow-hidden"
                 style={{
                   boxShadow: "10px 10px 30px rgba(48,99,122,0.05), -10px -10px 30px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.8)"
                 }}
               >
-                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-500 pointer-events-none" />
-                <div className="relative z-10 text-4xl font-display font-bold text-primary/40 group-hover:text-primary transition-colors">
+                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-500 pointer-events-none z-0" />
+                
+                <div className={`absolute inset-0 flex items-center justify-center pointer-events-none z-0 ${step.pos}`}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={step.icon} className={`w-full h-full object-contain ${step.scale} ${step.hoverScale} transition-transform duration-700 ease-out max-w-none mix-blend-darken`} alt={step.title} />
+                </div>
+                
+                {/* Fog gradient to cover the pedestal bottoms */}
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white/90 via-white/40 to-transparent pointer-events-none z-[5]" />
+
+                <div className="relative z-10 text-5xl font-display font-bold text-primary/40 group-hover:text-primary transition-colors tracking-tighter">
                   {step.id}
                 </div>
-                <div className="relative z-10 pr-8">
-                  <h4 className="font-display font-medium leading-tight text-foreground group-hover:text-primary transition-colors">
+                
+                <div className="relative z-20 group-hover:bg-transparent transition-colors duration-500 pr-8">
+                  <h4 className="text-lg md:text-xl font-display font-semibold leading-tight text-foreground group-hover:text-primary transition-colors whitespace-pre-line">
                     {step.title}
                   </h4>
+                  <ArrowDownRight className="absolute bottom-0 right-0 w-5 h-5 text-primary/40 group-hover:text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:translate-y-1 hidden lg:block z-10" />
                 </div>
-                {i < steps.length - 1 && (
-                  <ArrowDownRight className="absolute bottom-4 right-4 w-5 h-5 text-primary/40 group-hover:text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:translate-y-1 hidden lg:block z-10" />
-                )}
               </motion.div>
             ))}
           </div>
@@ -210,7 +218,7 @@ export function Benefits() {
 
       {/* Lead Magnet 2 */}
       <FocusScrollBlock bgClass="bg-[#182025]" shadowClass="shadow-[0_30px_60px_-15px_rgba(24,32,37,0.5)]">
-          <div className="container mx-auto px-4 md:px-12 flex flex-col lg:flex-row items-center w-full max-w-6xl pt-24 pb-4 md:pb-8 gap-12">
+          <div className="container mx-auto px-4 md:px-6 flex flex-col lg:flex-row items-center w-full max-w-6xl py-16 md:py-24 gap-12">
             <div className="lg:w-1/2 flex flex-col justify-center text-center lg:text-left">
               <div className="mb-6 w-12 h-12 flex items-center justify-center bg-[#11171A] text-[#577E95] mx-auto lg:mx-0">
                 <Download className="w-5 h-5" />

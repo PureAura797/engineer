@@ -71,7 +71,7 @@ export function Scenarios() {
   ];
 
   return (
-    <section id="scenarios" className="pt-24 pb-0 bg-transparent relative z-40">
+    <section id="scenarios" className="pt-16 md:pt-24 pb-0 bg-transparent relative z-40">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
           <motion.div 
@@ -81,7 +81,7 @@ export function Scenarios() {
             transition={{ duration: 0.6 }}
             className="max-w-2xl"
           >
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
               Работаем с тремя <span className="text-muted-foreground">типовыми задачами</span>
             </h2>
             <p className="text-lg text-muted-foreground">
@@ -155,7 +155,7 @@ export function Scenarios() {
 
       {/* Lead Magnet 1 */}
       <FocusScrollBlock bgClass="bg-[#182025]" shadowClass="shadow-[0_30px_60px_-15px_rgba(24,32,37,0.5)]">
-        <div className="container mx-auto px-4 md:px-12 flex flex-col lg:flex-row items-center w-full max-w-6xl py-24 gap-12">
+        <div className="container mx-auto px-4 md:px-6 flex flex-col lg:flex-row items-center w-full max-w-6xl py-16 md:py-24 gap-12">
           <div className="lg:w-1/2 flex flex-col justify-center text-center lg:text-left">
             <div className="mb-6 w-12 h-12 flex items-center justify-center bg-[#11171A] text-[#577E95] mx-auto lg:mx-0">
               <Download className="w-5 h-5" />
