@@ -9,6 +9,7 @@ import { Separator } from "@/components/ui/separator";
 import { Upload, ChevronRight, Activity, Cpu, MonitorSpeaker, Radio, Shield, LayoutGrid, Zap, ArrowDownRight } from "lucide-react";
 import { PrivacyModal } from "@/components/ui/privacy-modal";
 import { FocusScrollBlock } from "@/components/ui/focus-scroll-block";
+import { typograph } from "@/lib/utils";
 
 function BMSElevator({ data }: { data: string[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -103,14 +104,14 @@ export function Details() {
   ];
 
   const processSteps = [
-    { num: "1", title: "Получаем исходные данные", desc: "ТЗ, схема, спецификация, фото шкафа или описание проблемы." },
-    { num: "2", title: "Проводим анализ", desc: "Инженер оценивает состав системы, риски и предварительный сценарий." },
-    { num: "3", title: "Обследуем объект", desc: "Фиксируем фактическое состояние шкафа, оборудования и подключений." },
-    { num: "4", title: "Предлагаем решение", desc: "Модернизация, частичная замена или сборка нового шкафа." },
-    { num: "5", title: "Согласуем состав", desc: "Фиксируем объем, компоненты, сроки, формат ПНР и документацию." },
-    { num: "6", title: "Сборка и ПЛК", desc: "Выполняем сборку, маркировку и программирование контроллера." },
-    { num: "7", title: "Выполняем ПНР", desc: "Проверяем режимы работы, аварии и взаимодействие с вентиляцией." },
-    { num: "8", title: "Передаем системе", desc: "Передаем документацию и объясняем логику работы." }
+    { num: "1", title: "Получаем исходные данные", desc: "ТЗ, схема, спецификация, фото шкафа или описание проблемы.", img: "/images/process/имг 1.png" },
+    { num: "2", title: "Проводим анализ", desc: "Инженер оценивает состав системы, риски и предварительный сценарий.", img: "/images/process/имг 2.png" },
+    { num: "3", title: "Обследуем объект", desc: "Фиксируем фактическое состояние шкафа, оборудования и подключений.", img: "/images/process/имг 3.png" },
+    { num: "4", title: "Предлагаем решение", desc: "Модернизация, частичная замена или сборка нового шкафа.", img: "/images/process/имг 4.png" },
+    { num: "5", title: "Согласуем состав", desc: "Фиксируем объем, компоненты, сроки, формат ПНР и документацию.", img: "/images/process/имг 5.png" },
+    { num: "6", title: "Сборка и ПЛК", desc: "Выполняем сборку, маркировку и программирование контроллера.", img: "/images/process/имг 6.png" },
+    { num: "7", title: "Выполняем ПНР", desc: "Проверяем режимы работы, аварии и взаимодействие с вентиляцией.", img: "/images/process/имг 7.png" },
+    { num: "8", title: "Передаем системе", desc: "Передаем документацию и объясняем логику работы.", img: "/images/process/имг 8.png" }
   ];
 
   return (
@@ -126,19 +127,15 @@ export function Details() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
-                Шкаф вентиляции как часть <span className="text-muted-foreground">диспетчеризации</span>
+                Шкаф вентиляции как часть <span className="text-[#577E95]">диспетчеризации</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                На действующих объектах вентиляция часто работает отдельно от общей системы мониторинга. 
-                Шкаф автоматики можно спроектировать или модернизировать так, чтобы эксплуатация получала 
-                данные о состоянии оборудования в BMS.
+                {typograph("На действующих объектах вентиляция часто работает отдельно от общей системы мониторинга. Шкаф автоматики можно спроектировать или модернизировать так, чтобы эксплуатация получала данные о состоянии оборудования в BMS.")}
               </p>
               
-              <h3 className="font-display font-medium text-xl mb-4 text-foreground">Сначала проверяем совместимость</h3>
+              <h3 className="font-display font-medium text-xl mb-4 text-foreground">{typograph("Сначала проверяем совместимость")}</h3>
               <p className="text-muted-foreground mb-8">
-                Перед тем как обещать интеграцию, нужно понять архитектуру объекта: какая BMS уже 
-                установлена, какие протоколы доступны, какие контроллеры используются. 
-                Первый шаг — анализ существующей системы.
+                {typograph("Перед тем как обещать интеграцию, нужно понять архитектуру объекта: какая BMS уже установлена, какие протоколы доступны, какие контроллеры используются. Первый шаг — анализ существующей системы.")}
               </p>
 
               <div className="flex flex-wrap gap-2">
@@ -178,12 +175,10 @@ export function Details() {
             className="max-w-3xl mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
-              Компоненты <span className="text-muted-foreground">под задачу объекта</span>
+              Компоненты <span className="text-[#577E95]">под задачу объекта</span>
             </h2>
             <p className="text-lg text-muted-foreground">
-              Состав шкафа зависит от вентиляционной установки, количества сигналов, 
-              требований к управлению и бюджету. Мы подбираем компоненты под конкретную 
-              задачу, а не продаем универсальный шкаф «из коробки».
+              {typograph("Состав шкафа зависит от вентиляционной установки, количества сигналов, требований к управлению и бюджету. Мы подбираем компоненты под конкретную задачу, а не продаем универсальный шкаф «из коробки».")}
             </p>
           </motion.div>
 
@@ -205,7 +200,7 @@ export function Details() {
                     }}
                     initial={false}
                     animate={{
-                      flex: isActive ? (typeof window !== 'undefined' && window.innerWidth < 768 ? 3 : 4.5) : 1,
+                      flex: isActive ? (typeof window !== 'undefined' ? (window.innerWidth < 768 ? 3 : 4.5) : 4.5) : 1,
                     }}
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     onClick={() => setActiveComponent(i)}
@@ -233,7 +228,7 @@ export function Details() {
                   
                     <div className="relative z-10 w-full mt-auto">
                         <h4 className={`font-display font-medium text-lg whitespace-nowrap overflow-hidden text-ellipsis text-foreground transition-all duration-500 ${isActive ? 'opacity-100' : 'opacity-70'}`}>
-                            {comp.title}
+                            {typograph(comp.title)}
                         </h4>
                         
                         <div 
@@ -245,7 +240,9 @@ export function Details() {
                             transition: `all 300ms ease ${isActive ? '100ms' : '0s'}`
                           }}
                         >
-                            <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-sm">{comp.desc}</p>
+                            <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-sm">
+                                {typograph(comp.desc)}
+                            </p>
                         </div>
                     </div>
                 </motion.div>
@@ -262,10 +259,9 @@ export function Details() {
             className="p-8 border border-primary/20 bg-primary/5 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
           >
             <div>
-              <h4 className="font-display font-medium text-xl mb-2 text-primary">Комплект документации</h4>
+              <h4 className="font-display font-medium text-xl mb-2 text-primary">{typograph("Комплект документации")}</h4>
               <p className="text-muted-foreground text-sm max-w-2xl">
-                Схемы, спецификация компонентов, описание логики работы, паспорт шкафа, 
-                инструкция для эксплуатации.
+                {typograph("Схемы, спецификация компонентов, описание логики работы, паспорт шкафа, инструкция для эксплуатации.")}
               </p>
             </div>
             <div className="shrink-0 pt-4 md:pt-0 border-t md:border-t-0 md:border-l border-primary/20 md:pl-6 text-xs text-primary/80 uppercase tracking-widest font-medium">
@@ -287,12 +283,10 @@ export function Details() {
             className="max-w-3xl mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
-              Работаем с учетом <span className="text-muted-foreground">режима бизнес-центра</span>
+              Работаем с учетом <span className="text-[#577E95]">режима бизнес-центра</span>
             </h2>
             <p className="text-lg text-muted-foreground">
-              Модернизация автоматики вентиляции на действующем объекте требует аккуратного подхода. 
-              До начала работ нужно понять текущее состояние шкафа, доступность документации, 
-              режим работы здания и допустимые окна отключений.
+              {typograph("Модернизация автоматики вентиляции на действующем объекте требует аккуратного подхода. До начала работ нужно понять текущее состояние шкафа, доступность документации, режим работы здания и допустимые окна отключений.")}
             </p>
           </motion.div>
 
@@ -304,20 +298,27 @@ export function Details() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="relative p-6 border border-white/60 bg-white/40 backdrop-blur-md flex flex-col aspect-square group transition-transform duration-300 hover:-translate-y-1"
+                className="relative p-6 border border-white/60 bg-white/40 backdrop-blur-md flex flex-col justify-between aspect-square group transition-transform duration-300 hover:-translate-y-1 overflow-hidden cursor-pointer"
                 style={{
                   boxShadow: "10px 10px 30px rgba(48,99,122,0.05), -10px -10px 30px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.8)"
                 }}
               >
-                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-500 pointer-events-none" />
+                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-500 pointer-events-none z-0" />
+                
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 -translate-y-4 pl-8 transition-opacity duration-500">
+                  <img src={step.img} className="w-full h-full object-contain scale-[1.3] group-hover:scale-[1.4] transition-transform duration-700 ease-out max-w-none mix-blend-darken" alt="Icon" />
+                </div>
+                
                 <div className="relative z-10 text-4xl font-display font-bold text-muted-foreground/30 group-hover:text-primary transition-colors mb-auto">
                   0{step.num}
                 </div>
-                <div>
-                  <h4 className="font-display font-medium text-lg mb-2 text-foreground">{step.title}</h4>
-                  <p className="text-muted-foreground text-sm leading-relaxed pr-8">{step.desc}</p>
+                
+                <div className="relative z-20">
+                  <h4 className="font-display font-medium text-lg mb-2 text-foreground group-hover:text-primary transition-colors">{typograph(step.title)}</h4>
+                  <p className="text-muted-foreground text-sm leading-relaxed pr-8">{typograph(step.desc)}</p>
                 </div>
-                <div className="absolute bottom-6 right-6 opacity-30 group-hover:opacity-100 transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1">
+                
+                <div className="absolute bottom-6 right-6 opacity-30 group-hover:opacity-100 transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 z-20">
                   <ArrowDownRight className="w-6 h-6 text-primary" strokeWidth={1} />
                 </div>
               </motion.div>

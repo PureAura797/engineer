@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Settings, Eye, HandIcon, FileText, CheckSquare, TrendingUp, Download, ArrowDownRight, ArrowLeft, ArrowRight } from "lucide-react";
 import { PrivacyModal } from "@/components/ui/privacy-modal";
 import { FocusScrollBlock } from "@/components/ui/focus-scroll-block";
+import { typograph } from "@/lib/utils";
 
 export function Benefits() {
   const [activeIndex, setActiveIndex] = useState(2);
@@ -72,13 +73,10 @@ export function Benefits() {
             className="max-w-3xl mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
-              Что получает служба эксплуатации <span className="text-muted-foreground">после модернизации</span>
+              {typograph("Что получает служба эксплуатации ")}<span className="text-[#577E95]">{typograph("после модернизации")}</span>
             </h2>
             <p className="text-lg text-muted-foreground">
-              Хороший шкаф автоматики — это не только компоненты внутри корпуса. 
-              Для эксплуатации важнее другое: понятная логика, видимость аварий, 
-              документация, возможность обслуживания и предсказуемая работа 
-              вентиляции после запуска.
+              {typograph("Хороший шкаф автоматики — это не только компоненты внутри корпуса. Для эксплуатации важнее другое: понятная логика, видимость аварий, документация, возможность обслуживания и предсказуемая работа вентиляции после запуска.")}
             </p>
           </motion.div>
 
@@ -108,7 +106,7 @@ export function Benefits() {
                     boxShadow: "10px 10px 30px rgba(48,99,122,0.05), -10px -10px 30px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.8)"
                   }}
                   animate={{
-                    x: offset * (typeof window !== 'undefined' && window.innerWidth < 768 ? 80 : 180),
+                    x: offset * (typeof window !== 'undefined' ? (window.innerWidth < 768 ? 80 : 180) : 180),
                     scale: 1 - absOffset * 0.15,
                     zIndex: 10 - absOffset,
                     opacity: isActive ? 1 : Math.max(0, 1 - absOffset * 0.4),
@@ -120,8 +118,8 @@ export function Benefits() {
                   <div className={`w-12 h-12 flex items-center justify-center border border-border/50 mb-6 transition-colors duration-300 ${isActive ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
                     0{i + 1}
                   </div>
-                  <h3 className="font-display font-medium text-xl mb-4">{benefit.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base">{benefit.desc}</p>
+                  <h3 className="font-display font-medium text-xl mb-4">{typograph(benefit.title)}</h3>
+                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base">{typograph(benefit.desc)}</p>
                 </motion.div>
               );
             })}
@@ -168,12 +166,10 @@ export function Benefits() {
             className="max-w-3xl mb-16 relative z-10"
           >
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
-              Что входит в работы <span className="text-muted-foreground">по шкафу автоматики</span>
+              {typograph("Что входит в работы ")}<span className="text-[#577E95]">{typograph("по шкафу автоматики")}</span>
             </h2>
             <p className="text-lg text-muted-foreground">
-              Состав работ зависит от исходной задачи: новый шкаф по проекту, модернизация 
-              действующего решения или интеграция в диспетчеризацию. Ниже — полный набор этапов, 
-              из которых формируется проект.
+              {typograph("Состав работ зависит от исходной задачи: новый шкаф по проекту, модернизация действующего решения или интеграция в диспетчеризацию. Ниже — полный набор этапов, из которых формируется проект.")}
             </p>
           </motion.div>
 
@@ -206,7 +202,7 @@ export function Benefits() {
                 
                 <div className="relative z-20 group-hover:bg-transparent transition-colors duration-500 pr-8">
                   <h4 className="text-lg md:text-xl font-display font-semibold leading-tight text-foreground group-hover:text-primary transition-colors whitespace-pre-line">
-                    {step.title}
+                    {typograph(step.title)}
                   </h4>
                   <ArrowDownRight className="absolute bottom-0 right-0 w-5 h-5 text-primary/40 group-hover:text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:translate-y-1 hidden lg:block z-10" />
                 </div>
@@ -224,10 +220,10 @@ export function Benefits() {
                 <Download className="w-5 h-5" />
               </div>
               <h3 className="text-2xl md:text-4xl font-display font-bold mb-4 text-[#E6F0F4]">
-                Опросный лист для расчета шкафа автоматики
+                {typograph("Опросный лист для расчета шкафа автоматики")}
               </h3>
               <p className="text-[#E6F0F4] opacity-80 text-lg mb-8 leading-relaxed max-w-lg mx-auto lg:mx-0">
-                Чтобы инженер мог быстрее оценить задачу, скачайте опросный лист и заполните основные параметры вентиляционной системы. Если часть данных неизвестна — можно отправить то, что есть.
+                {typograph("Чтобы инженер мог быстрее оценить задачу, скачайте опросный лист и заполните основные параметры вентиляционной системы. Если часть данных неизвестна — можно отправить то, что есть.")}
               </p>
             </div>
             

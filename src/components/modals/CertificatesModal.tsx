@@ -38,9 +38,7 @@ const certificates = [
 export function CertificatesModal({ children }: CertificatesModalProps) {
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        {children}
-      </DialogTrigger>
+      <DialogTrigger render={children as any} />
       <DialogContent className="max-w-5xl sm:max-w-5xl lg:max-w-[80vw] xl:max-w-[1200px] w-[95vw] h-[calc(100vh-140px)] p-0 rounded-none border-border overflow-hidden flex flex-col bg-background">
         <DialogHeader className="px-8 py-6 border-b border-border/50 shrink-0 bg-background/95 backdrop-blur-sm z-10">
           <DialogTitle className="text-3xl font-display font-bold">Лицензии и сертификаты</DialogTitle>

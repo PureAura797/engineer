@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowDownRight } from "lucide-react";
+import { typograph } from "@/lib/utils";
 
 export function Problems() {
   const problems = [
@@ -43,7 +44,7 @@ export function Problems() {
             transition={{ duration: 0.6 }}
             className="text-3xl md:text-5xl font-display font-bold mb-6"
           >
-            Когда шкаф вентиляции становится <span className="text-muted-foreground">проблемой</span>
+            Когда шкаф вентиляции становится <span className="text-[#577E95]">проблемой</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -52,10 +53,7 @@ export function Problems() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-lg text-muted-foreground"
           >
-            В бизнес-центре вентиляция должна работать стабильно и предсказуемо. 
-            Но на действующих объектах автоматика часто устаревает: шкаф работает 
-            нестабильно, документация неполная, а любая модернизация кажется риском 
-            для эксплуатации и арендаторов.
+            {typograph("В бизнес-центре вентиляция должна работать стабильно и предсказуемо. Но на действующих объектах автоматика часто устаревает: шкаф работает нестабильно, документация неполная, а любая модернизация кажется риском для эксплуатации и арендаторов.")}
           </motion.p>
         </div>
 
@@ -79,8 +77,8 @@ export function Problems() {
               </div>
               
               <div className="relative z-10">
-                <h3 className="text-xl font-display font-medium mb-2 text-foreground">{problem.title}</h3>
-                <p className="text-muted-foreground text-sm md:text-base leading-relaxed pr-8">{problem.description}</p>
+                <h3 className="text-xl font-display font-medium mb-2 text-foreground">{typograph(problem.title)}</h3>
+                <p className="text-muted-foreground text-sm md:text-base leading-relaxed pr-8">{typograph(problem.description)}</p>
               </div>
 
               <div className="absolute bottom-6 right-6 opacity-30 group-hover:opacity-100 transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1">

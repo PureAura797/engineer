@@ -87,10 +87,10 @@ export function Header() {
           </nav>
 
           <Dialog>
-            <DialogTrigger asChild>
-              <Button variant="outline" className="rounded-none border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors h-10 px-6">
-                Контакты
-              </Button>
+            <DialogTrigger 
+              render={<Button variant="outline" className="rounded-none border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors h-10 px-6" />}
+            >
+              Контакты
             </DialogTrigger>
             <DialogContent className="sm:max-w-md rounded-none border-border p-0 overflow-hidden">
               <div className="p-8">

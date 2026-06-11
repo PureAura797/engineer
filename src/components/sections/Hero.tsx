@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, FileText, Settings, Zap, Network, BookOpen } from "lucide-react";
+import { typograph } from "@/lib/utils";
 
 const initialFeatures = [
   { id: 1, num: "01", title: "Для бизнес-центров" },
@@ -82,9 +83,9 @@ export function Hero() {
             
             {/* Top Right Block */}
             <motion.div variants={itemVariants} className="md:col-span-4 flex flex-col gap-4">
-              <div id="block-grid" className="border border-[#182025]/20 bg-transparent p-8 lg:p-10 flex-[0.6] flex flex-col justify-center items-start text-[#84919A]">
+              <div id="block-grid" className="border border-[#182025]/20 bg-transparent p-8 lg:p-10 flex-[0.6] flex flex-col justify-center items-start text-muted-foreground">
                 <p className="text-sm md:text-base leading-relaxed">
-                  Обследуем действующие шкафы, проектируем и собираем новые решения, программируем контроллеры, выполняем ПНР и подключаем вентиляцию к диспетчеризации здания.
+                  {typograph("Обследуем действующие шкафы, проектируем и собираем новые решения, программируем контроллеры, выполняем ПНР и подключаем вентиляцию к диспетчеризации здания.")}
                 </p>
               </div>
               {/* CTA Box - Reversed to dark for contrast on light background */}
@@ -103,7 +104,7 @@ export function Hero() {
               className="md:col-span-5 border border-[#30637A] bg-[#30637A] p-8 lg:p-10 flex flex-col justify-between text-white/80 cursor-pointer hover:bg-[#285366] transition-colors group/block"
             >
               <p className="text-sm md:text-base leading-relaxed mb-8">
-                Работаем с готовым ТЗ, проектной документацией, схемами существующих шкафов или начинаем с обследования действующей системы.
+                {typograph("Работаем с готовым ТЗ, проектной документацией, схемами существующих шкафов или начинаем с обследования действующей системы.")}
               </p>
               <div className="font-medium mt-auto text-white flex items-center gap-4 transition-colors w-max">
                 Обсудить модернизацию

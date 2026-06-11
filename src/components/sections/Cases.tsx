@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, ArrowRight, ArrowLeft, ArrowDownRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { typograph } from "@/lib/utils";
 
 export function Cases() {
   const [activeCase, setActiveCase] = useState(0);
@@ -53,7 +54,7 @@ export function Cases() {
             className="mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
-              Примеры задач, <span className="text-muted-foreground">с которыми обращаются</span>
+              {typograph("Примеры задач, ")}<span className="text-[#577E95]">{typograph("с которыми обращаются")}</span>
             </h2>
           </motion.div>
 
@@ -84,7 +85,7 @@ export function Cases() {
                     boxShadow: "10px 10px 30px rgba(48,99,122,0.05), -10px -10px 30px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.8)"
                   }}
                   animate={{
-                    x: offset * (typeof window !== 'undefined' && window.innerWidth < 768 ? 100 : window.innerWidth < 1024 ? 200 : 300),
+                    x: offset * (typeof window !== 'undefined' ? (window.innerWidth < 768 ? 100 : window.innerWidth < 1024 ? 200 : 300) : 300),
                     scale: 1 - absOffset * 0.1,
                     zIndex: 10 - absOffset,
                     opacity: isActive ? 1 : Math.max(0.3, 1 - absOffset * 0.5),
@@ -102,7 +103,7 @@ export function Cases() {
                         <div className={`w-12 h-12 flex items-center justify-center border border-border/50 mb-6 transition-colors duration-500 ${isActive ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
                           0{i + 1}
                         </div>
-                        <h3 className="font-display font-medium text-2xl md:text-3xl leading-tight text-foreground/90">{c.title}</h3>
+                        <h3 className="font-display font-medium text-2xl md:text-3xl leading-tight text-foreground/90">{typograph(c.title)}</h3>
                       </div>
 
                       {/* Situation */}
@@ -112,7 +113,7 @@ export function Cases() {
                           <span className="font-display text-[10px] uppercase tracking-widest text-muted-foreground">Ситуация</span>
                         </div>
                         <p className="text-foreground/80 leading-relaxed text-sm md:text-base">
-                          {c.situation}
+                          {typograph(c.situation)}
                         </p>
                       </div>
 
@@ -122,7 +123,7 @@ export function Cases() {
                           <span className="font-display text-[10px] uppercase tracking-widest text-primary">Что делаем</span>
                         </div>
                         <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-                          {c.action}
+                          {typograph(c.action)}
                         </p>
                       </div>
                     </div>
@@ -134,7 +135,7 @@ export function Cases() {
                       </div>
                       <div>
                         <p className="font-display text-[10px] uppercase tracking-widest text-muted-foreground mb-1">Что получает эксплуатация</p>
-                        <p className="text-sm font-medium text-foreground">{c.result}</p>
+                        <p className="text-sm font-medium text-foreground">{typograph(c.result)}</p>
                       </div>
                     </div>
                   </div>
@@ -187,12 +188,10 @@ export function Cases() {
               className="lg:sticky lg:top-32 h-fit"
             >
               <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
-                Не просто собираем шкаф, а <span className="text-muted-foreground">решаем задачу</span>
+                {typograph("Не просто собираем шкаф, а ")}<span className="text-[#577E95]">{typograph("решаем задачу")}</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Для бизнес-центра важен не только корпус с компонентами. Важно, чтобы шкаф 
-                был спроектирован под конкретную вентиляционную систему, корректно запрограммирован, 
-                проверен на объекте, понятен эксплуатации и связан с диспетчеризацией здания.
+                {typograph("Для бизнес-центра важен не только корпус с компонентами. Важно, чтобы шкаф был спроектирован под конкретную вентиляционную систему, корректно запрограммирован, проверен на объекте, понятен эксплуатации и связан с диспетчеризацией здания.")}
               </p>
             </motion.div>
 
@@ -216,11 +215,11 @@ export function Cases() {
                       <span className="font-display font-bold">{i + 1}</span>
                     </div>
                     <h4 className={`font-display font-medium text-lg md:text-xl transition-colors duration-500 ${isActive ? 'text-foreground' : 'text-muted-foreground group-hover:text-foreground'}`}>
-                      {adv.title}
+                      {typograph(adv.title)}
                     </h4>
                   </div>
                   <div className={`overflow-hidden transition-all duration-500 ${isActive ? 'max-h-[200px] mt-4 opacity-100 delay-200' : 'max-h-0 mt-0 opacity-0'}`}>
-                    <p className="text-muted-foreground leading-relaxed pl-[72px]">{adv.desc}</p>
+                    <p className="text-muted-foreground leading-relaxed pl-[72px]">{typograph(adv.desc)}</p>
                   </div>
                   
                   <div className="absolute bottom-6 right-6 opacity-30 group-hover:opacity-100 transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1">

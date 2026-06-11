@@ -11,9 +11,7 @@ import {
 export function PrivacyModal({ children }: { children: React.ReactNode }) {
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        {children}
-      </DialogTrigger>
+      <DialogTrigger render={children as any} />
       <DialogContent className="sm:max-w-4xl w-[95vw] max-h-[85vh] p-0 gap-0 flex flex-col bg-[#182025]/95 backdrop-blur-2xl border border-white/10 text-[#E6F0F4] rounded-none overflow-hidden shadow-[0_0_80px_rgba(0,0,0,0.8)]">
         <DialogHeader className="p-6 md:p-10 pb-4 md:pb-6 border-b border-white/5 sticky top-0 bg-[#182025]/50 backdrop-blur-md z-10">
           <DialogTitle className="text-2xl md:text-3xl font-display font-bold">Политика конфиденциальности</DialogTitle>

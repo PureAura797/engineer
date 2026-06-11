@@ -6,6 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { typograph } from "@/lib/utils";
 import { Upload, ArrowRight } from "lucide-react";
 import { PrivacyModal } from "@/components/ui/privacy-modal";
 
@@ -40,10 +41,10 @@ export function Final() {
               className="lg:col-span-5 lg:sticky lg:top-32 h-fit"
             >
               <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
-                Частые <span className="text-muted-foreground">вопросы</span>
+                {typograph("Частые ")}<span className="text-[#577E95]">{typograph("вопросы")}</span>
               </h2>
               <p className="text-lg text-muted-foreground">
-                Собрали ответы на самые популярные вопросы от инженеров и руководителей эксплуатации.
+                {typograph("Собрали ответы на самые популярные вопросы от инженеров и руководителей эксплуатации.")}
               </p>
             </motion.div>
 
@@ -54,14 +55,14 @@ export function Final() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="lg:col-span-7"
             >
-              <Accordion type="single" className="w-full">
+              <Accordion className="w-full">
                 {faqs.map((faq, i) => (
                   <AccordionItem key={i} value={`item-${i}`} className="border-border/50">
                     <AccordionTrigger className="text-lg md:text-xl font-display hover:no-underline hover:text-muted-foreground text-left py-6">
-                      {faq.q}
+                      {typograph(faq.q)}
                     </AccordionTrigger>
                     <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-6 pr-12">
-                      {faq.a}
+                      <p className="text-muted-foreground leading-relaxed whitespace-pre-line">{typograph(faq.a)}</p>
                     </AccordionContent>
                   </AccordionItem>
                 ))}
@@ -75,19 +76,19 @@ export function Final() {
       <FocusScrollBlock bgClass="bg-[#182025]" shadowClass="shadow-[0_30px_60px_-15px_rgba(24,32,37,0.5)]">
         <div className="container mx-auto px-4 md:px-6 flex flex-col lg:flex-row items-center justify-between gap-12 w-full max-w-7xl py-16 md:py-24">
           <div className="max-w-2xl text-center lg:text-left">
-            <Badge variant="outline" className="mb-6 rounded-none bg-[#11171A] border-none text-[#577E95]">Инструмент для подготовки</Badge>
+            <Badge variant="outline" className="mb-6 rounded-none bg-[#11171A] border-none text-[#577E95]">{typograph("Инструмент для подготовки")}</Badge>
             <h3 className="text-2xl md:text-4xl font-display font-bold mb-6 text-[#E6F0F4]">
-              Шаблон исходных данных для оценки шкафа автоматики
+              {typograph("Шаблон исходных данных для оценки шкафа автоматики")}
             </h3>
             <p className="text-[#E6F0F4] opacity-80 text-lg mb-8 leading-relaxed">
-              Подготовьте данные для инженера быстрее: скачайте шаблон, в котором перечислены параметры вентиляционной установки, шкафа, сигналов, требований к управлению и диспетчеризации.
+              {typograph("Подготовьте данные для инженера быстрее: скачайте шаблон, в котором перечислены параметры вентиляционной установки, шкафа, сигналов, требований к управлению и диспетчеризации.")}
             </p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 text-sm text-[#577E95] font-medium uppercase tracking-wider">
-              <span>Полезно инженеру</span>
+              <span>{typograph("Полезно инженеру")}</span>
               <span className="text-[#577E95]/50 px-2">•</span>
-              <span>Проектировщику</span>
+              <span>{typograph("Проектировщику")}</span>
               <span className="text-[#577E95]/50 px-2">•</span>
-              <span>Интегратору</span>
+              <span>{typograph("Интегратору")}</span>
             </div>
           </div>
           <form className="w-full max-w-md lg:w-auto shrink-0 flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
@@ -106,10 +107,10 @@ export function Final() {
                 disabled={!contact1.trim()}
                 className="w-full lg:w-80 h-14 rounded-none text-base bg-[#E6F0F4] text-[#182025] hover:bg-[#FAFCFD] font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Скачать шаблон
+                {typograph("Скачать шаблон")}
               </Button>
               <p className="text-[11px] text-[#577E95] text-center lg:text-left mt-4 leading-tight">
-                Скачивая шаблон, вы соглашаетесь с <PrivacyModal><button type="button" className="underline underline-offset-2 hover:text-[#E6F0F4] transition-colors cursor-pointer">Политикой конфиденциальности</button></PrivacyModal>
+                {typograph("Скачивая шаблон, вы соглашаетесь с ")}<PrivacyModal><button type="button" className="underline underline-offset-2 hover:text-[#E6F0F4] transition-colors cursor-pointer">{typograph("Политикой конфиденциальности")}</button></PrivacyModal>
               </p>
             </div>
           </form>
@@ -120,12 +121,12 @@ export function Final() {
       <FocusScrollBlock bgClass="bg-[#30637A]" shadowClass="shadow-2xl">
         <div className="container mx-auto px-4 md:px-6 w-full max-w-6xl py-16 md:py-24">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 tracking-tight text-white">
-              Отправьте данные инженеру
+            <Badge variant="outline" className="mb-6 rounded-none bg-[#11171A] border-none text-[#577E95]">{typograph("Инструмент для подготовки")}</Badge>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold mb-8 text-[#E6F0F4] leading-tight">
+              {typograph("Отправьте данные инженеру")}
             </h2>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto">
-              Приложите исходные данные по вентиляционной системе. Мы изучим задачу 
-              и предложим следующий шаг: оценку, обследование, расчет или модернизацию.
+            <p className="text-lg md:text-xl text-[#E6F0F4]/80 mb-12 max-w-2xl mx-auto leading-relaxed">
+              {typograph("Приложите исходные данные по вентиляционной системе. Мы изучим задачу и предложим следующий шаг: оценку, обследование, расчет или модернизацию.")}
             </p>
           </div>
 

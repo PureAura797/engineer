@@ -3,6 +3,8 @@ import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import { CookieBanner } from "@/components/ui/cookie-banner";
 
+import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
+
 const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin", "cyrillic"],
@@ -29,8 +31,10 @@ export default function RootLayout({
       className={`${inter.variable} ${manrope.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
-        {children}
-        <CookieBanner />
+        <SmoothScrollProvider>
+          {children}
+          <CookieBanner />
+        </SmoothScrollProvider>
       </body>
     </html>
   );

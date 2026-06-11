@@ -61,7 +61,7 @@
   --secondary-foreground: #30637A;
   
   --muted: #E6F0F4; /* Light grey-blue for muted backgrounds */
-  --muted-foreground: #577E95; /* Darker slate for secondary text */
+  --muted-foreground: #84919A; /* Slate gray for secondary text descriptions */
   
   --accent: #E6F0F4;
   --accent-foreground: #182025;
@@ -86,6 +86,9 @@
 }
 
 @layer base {
+  html, body {
+    overscroll-behavior: none;
+  }
   * {
     @apply border-border outline-ring/50;
   }
