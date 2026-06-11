@@ -342,7 +342,7 @@ export function Details() {
       <FocusScrollBlock bgClass="bg-[#182025]" shadowClass="shadow-[0_30px_60px_-15px_rgba(24,32,37,0.5)]">
         <div className="container mx-auto px-4 md:px-6 flex flex-col lg:flex-row w-full max-w-6xl py-16 md:py-24">
           <div className="p-8 md:p-12 lg:w-3/5 text-center lg:text-left flex flex-col items-center lg:items-start justify-center">
-            <Badge variant="outline" className="mb-6 rounded-none bg-[#11171A] border-none text-[#577E95]">Предварительный разбор</Badge>
+            <Badge variant="outline" className="mb-6 rounded-none bg-white border-none text-[#182025]">{typograph("Предварительный разбор")}</Badge>
             <h3 className="text-2xl md:text-4xl font-display font-bold mb-6 text-[#E6F0F4]">
               Инженерный разбор по фото шкафа, схеме или ТЗ
             </h3>

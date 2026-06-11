@@ -211,15 +211,12 @@ export function Cases() {
                   }}
                 >
                   <div className="flex items-center gap-6">
-                    <div className={`w-12 h-12 flex items-center justify-center shrink-0 border transition-all duration-500 ${isActive ? 'bg-card text-foreground scale-110 shadow-sm' : 'bg-transparent text-muted-foreground border-border/50 group-hover:scale-105'}`}>
-                      <span className="font-display font-bold">{i + 1}</span>
-                    </div>
                     <h4 className={`font-display font-medium text-lg md:text-xl transition-colors duration-500 ${isActive ? 'text-foreground' : 'text-muted-foreground group-hover:text-foreground'}`}>
                       {typograph(adv.title)}
                     </h4>
                   </div>
                   <div className={`overflow-hidden transition-all duration-500 ${isActive ? 'max-h-[200px] mt-4 opacity-100 delay-200' : 'max-h-0 mt-0 opacity-0'}`}>
-                    <p className="text-muted-foreground leading-relaxed pl-[72px]">{typograph(adv.desc)}</p>
+                    <p className="text-muted-foreground leading-relaxed">{typograph(adv.desc)}</p>
                   </div>
                   
                   <div className="absolute bottom-6 right-6 opacity-30 group-hover:opacity-100 transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1">

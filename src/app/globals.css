@@ -192,3 +192,49 @@
 
 .perspective-1000 { perspective: 1000px; }
 .preserve-3d { transform-style: preserve-3d; }
+.backface-hidden { backface-visibility: hidden; }
+
+/* 24s цикл: Текст виден 4с, Переворот 0.5с, Картинка 3с, Обратный переворот 0.5с */
+@keyframes flip-tile-3 {
+  0%, 16.66% { transform: rotateX(0deg); }
+  18.75%, 31.25% { transform: rotateX(-180deg); }
+  33.33%, 50.00% { transform: rotateX(-360deg); }
+  52.08%, 64.58% { transform: rotateX(-540deg); }
+  66.66%, 83.33% { transform: rotateX(-720deg); }
+  85.41%, 97.91% { transform: rotateX(-900deg); }
+  100% { transform: rotateX(-1080deg); }
+}
+
+/* Смена картинки ровно в "слепых зонах" (когда виден текст) */
+@keyframes bg-cycle-3 {
+  0%, 40% { background-image: url("/images/hero/IMG_5580.webp"); }
+  40.01%, 73% { background-image: url("/images/hero/IMG_5625.webp"); }
+  73.01%, 100% { background-image: url("/images/hero/IMG_5639.webp"); }
+}
+
+/* Плавный сдвиг картинки.
+   Панорамирование начинается ТОЛЬКО когда ВСЕ квадратики полностью открыты (22.91%).
+   Сдвиг идет только до 40% с эффектом замедления (ease-out). */
+@keyframes pan-bg-3 {
+  /* Картинка 1 */
+  0%, 22.91% { background-position: 50% 0%; animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1); }
+  31.25%, 33.33% { background-position: 50% 40%; }
+  
+  /* Картинка 2 */
+  33.34%, 56.25% { background-position: 50% 0%; animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1); }
+  64.58%, 66.66% { background-position: 50% 40%; }
+
+  /* Картинка 3 */
+  66.67%, 89.58% { background-position: 50% 0%; animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1); }
+  97.91%, 100% { background-position: 50% 40%; }
+}
+
+/* Общий цикл 24 секунды */
+.flip-animate { animation: flip-tile-3 24s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+
+/* КРИТИЧНО: Первая анимация получает delay плитки, вторая получает 0s (синхронно для всех) */
+.pan-cycle-animate { 
+  animation: 
+    bg-cycle-3 24s step-end infinite,
+    pan-bg-3 24s linear infinite; 
+}

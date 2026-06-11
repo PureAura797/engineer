@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -19,6 +19,109 @@ const extendedFeatures = [
   ...initialFeatures, 
   ...initialFeatures.map(f => ({ ...f, id: f.id + 5 }))
 ];
+
+function HeroGridFlip() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0, cols: 0, rows: 3 });
+
+  useEffect(() => {
+    const updateGrid = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const width = rect.width;
+      const height = rect.height;
+      if (width === 0 || height === 0) return;
+      
+      const rows = 3;
+      const expectedTileSize = height / rows;
+      const cols = Math.max(1, Math.round(width / expectedTileSize));
+      
+      setDimensions({ width, height, cols, rows });
+    };
+
+    updateGrid();
+    
+    const observer = new ResizeObserver(() => updateGrid());
+    if (containerRef.current) observer.observe(containerRef.current);
+    
+    return () => observer.disconnect();
+  }, []);
+
+  const { width, height, cols, rows } = dimensions;
+  const totalTiles = cols * rows;
+  const textContent = typograph("Обследуем действующие шкафы, проектируем и собираем новые решения, программируем контроллеры, выполняем ПНР и подключаем вентиляцию к диспетчеризации здания.");
+
+  return (
+    <div 
+      ref={containerRef} 
+      id="block-grid" 
+      className="relative flex-[0.6] w-full overflow-hidden border border-[#182025]/20 bg-transparent perspective-1000"
+    >
+      {totalTiles === 0 ? (
+         <div className="p-8 lg:p-10 flex flex-col justify-center items-start h-full">
+           <p className="text-sm md:text-base leading-relaxed text-[#84919A]">{textContent}</p>
+         </div>
+      ) : (
+        <>
+          <div 
+            className="absolute inset-0 z-0 grid"
+            style={{ 
+              gridTemplateColumns: `repeat(${cols}, 1fr)`,
+              gridTemplateRows: `repeat(${rows}, 1fr)`
+            }}
+          >
+            {Array.from({ length: totalTiles }).map((_, i) => {
+              const col = i % cols;
+              const row = Math.floor(i / cols);
+              const normalizedDist = (col / cols) + (row / rows); 
+              const delay = normalizedDist * 0.5;
+
+              return (
+                <div key={i} className="relative w-full h-full preserve-3d flip-animate" style={{ animationDelay: `${delay}s` }}>
+                  {/* Front Face */}
+                  <div className="absolute inset-0 backface-hidden bg-transparent overflow-hidden">
+                    <div 
+                      className="absolute pointer-events-none p-8 lg:p-10 flex flex-col justify-center items-start text-[#84919A]"
+                      style={{
+                        width: `${width}px`, 
+                        height: `${height}px`, 
+                        left: `-${col * 100}%`, 
+                        top: `-${row * 100}%`
+                      }}
+                    >
+                      <p className="text-sm md:text-base leading-relaxed">{textContent}</p>
+                    </div>
+                  </div>
+                  
+                  {/* Back Face */}
+                  <div className="absolute inset-0 backface-hidden bg-[#182025] overflow-hidden" style={{ transform: 'rotateX(180deg) scale(1.02)' }}>
+                    <div 
+                      className="absolute pan-cycle-animate"
+                      style={{
+                        width: `${cols * 100}%`, 
+                        height: `${rows * 100}%`, 
+                        left: `-${col * 100}%`, 
+                        top: `-${row * 100}%`,
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat',
+                        animationDelay: `${delay}s, 0s`
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-[#182025]/15" />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          
+          <div className="p-8 lg:p-10 invisible pointer-events-none relative z-[-1] flex flex-col justify-center items-start h-full">
+            <p className="text-sm md:text-base leading-relaxed">{textContent}</p>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
 
 export function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -82,12 +185,8 @@ export function Hero() {
             </motion.div>
             
             {/* Top Right Block */}
-            <motion.div variants={itemVariants} className="md:col-span-4 flex flex-col gap-4">
-              <div id="block-grid" className="border border-[#182025]/20 bg-transparent p-8 lg:p-10 flex-[0.6] flex flex-col justify-center items-start text-muted-foreground">
-                <p className="text-sm md:text-base leading-relaxed">
-                  {typograph("Обследуем действующие шкафы, проектируем и собираем новые решения, программируем контроллеры, выполняем ПНР и подключаем вентиляцию к диспетчеризации здания.")}
-                </p>
-              </div>
+            <motion.div variants={itemVariants} className="md:col-span-4 flex flex-col gap-4 perspective-1000">
+              <HeroGridFlip />
               {/* CTA Box - Reversed to dark for contrast on light background */}
               <div id="block-cta" className="bg-[#182025] text-white p-8 lg:p-10 flex-[0.4] flex flex-col justify-between cursor-pointer hover:bg-[#182025]/90 transition-colors group">
                 <h3 className="text-xl font-medium font-display mb-8">Отправить ТЗ инженеру</h3>

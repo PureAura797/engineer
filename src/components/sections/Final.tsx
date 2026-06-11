@@ -76,7 +76,7 @@ export function Final() {
       <FocusScrollBlock bgClass="bg-[#182025]" shadowClass="shadow-[0_30px_60px_-15px_rgba(24,32,37,0.5)]">
         <div className="container mx-auto px-4 md:px-6 flex flex-col lg:flex-row items-center justify-between gap-12 w-full max-w-7xl py-16 md:py-24">
           <div className="max-w-2xl text-center lg:text-left">
-            <Badge variant="outline" className="mb-6 rounded-none bg-[#11171A] border-none text-[#577E95]">{typograph("Инструмент для подготовки")}</Badge>
+            <Badge variant="outline" className="mb-6 rounded-none bg-white border-none text-[#182025]">{typograph("Инструмент для подготовки")}</Badge>
             <h3 className="text-2xl md:text-4xl font-display font-bold mb-6 text-[#E6F0F4]">
               {typograph("Шаблон исходных данных для оценки шкафа автоматики")}
             </h3>
@@ -121,7 +121,7 @@ export function Final() {
       <FocusScrollBlock bgClass="bg-[#30637A]" shadowClass="shadow-2xl">
         <div className="container mx-auto px-4 md:px-6 w-full max-w-6xl py-16 md:py-24">
           <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-6 rounded-none bg-[#11171A] border-none text-[#577E95]">{typograph("Инструмент для подготовки")}</Badge>
+            <Badge variant="outline" className="mb-6 rounded-none bg-white border-none text-[#182025]">{typograph("Инструмент для подготовки")}</Badge>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold mb-8 text-[#E6F0F4] leading-tight">
               {typograph("Отправьте данные инженеру")}
             </h2>

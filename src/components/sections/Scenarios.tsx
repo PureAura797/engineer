@@ -160,25 +160,19 @@ export function Scenarios() {
               <Download className="w-5 h-5" />
             </div>
             <h3 className="text-2xl md:text-4xl font-display font-bold mb-4 text-[#E6F0F4]">
-              {typograph("Напишите, что нужно сделать со шкафом вентиляции")}
+              {typograph("Когда шкаф автоматики пора модернизировать?")}
             </h3>
             <p className="text-[#E6F0F4] opacity-80 text-lg mb-8 leading-relaxed max-w-lg mx-auto lg:mx-0">
-              {typograph("Мы изучим задачу и предложим варианты: сборка нового шкафа, модернизация или выезд инженера для обследования на объекте.")}
+              {typograph("Не уверены, нужен ли новый шкаф или достаточно модернизации? Подготовили короткий чек-лист признаков, по которым эксплуатация может оценить состояние автоматики вентиляции.")}
             </p>
           </div>
           
           <div className="lg:w-1/2 flex flex-col justify-center">
-            <h4 className="text-xl font-display font-medium mb-6 text-[#E6F0F4] text-center lg:text-left">{typograph("Получить расчет или консультацию")}</h4>
+            <h4 className="text-xl font-display font-medium mb-6 text-[#E6F0F4] text-center lg:text-left">{typograph("Скачать чек-лист")}</h4>
             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input placeholder={typograph("Имя")} className="bg-transparent border-0 border-b border-[#577E95]/50 focus:border-[#E6F0F4] focus:ring-0 text-[#E6F0F4] placeholder:text-[#577E95] rounded-none px-0 h-12" />
                 <Input placeholder={typograph("Компания")} className="bg-transparent border-0 border-b border-[#577E95]/50 focus:border-[#E6F0F4] focus:ring-0 text-[#E6F0F4] placeholder:text-[#577E95] rounded-none px-0 h-12" />
-              </div>
-              <div className="relative">
-                <Textarea 
-                  placeholder={typograph("Что нужно сделать? Например: Собрать новый шкаф по проекту, модернизировать существующий, подключить к BMS...")}
-                  className="bg-[#182025] border-border/50 focus:border-primary focus:ring-0 text-[#E6F0F4] placeholder:text-[#577E95]/50 min-h-[160px] resize-none text-base p-6 rounded-none leading-relaxed" 
-                />
               </div>
               <Input 
                 placeholder={typograph("Email или телефон *")}
@@ -192,7 +186,7 @@ export function Scenarios() {
                 disabled={!contact.trim()}
                 className="w-full rounded-none h-14 bg-[#E6F0F4] text-[#182025] hover:bg-[#FAFCFD] text-base font-medium transition-colors mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {typograph("Отправить заявку")}
+                {typograph("Скачать материал")}
               </Button>
               <p className="text-[11px] text-[#577E95] text-center mt-3 leading-tight">
                 Нажимая кнопку, вы соглашаетесь с <PrivacyModal><button type="button" className="underline underline-offset-2 hover:text-[#E6F0F4] transition-colors cursor-pointer">Политикой конфиденциальности</button></PrivacyModal>
