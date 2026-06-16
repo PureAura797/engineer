@@ -87,7 +87,7 @@ export function FloatingNav() {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: any = {
     hidden: { 
       opacity: 0, 
       rotateX: -90,
@@ -113,7 +113,7 @@ export function FloatingNav() {
     }
   };
 
-  const menuVariants = {
+  const menuVariants: any = {
     hidden: { opacity: 0, scale: 0.9, y: 10 },
     visible: { 
       opacity: 1, 

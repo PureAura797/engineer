@@ -34,7 +34,7 @@ export function HeroConsultModal({ children, open, onOpenChange }: HeroConsultMo
 
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
-      {children && <DialogTrigger asChild>{children}</DialogTrigger>}
+      {children && <DialogTrigger render={children as any} />}
       <DialogContent className="data-open:anim-slide-up-in data-closed:anim-slide-up-out top-auto bottom-0 translate-y-0 sm:max-w-lg p-0 rounded-none border-b-0 border-t border-x border-border shadow-[0_-10px_40px_rgba(0,0,0,0.1)] outline-none bg-white">
         <form onSubmit={handleSubmit} className="pt-8 pb-10 px-8 relative">
           <DialogTitle className="text-3xl font-display font-bold mb-2 text-[#182025]">Обсудить задачу</DialogTitle>

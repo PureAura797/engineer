@@ -90,7 +90,7 @@ export function CasesModal({ children, open, onOpenChange }: CasesModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
-      {children && <DialogTrigger asChild>{children}</DialogTrigger>}
+      {children && <DialogTrigger render={children as any} />}
       <DialogContent className="max-w-6xl sm:max-w-6xl lg:max-w-[90vw] xl:max-w-[1400px] w-[95vw] h-[calc(100vh-140px)] p-0 rounded-none border-border overflow-hidden flex flex-col bg-background">
         <DialogHeader className="px-8 py-6 border-b border-border/50 shrink-0 bg-background/95 backdrop-blur-sm z-10">
           <DialogTitle className="text-3xl font-display font-bold">Выполненные проекты</DialogTitle>
