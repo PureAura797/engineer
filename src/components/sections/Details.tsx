@@ -104,14 +104,14 @@ export function Details() {
   ];
 
   const processSteps = [
-    { num: "1", title: "Получаем исходные данные", desc: "ТЗ, схема, спецификация, фото шкафа или описание проблемы.", img: "/images/process/имг 1.png" },
-    { num: "2", title: "Проводим анализ", desc: "Инженер оценивает состав системы, риски и предварительный сценарий.", img: "/images/process/имг 2.png" },
-    { num: "3", title: "Обследуем объект", desc: "Фиксируем фактическое состояние шкафа, оборудования и подключений.", img: "/images/process/имг 3.png" },
-    { num: "4", title: "Предлагаем решение", desc: "Модернизация, частичная замена или сборка нового шкафа.", img: "/images/process/имг 4.png" },
-    { num: "5", title: "Согласуем состав", desc: "Фиксируем объем, компоненты, сроки, формат ПНР и документацию.", img: "/images/process/имг 5.png" },
+    { num: "1", title: "Получаем\nисходные данные", desc: "ТЗ, схема, спецификация, фото шкафа или описание проблемы.", img: "/images/process/имг 1.png" },
+    { num: "2", title: "Проводим\nанализ", desc: "Инженер оценивает состав системы, риски и предварительный сценарий.", img: "/images/process/имг 2.png" },
+    { num: "3", title: "Обследуем\nобъект", desc: "Фиксируем фактическое состояние шкафа, оборудования и подключений.", img: "/images/process/имг 3.png" },
+    { num: "4", title: "Предлагаем\nрешение", desc: "Модернизация, частичная замена или сборка нового шкафа.", img: "/images/process/имг 4.png" },
+    { num: "5", title: "Согласуем\nсостав", desc: "Фиксируем объем, компоненты, сроки, формат ПНР и документацию.", img: "/images/process/имг 5.png" },
     { num: "6", title: "Сборка и ПЛК", desc: "Выполняем сборку, маркировку и программирование контроллера.", img: "/images/process/имг 6.png" },
     { num: "7", title: "Выполняем ПНР", desc: "Проверяем режимы работы, аварии и взаимодействие с вентиляцией.", img: "/images/process/имг 7.png" },
-    { num: "8", title: "Передаем системе", desc: "Передаем документацию и объясняем логику работы.", img: "/images/process/имг 8.png" }
+    { num: "8", title: "Передаем\nсистеме", desc: "Передаем документацию и объясняем логику работы.", img: "/images/process/имг 8.png" }
   ];
 
   return (
@@ -184,7 +184,7 @@ export function Details() {
 
           <div className="relative overflow-hidden py-10 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12 mb-8">
 
-            <div className="flex flex-col md:flex-row w-full h-[600px] md:h-[450px] gap-4 relative z-10">
+            <div className="flex flex-col md:flex-row w-full h-[800px] sm:h-[600px] md:h-[450px] gap-4 relative z-10">
               {components.map((comp, i) => {
                 const isActive = activeComponent === i;
                 const imgClasses = isActive 
@@ -210,7 +210,7 @@ export function Details() {
                         style={{
                           opacity: isActive ? 1 : 0,
                           transform: isActive ? 'translateY(0)' : 'translateY(10px)',
-                          transition: `all 400ms ease ${isActive ? '150ms' : '0s'}`
+                          transition: `all 400ms ease ${isActive ? '450ms' : '0s'}`
                         }}
                     >
                         <span className="text-5xl md:text-6xl font-display font-bold text-primary/15">
@@ -218,7 +218,7 @@ export function Details() {
                         </span>
                     </div>
 
-                    <div className="absolute top-8 right-0 flex items-start justify-end pointer-events-none z-0">
+                    <div className="absolute top-2 right-0 md:top-8 flex items-start justify-end pointer-events-none z-0">
                         <img 
                             src={comp.img} 
                             className={`w-[200px] md:w-[300px] h-auto max-w-none object-contain mix-blend-darken transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${imgClasses}`} 
@@ -237,10 +237,11 @@ export function Details() {
                             maxHeight: isActive ? '200px' : '0px',
                             marginTop: isActive ? '1rem' : '0px',
                             opacity: isActive ? 1 : 0,
-                            transition: `all 300ms ease ${isActive ? '100ms' : '0s'}`
+                            transform: isActive ? 'translateY(0)' : 'translateY(10px)',
+                            transition: `all 400ms cubic-bezier(0.16, 1, 0.3, 1) ${isActive ? '200ms' : '0s'}`
                           }}
                         >
-                            <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-sm">
+                            <p className="text-muted-foreground text-sm md:text-base leading-relaxed w-[260px] md:w-[320px]">
                                 {typograph(comp.desc)}
                             </p>
                         </div>
@@ -298,7 +299,7 @@ export function Details() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="relative p-6 border border-white/60 bg-white/40 backdrop-blur-md flex flex-col justify-between aspect-square group transition-transform duration-300 hover:-translate-y-1 overflow-hidden cursor-pointer"
+                className="relative p-6 border border-white/60 bg-white/40 backdrop-blur-md flex flex-col justify-between aspect-[4/5] md:aspect-square group transition-transform duration-300 hover:-translate-y-1 overflow-hidden cursor-pointer"
                 style={{
                   boxShadow: "10px 10px 30px rgba(48,99,122,0.05), -10px -10px 30px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.8)"
                 }}
@@ -314,7 +315,14 @@ export function Details() {
                 </div>
                 
                 <div className="relative z-20">
-                  <h4 className="font-display font-medium text-lg mb-2 text-foreground group-hover:text-primary transition-colors">{typograph(step.title)}</h4>
+                  <h4 className="font-display font-medium text-lg mb-2 text-foreground group-hover:text-primary transition-colors min-h-[3.5rem] leading-tight">
+                    {step.title.split('\n').map((line, idx, arr) => (
+                      <span key={idx}>
+                        {typograph(line)}
+                        {idx !== arr.length - 1 && <br />}
+                      </span>
+                    ))}
+                  </h4>
                   <p className="text-muted-foreground text-sm leading-relaxed pr-8">{typograph(step.desc)}</p>
                 </div>
                 
@@ -382,7 +390,7 @@ export function Details() {
                 <Button 
                   size="lg" 
                   disabled={!contact.trim()}
-                  className="w-full rounded-none h-14 bg-[#E6F0F4] text-[#182025] hover:bg-[#FAFCFD] font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full rounded-full h-14 bg-[#E6F0F4] text-[#182025] hover:bg-[#FAFCFD] font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Отправить на разбор
                 </Button>

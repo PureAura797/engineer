@@ -9,11 +9,13 @@ import { Final } from "@/components/sections/Final";
 import { GlobalBackground } from "@/components/GlobalBackground";
 import { PrivacyModal } from "@/components/ui/privacy-modal";
 import { Preloader } from "@/components/layout/Preloader";
+import { FloatingNav } from "@/components/layout/FloatingNav";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Preloader />
+      <FloatingNav />
       <Header />
       <Hero />
       <div className="relative z-20 bg-background border-t border-border/50">
@@ -35,7 +37,10 @@ export default function Home() {
             © {new Date().getFullYear()} Инжиниринг МЗТА. Все права защищены.
           </p>
           <PrivacyModal>
-            <button type="button" className="text-muted-foreground text-sm hover:text-foreground transition-colors underline underline-offset-4">
+            <button 
+              type="button" 
+              className="text-muted-foreground text-sm hover:text-foreground transition-colors underline underline-offset-4"
+            >
               Политика конфиденциальности
             </button>
           </PrivacyModal>

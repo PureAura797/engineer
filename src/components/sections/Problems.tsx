@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowDownRight } from "lucide-react";
+import Image from "next/image";
 import { typograph } from "@/lib/utils";
 
 export function Problems() {
@@ -9,26 +10,38 @@ export function Problems() {
     {
       title: "Старый шкаф работает нестабильно",
       description: "Вентиляция запускается с перебоями, часть функций отключена, аварии появляются без понятной причины, а эксплуатация не всегда может быстро определить источник проблемы.",
+      image: "/images/problems/1_cabinet.png",
+      imageClassName: "absolute top-4 right-6 w-48 h-48 lg:w-56 lg:h-56 mix-blend-multiply transition-transform duration-1000 ease-out group-hover:scale-[1.04] pointer-events-none z-0"
     },
     {
       title: "Нет актуальной схемы или документации",
       description: "Шкаф есть, но документация устарела, неполная или не соответствует фактической сборке. Это усложняет обслуживание, ремонт и модернизацию.",
+      image: "/images/problems/2_docs.png",
+      imageClassName: "absolute top-0 right-6 w-48 h-48 lg:w-56 lg:h-56 mix-blend-multiply transition-transform duration-1000 ease-out group-hover:scale-[1.04] pointer-events-none z-0"
     },
     {
       title: "Вентиляция не видна в диспетчеризации",
       description: "Система работает локально: статусы, аварии, режимы и параметры не передаются в BMS или общую диспетчерскую здания.",
+      image: "/images/problems/3_ventilation.png",
+      imageClassName: "absolute top-4 right-6 w-48 h-48 lg:w-56 lg:h-56 mix-blend-multiply transition-transform duration-1000 ease-out group-hover:scale-[1.04] pointer-events-none z-0"
     },
     {
       title: "Модернизация без хаоса",
       description: "Бизнес-центр работает, арендаторы в помещениях. Нельзя надолго остановить вентиляцию и «экспериментировать».",
+      image: "/images/problems/4_process.png",
+      imageClassName: "absolute -top-4 right-6 w-48 h-48 lg:w-56 lg:h-56 mix-blend-multiply transition-transform duration-1000 ease-out group-hover:scale-[1.04] pointer-events-none z-0"
     },
     {
       title: "Нужен ответственный подрядчик",
       description: "Нужно собрать шкаф по проекту, запрограммировать контроллер, протестировать решение и выполнить ПНР без постоянных переделок.",
+      image: "/images/problems/5_gears.png",
+      imageClassName: "absolute -top-2 right-6 w-48 h-48 lg:w-56 lg:h-56 mix-blend-multiply transition-transform duration-1000 ease-out group-hover:scale-[1.04] pointer-events-none z-0"
     },
     {
       title: "Подрядчики перекладывают ответственность",
       description: "Один отвечает за вентиляцию, другой за шкаф, третий за диспетчеризацию. При сбое эксплуатация остается между зонами ответственности.",
+      image: "/images/problems/6_pingpong.png",
+      imageClassName: "absolute top-0 right-6 w-48 h-48 lg:w-56 lg:h-56 mix-blend-multiply transition-transform duration-1000 ease-out group-hover:scale-[1.04] pointer-events-none z-0"
     },
   ];
 
@@ -65,24 +78,27 @@ export function Problems() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="relative p-6 border border-white/60 bg-white/40 backdrop-blur-md flex flex-col aspect-square group transition-transform duration-300 hover:-translate-y-1"
+              className="relative p-6 border border-slate-100 bg-white flex flex-col md:aspect-square group transition-all duration-500 hover:-translate-y-1 hover:shadow-xl overflow-hidden min-h-[320px] md:min-h-0"
               style={{
                 boxShadow: "10px 10px 30px rgba(48,99,122,0.05), -10px -10px 30px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.8)"
               }}
             >
-              <div className="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-500 pointer-events-none" />
-              
-              <div className="relative z-10 text-4xl font-display font-bold text-muted-foreground/30 group-hover:text-primary transition-colors mb-auto">
+              {/* 3D Image Background */}
+              <div className={problem.imageClassName}>
+                <Image src={problem.image} alt={problem.title} fill className="object-contain" />
+              </div>
+
+              <div className="relative z-10 text-4xl font-bold text-slate-200 group-hover:text-primary transition-colors mb-auto">
                 0{i + 1}
               </div>
               
-              <div className="relative z-10">
-                <h3 className="text-xl font-display font-medium mb-2 text-foreground">{typograph(problem.title)}</h3>
+              <div className="relative z-10 mt-[180px] md:mt-0">
+                <h3 className="text-xl font-medium mb-2 text-foreground">{typograph(problem.title)}</h3>
                 <p className="text-muted-foreground text-sm md:text-base leading-relaxed pr-8">{typograph(problem.description)}</p>
               </div>
 
-              <div className="absolute bottom-6 right-6 opacity-30 group-hover:opacity-100 transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1">
-                <ArrowDownRight className="w-6 h-6 text-primary" strokeWidth={1} />
+              <div className="absolute bottom-6 right-6 opacity-30 group-hover:opacity-100 transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 z-20">
+                <ArrowDownRight className="w-6 h-6 text-primary stroke-[1.5]" />
               </div>
             </motion.div>
           ))}

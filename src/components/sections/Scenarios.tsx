@@ -156,9 +156,7 @@ export function Scenarios() {
       <FocusScrollBlock bgClass="bg-[#182025]" shadowClass="shadow-[0_30px_60px_-15px_rgba(24,32,37,0.5)]">
         <div className="container mx-auto px-4 md:px-6 flex flex-col lg:flex-row items-center w-full max-w-6xl py-16 md:py-24 gap-12">
           <div className="lg:w-1/2 flex flex-col justify-center text-center lg:text-left">
-            <div className="mb-6 w-12 h-12 flex items-center justify-center bg-[#11171A] text-[#577E95] mx-auto lg:mx-0">
-              <Download className="w-5 h-5" />
-            </div>
+
             <h3 className="text-2xl md:text-4xl font-display font-bold mb-4 text-[#E6F0F4]">
               {typograph("Когда шкаф автоматики пора модернизировать?")}
             </h3>
@@ -182,9 +180,9 @@ export function Scenarios() {
                 className="bg-transparent border-0 border-b border-[#577E95]/50 focus:border-[#E6F0F4] focus:ring-0 text-[#E6F0F4] placeholder:text-[#577E95] rounded-none px-0 h-12" 
               />
               <Button 
-                size="lg" 
+                type="submit" 
                 disabled={!contact.trim()}
-                className="w-full rounded-none h-14 bg-[#E6F0F4] text-[#182025] hover:bg-[#FAFCFD] text-base font-medium transition-colors mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full rounded-full h-14 bg-[#E6F0F4] text-[#182025] hover:bg-[#FAFCFD] text-base font-medium transition-colors mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {typograph("Скачать материал")}
               </Button>

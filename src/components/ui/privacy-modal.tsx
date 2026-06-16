@@ -17,7 +17,7 @@ export function PrivacyModal({ children }: { children: React.ReactNode }) {
           <DialogTitle className="text-2xl md:text-3xl font-display font-bold">Политика конфиденциальности</DialogTitle>
         </DialogHeader>
         
-        <div className="flex-1 p-6 md:p-10 pt-4 md:pt-6 overflow-y-auto custom-scrollbar text-[#84A2B4] text-sm md:text-base leading-relaxed space-y-6 text-left">
+        <div className="flex-1 p-6 md:p-10 pt-4 md:pt-6 overflow-y-auto custom-scrollbar text-[#84A2B4] text-sm md:text-base leading-relaxed space-y-6 text-left" data-lenis-prevent>
           <p className="text-lg text-[#E6F0F4]">
             Настоящая Политика конфиденциальности (далее — Политика) действует в отношении всей информации, которую мы можем получить о Пользователе во время использования им сайта.
           </p>

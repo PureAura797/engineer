@@ -59,7 +59,7 @@ export function Cases() {
           </motion.div>
 
           {/* Coverflow Slider for Cases */}
-          <div className="relative h-[850px] md:h-[750px] lg:h-[700px] w-full flex items-center justify-center perspective-[1200px] mb-12 overflow-hidden py-10 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
+          <div className="relative h-[850px] sm:h-[800px] md:h-[750px] lg:h-[700px] w-full flex items-center justify-center perspective-[1200px] mb-12 overflow-hidden py-10 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
 
             {cases.map((c, i) => {
               const N = cases.length;
@@ -78,10 +78,8 @@ export function Cases() {
               return (
                 <motion.div
                   key={i}
-                  className="absolute w-[320px] sm:w-[450px] md:w-[600px] lg:w-[700px] border border-white/60 bg-white/40 backdrop-blur-md cursor-pointer flex flex-col group overflow-hidden"
+                  className="absolute w-[320px] sm:w-[450px] md:w-[600px] lg:w-[700px] h-max min-h-[500px] border border-white/60 bg-white/40 backdrop-blur-md cursor-pointer flex flex-col group overflow-hidden"
                   style={{ 
-                    height: 'max-content', 
-                    minHeight: '600px',
                     boxShadow: "10px 10px 30px rgba(48,99,122,0.05), -10px -10px 30px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.8)"
                   }}
                   animate={{
@@ -96,19 +94,23 @@ export function Cases() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                   
-                  <div className="p-8 md:p-10 flex-1 flex flex-col relative z-10">
+                  {/* The Stripe (Variant 04: Solid Dark Slate) */}
+                  <div className="absolute top-0 left-0 w-full h-12 md:h-16 px-5 md:px-8 flex items-center bg-[#182025] z-20 shrink-0">
+                    <div className="font-display font-bold text-lg md:text-2xl text-white">
+                      0{i + 1}
+                    </div>
+                  </div>
+                  
+                  <div className="pt-16 px-5 pb-6 md:pt-24 md:px-10 md:pb-10 flex-1 flex flex-col relative z-10">
                     <div className="flex-1">
                       {/* Title */}
-                      <div className="mb-8">
-                        <div className={`w-12 h-12 flex items-center justify-center border border-border/50 mb-6 transition-colors duration-500 ${isActive ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
-                          0{i + 1}
-                        </div>
-                        <h3 className="font-display font-medium text-2xl md:text-3xl leading-tight text-foreground/90">{typograph(c.title)}</h3>
+                      <div className="mb-4 md:mb-8">
+                        <h3 className="font-display font-medium text-xl md:text-3xl leading-tight text-foreground/90">{typograph(c.title)}</h3>
                       </div>
 
                       {/* Situation */}
-                      <div className="mb-8">
-                        <div className="flex items-center gap-3 mb-3">
+                      <div className="mb-4 md:mb-8">
+                        <div className="flex items-center gap-3 mb-2 md:mb-3">
                           <div className="h-px w-6 bg-muted-foreground/30" />
                           <span className="font-display text-[10px] uppercase tracking-widest text-muted-foreground">Ситуация</span>
                         </div>
@@ -118,8 +120,8 @@ export function Cases() {
                       </div>
 
                       {/* Action */}
-                      <div className="mb-8 pl-6 border-l border-primary/20">
-                        <div className="flex items-center gap-3 mb-3">
+                      <div className="mb-4 md:mb-8 pl-4 md:pl-6 border-l border-primary/20">
+                        <div className="flex items-center gap-3 mb-2 md:mb-3">
                           <span className="font-display text-[10px] uppercase tracking-widest text-primary">Что делаем</span>
                         </div>
                         <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
@@ -129,8 +131,8 @@ export function Cases() {
                     </div>
 
                     {/* Result */}
-                    <div className="mt-8 bg-card p-5 md:p-6 border border-border/50 flex flex-col sm:flex-row items-start sm:items-center gap-4 shrink-0 shadow-sm">
-                      <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <div className="mt-2 md:mt-8 bg-card p-4 md:p-6 border border-border/50 flex flex-col sm:flex-row items-start sm:items-center gap-3 md:gap-4 shrink-0 shadow-sm">
+                      <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                         <CheckCircle2 className="w-4 h-4 text-primary" strokeWidth={1.5} />
                       </div>
                       <div>
@@ -157,7 +159,7 @@ export function Cases() {
               <Button 
                 variant="outline" 
                 size="icon"
-                className="rounded-none border-border h-12 w-12 hover:bg-muted transition-colors"
+                className="rounded-full border-border h-12 w-12 hover:bg-muted transition-colors"
                 onClick={() => setActiveCase(activeCase - 1)}
               >
                 <ArrowLeft className="w-5 h-5" />
@@ -165,7 +167,7 @@ export function Cases() {
               <Button 
                 variant="outline" 
                 size="icon"
-                className="rounded-none border-border h-12 w-12 hover:bg-muted transition-colors"
+                className="rounded-full border-border h-12 w-12 hover:bg-muted transition-colors"
                 onClick={() => setActiveCase(activeCase + 1)}
               >
                 <ArrowRight className="w-5 h-5" />
@@ -195,7 +197,7 @@ export function Cases() {
               </p>
             </motion.div>
 
-            <div className="flex flex-col h-[500px] md:h-[600px] gap-4">
+            <div className="flex flex-col h-[650px] sm:h-[600px] md:h-[600px] gap-4">
               {advantages.map((adv, i) => {
                 const isActive = activeAdv === i;
                 return (
@@ -210,20 +212,19 @@ export function Cases() {
                     boxShadow: "10px 10px 30px rgba(48,99,122,0.05), -10px -10px 30px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.8)"
                   }}
                 >
-                  <div className="flex items-center gap-6">
+                  <div className="flex items-center justify-between w-full">
                     <h4 className={`font-display font-medium text-lg md:text-xl transition-colors duration-500 ${isActive ? 'text-foreground' : 'text-muted-foreground group-hover:text-foreground'}`}>
                       {typograph(adv.title)}
                     </h4>
+                    <div className="opacity-30 group-hover:opacity-100 transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 shrink-0 ml-4">
+                      <ArrowDownRight 
+                        className={`w-6 h-6 text-foreground transition-transform duration-500 ${isActive ? '-rotate-90 opacity-0' : 'rotate-0 opacity-100'}`} 
+                        strokeWidth={1} 
+                      />
+                    </div>
                   </div>
                   <div className={`overflow-hidden transition-all duration-500 ${isActive ? 'max-h-[200px] mt-4 opacity-100 delay-200' : 'max-h-0 mt-0 opacity-0'}`}>
                     <p className="text-muted-foreground leading-relaxed">{typograph(adv.desc)}</p>
-                  </div>
-                  
-                  <div className="absolute bottom-6 right-6 opacity-30 group-hover:opacity-100 transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1">
-                    <ArrowDownRight 
-                      className={`w-6 h-6 text-foreground transition-transform duration-500 ${isActive ? '-rotate-90 opacity-0' : 'rotate-0 opacity-100'}`} 
-                      strokeWidth={1} 
-                    />
                   </div>
                 </motion.div>
               )})}

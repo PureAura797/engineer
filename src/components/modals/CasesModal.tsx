@@ -6,50 +6,87 @@ import { ReactNode } from "react";
 import Image from "next/image";
 
 interface CasesModalProps {
-  children: ReactNode;
+  children?: ReactNode;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }
 
 const cases = [
   {
     id: 1,
-    title: "Бизнес-центр класса А",
-    desc: "Полная модернизация 12 шкафов управления приточно-вытяжной вентиляцией без остановки арендаторов. Переход на современные отечественные ПЛК с сохранением прежней кабельной трассы. Бесшовная интеграция с существующей BMS здания по протоколу BACnet/IP.",
-    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200",
+    title: "Завод «Полиэф» (Холдинг СИБУР)",
+    desc: "Комплексная автоматизация систем корпуса полимеризации. Управление 5 приточно-вытяжными системами и 20 кондиционерами. Установка локальных пультов управления и полная диспетчеризация инженерной инфраструктуры объекта.",
+    img: "/images/cases/polief.png",
     className: "md:col-span-2 md:row-span-2 min-h-[400px]",
   },
   {
     id: 2,
-    title: "Логистический хаб",
-    desc: "Сборка щитов автоматики для 15 приточных установок. Разработка пользовательского SCADA-интерфейса для дежурного инженера.",
-    img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
+    title: "Завод «Тойота Моторс»",
+    desc: "Реализация систем автоматизации инженерной инфраструктуры завода. Выполнен мониторинг расхода энергосистем, управление воздушным отоплением и вентиляцией. Установлены локальные пульты и внедрена комплексная диспетчеризация.",
+    img: "/images/cases/toyota.png",
     className: "md:col-span-1 md:row-span-1 min-h-[250px]",
   },
   {
     id: 3,
-    title: "ТРЦ «Галактика»",
-    desc: "Замена сгоревших контроллеров на чиллерах и градирнях. Оперативное восстановление алгоритмов работы холодильного центра в разгар летнего сезона.",
-    img: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=800",
+    title: "ЦКБ №1 ОАО «РЖД»",
+    desc: "Автоматизация и диспетчеризация систем жизнеобеспечения 4 корпусов. Управление центральным тепловым пунктом, десятками вентиляционных систем (включая 131 установку в главном корпусе), холодильными машинами и дымоудалением.",
+    img: "/images/cases/rzhd.png",
     className: "md:col-span-1 md:row-span-1 min-h-[250px]",
   },
   {
     id: 4,
-    title: "Завод фармпрепаратов",
-    desc: "Проектирование и ПНР прецизионной системы климат-контроля для чистых помещений (ISO 7). Поддержание влажности с точностью до 1% и температуры до 0.5°C.",
-    img: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=1200",
+    title: "УКБ №1 Первого МГМУ им. Сеченова",
+    desc: "Автоматизированное управление системами жизнеобеспечения клиники. Реализована строгая поддержка параметров микроклимата, экономичный расход электроэнергии и диспетчеризация вентиляции в реальном времени с возможностью удаленного управления.",
+    img: "/images/cases/mgmu.png",
     className: "md:col-span-2 md:row-span-1 min-h-[300px]",
+  },
+  {
+    id: 5,
+    title: "Музыкальная школа им. Л.Н. Оборина",
+    desc: "Автоматизация и диспетчеризация систем жизнеобеспечения. Реализовано управление 27 приточно-вытяжными установками и системами подпора воздуха, а также противопожарной защитой на базе 44 огнезащитных клапанов.",
+    img: "/images/cases/oborin.png",
+    className: "md:col-span-1 md:row-span-1 min-h-[300px]",
+  },
+  {
+    id: 6,
+    title: "БЦ «Кутузов Тауэр»",
+    desc: "Комплексная диспетчеризация бизнес-центра. Интеграция индивидуального теплового пункта, водоснабжения, дренажа и сложной вентиляционной сети (включая 30 кондиционеров, ПВУ с рекуператором и 22 вытяжные системы).",
+    img: "/images/cases/kutuzov.png",
+    className: "md:col-span-3 md:row-span-1 min-h-[350px] lg:min-h-[400px]",
+  },
+  {
+    id: 7,
+    title: "БЦ «Премьер»",
+    desc: "Автоматизированное управление и диспетчерский мониторинг. Автоматизация отопления, вентиляции и насосных станций. Непрерывный контроль температур всех систем, электропитания, давления и аварийных ситуаций.",
+    img: "/images/cases/premier.png",
+    className: "md:col-span-2 md:row-span-1 min-h-[300px]",
+  },
+  {
+    id: 8,
+    title: "Банк «Русский Стандарт»",
+    desc: "Комплексная диспетчеризация объектов банка. Внедрено управление индивидуальным тепловым пунктом, водо- и электроснабжением, вентиляцией, пожарными насосами и климатическим оборудованием.",
+    img: "/images/cases/rsb.png",
+    className: "md:col-span-1 md:row-span-1 min-h-[300px]",
+  },
+  {
+    id: 9,
+    title: "МВЦ «Казань Экспо»",
+    desc: "Автоматизация инженерной инфраструктуры выставочного комплекса. Внедрено управление горячим водоснабжением, отоплением и общеобменной вентиляцией. Установлены локальные пульты и произведена комплексная диспетчеризация объектов.",
+    img: "/images/cases/kazan_expo.png",
+    className: "md:col-span-3 md:row-span-1 min-h-[350px] lg:min-h-[400px]",
   },
 ];
 
-export function CasesModal({ children }: CasesModalProps) {
+export function CasesModal({ children, open, onOpenChange }: CasesModalProps) {
   return (
-    <Dialog>
-      <DialogTrigger render={children as any} />
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      {children && <DialogTrigger render={children as any} />}
       <DialogContent className="max-w-6xl sm:max-w-6xl lg:max-w-[90vw] xl:max-w-[1400px] w-[95vw] h-[calc(100vh-140px)] p-0 rounded-none border-border overflow-hidden flex flex-col bg-background">
         <DialogHeader className="px-8 py-6 border-b border-border/50 shrink-0 bg-background/95 backdrop-blur-sm z-10">
           <DialogTitle className="text-3xl font-display font-bold">Выполненные проекты</DialogTitle>
         </DialogHeader>
         
-        <div className="flex-1 overflow-y-auto p-4 md:p-8 custom-scrollbar">
+        <div className="flex-1 overflow-y-auto p-4 md:p-8 custom-scrollbar" data-lenis-prevent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-auto">
             {cases.map((project) => (
               <div 

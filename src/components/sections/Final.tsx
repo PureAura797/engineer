@@ -105,7 +105,7 @@ export function Final() {
               <Button 
                 size="lg" 
                 disabled={!contact1.trim()}
-                className="w-full lg:w-80 h-14 rounded-none text-base bg-[#E6F0F4] text-[#182025] hover:bg-[#FAFCFD] font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full lg:w-80 h-14 rounded-full text-base bg-[#E6F0F4] text-[#182025] hover:bg-[#FAFCFD] font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {typograph("Скачать шаблон")}
               </Button>
@@ -118,76 +118,78 @@ export function Final() {
       </FocusScrollBlock>
 
       {/* Section 12: Final Form (Focus Mode) */}
-      <FocusScrollBlock bgClass="bg-[#30637A]" shadowClass="shadow-2xl">
-        <div className="container mx-auto px-4 md:px-6 w-full max-w-6xl py-16 md:py-24">
-          <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-6 rounded-none bg-white border-none text-[#182025]">{typograph("Инструмент для подготовки")}</Badge>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold mb-8 text-[#E6F0F4] leading-tight">
-              {typograph("Отправьте данные инженеру")}
-            </h2>
-            <p className="text-lg md:text-xl text-[#E6F0F4]/80 mb-12 max-w-2xl mx-auto leading-relaxed">
-              {typograph("Приложите исходные данные по вентиляционной системе. Мы изучим задачу и предложим следующий шаг: оценку, обследование, расчет или модернизацию.")}
-            </p>
-          </div>
+      <div id="final-form">
+        <FocusScrollBlock bgClass="bg-[#30637A]" shadowClass="shadow-2xl">
+          <div className="container mx-auto px-4 md:px-6 w-full max-w-6xl py-16 md:py-24">
+            <div className="text-center mb-16">
+              <Badge variant="outline" className="mb-6 rounded-none bg-white border-none text-[#182025]">{typograph("Инструмент для подготовки")}</Badge>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold mb-8 text-[#E6F0F4] leading-tight">
+                {typograph("Отправьте данные инженеру")}
+              </h2>
+              <p className="text-lg md:text-xl text-[#E6F0F4]/80 mb-12 max-w-2xl mx-auto leading-relaxed">
+                {typograph("Приложите исходные данные по вентиляционной системе. Мы изучим задачу и предложим следующий шаг: оценку, обследование, расчет или модернизацию.")}
+              </p>
+            </div>
 
-          <form className="relative w-full" onSubmit={(e) => e.preventDefault()}>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-12">
-              {/* Left Col */}
-              <div className="space-y-8">
-                <h3 className="font-display font-medium text-2xl text-white border-b border-white/20 pb-4">Контактные данные</h3>
-                <div className="space-y-4">
-                  <Input placeholder="Имя" className="bg-white/10 border-transparent focus:bg-white/20 focus:border-white text-white placeholder:text-white/50 rounded-none h-14 transition-colors text-lg" />
-                  <Input placeholder="Компания" className="bg-white/10 border-transparent focus:bg-white/20 focus:border-white text-white placeholder:text-white/50 rounded-none h-14 transition-colors text-lg" />
-                  <Input placeholder="Должность" className="bg-white/10 border-transparent focus:bg-white/20 focus:border-white text-white placeholder:text-white/50 rounded-none h-14 transition-colors text-lg" />
-                  <Input 
-                    placeholder="Телефон или Email *" 
-                    required 
-                    value={contact2}
-                    onChange={(e) => setContact2(e.target.value)}
-                    className="bg-white/10 border-transparent focus:bg-white/20 focus:border-white text-white placeholder:text-white/50 rounded-none h-14 transition-colors text-lg" 
+            <form className="relative w-full" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-12">
+                {/* Left Col */}
+                <div className="space-y-8">
+                  <h3 className="font-display font-medium text-2xl text-white border-b border-white/20 pb-4">Контактные данные</h3>
+                  <div className="space-y-4">
+                    <Input placeholder="Имя" className="bg-white/10 border-transparent focus:bg-white/20 focus:border-white text-white placeholder:text-white/50 rounded-none h-14 transition-colors text-lg" />
+                    <Input placeholder="Компания" className="bg-white/10 border-transparent focus:bg-white/20 focus:border-white text-white placeholder:text-white/50 rounded-none h-14 transition-colors text-lg" />
+                    <Input placeholder="Должность" className="bg-white/10 border-transparent focus:bg-white/20 focus:border-white text-white placeholder:text-white/50 rounded-none h-14 transition-colors text-lg" />
+                    <Input 
+                      placeholder="Телефон или Email *" 
+                      required 
+                      value={contact2}
+                      onChange={(e) => setContact2(e.target.value)}
+                      className="bg-white/10 border-transparent focus:bg-white/20 focus:border-white text-white placeholder:text-white/50 rounded-none h-14 transition-colors text-lg" 
+                    />
+                  </div>
+
+                  <h3 className="font-display font-medium text-2xl text-white border-b border-white/20 pb-4 mt-12">Объект</h3>
+                  <Input placeholder="Бизнес-центр, офис, коммерческий объект" className="bg-white/10 border-transparent focus:bg-white/20 focus:border-white text-white placeholder:text-white/50 rounded-none h-14 transition-colors text-lg" />
+                </div>
+
+                {/* Right Col */}
+                <div className="space-y-8 flex flex-col h-full">
+                  <h3 className="font-display font-medium text-2xl text-white border-b border-white/20 pb-4">Что нужно сделать</h3>
+                  <textarea 
+                    placeholder="Например: Собрать новый шкаф по проекту, модернизировать существующий, подключить к BMS..."
+                    className="w-full bg-white/10 border-transparent p-6 min-h-[160px] rounded-none focus:outline-none focus:bg-white/20 focus:border-white text-white placeholder:text-white/50 transition-colors text-lg"
                   />
-                </div>
 
-                <h3 className="font-display font-medium text-2xl text-white border-b border-white/20 pb-4 mt-12">Объект</h3>
-                <Input placeholder="Бизнес-центр, офис, коммерческий объект" className="bg-white/10 border-transparent focus:bg-white/20 focus:border-white text-white placeholder:text-white/50 rounded-none h-14 transition-colors text-lg" />
-              </div>
-
-              {/* Right Col */}
-              <div className="space-y-8 flex flex-col h-full">
-                <h3 className="font-display font-medium text-2xl text-white border-b border-white/20 pb-4">Что нужно сделать</h3>
-                <textarea 
-                  placeholder="Например: Собрать новый шкаф по проекту, модернизировать существующий, подключить к BMS..."
-                  className="w-full bg-white/10 border-transparent p-6 min-h-[160px] rounded-none focus:outline-none focus:bg-white/20 focus:border-white text-white placeholder:text-white/50 transition-colors text-lg"
-                />
-
-                <h3 className="font-display font-medium text-2xl text-white border-b border-white/20 pb-4 mt-auto pt-8">Исходные данные</h3>
-                <div className="border border-dashed border-white/30 bg-white/5 hover:bg-white/10 transition-colors p-8 flex flex-col items-center justify-center cursor-pointer group mt-2 min-h-[140px]">
-                  <Upload className="w-10 h-10 text-white/60 mb-4 group-hover:text-white transition-colors" />
-                  <span className="text-lg font-medium text-white/80 group-hover:text-white transition-colors">Загрузить фото/схемы/ТЗ/другое</span>
-                  <span className="text-sm text-white/50 mt-2 text-center">До 10 МБ. Файлы: pdf, docx, jpg, png</span>
+                  <h3 className="font-display font-medium text-2xl text-white border-b border-white/20 pb-4 mt-auto pt-8">Исходные данные</h3>
+                  <div className="border border-dashed border-white/30 bg-white/5 hover:bg-white/10 transition-colors p-8 flex flex-col items-center justify-center cursor-pointer group mt-2 min-h-[140px]">
+                    <Upload className="w-10 h-10 text-white/60 mb-4 group-hover:text-white transition-colors" />
+                    <span className="text-lg font-medium text-white/80 group-hover:text-white transition-colors">Загрузить фото/схемы/ТЗ/другое</span>
+                    <span className="text-sm text-white/50 mt-2 text-center">До 10 МБ. Файлы: pdf, docx, jpg, png</span>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="mt-16 flex flex-col items-center border-t border-white/20 pt-12">
-              <Button 
-                size="lg" 
-                disabled={!contact2.trim()}
-                className="w-full md:w-auto px-20 h-20 text-xl rounded-none bg-white text-[#30637A] hover:bg-[#F3F7F9] hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-              >
-                Отправить материалы
-              </Button>
-              <p className="text-xs text-white/60 text-center mt-6 leading-tight">
-                Отправляя данные, вы соглашаетесь с <PrivacyModal><button type="button" className="underline underline-offset-2 hover:text-white transition-colors cursor-pointer">Политикой конфиденциальности</button></PrivacyModal>
-              </p>
-              <p className="text-base text-white/50 mt-8 text-center max-w-xl">
-                Если полного комплекта документов нет, опишите задачу в свободной форме. 
-                Инженер подскажет, какие данные потребуются.
-              </p>
-            </div>
-          </form>
-        </div>
-      </FocusScrollBlock>
+              <div className="mt-16 flex flex-col items-center border-t border-white/20 pt-12">
+                <Button 
+                  size="lg" 
+                  disabled={!contact2.trim()}
+                  className="w-full md:w-auto px-20 h-20 text-xl rounded-full bg-white text-[#30637A] hover:bg-[#F3F7F9] hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                >
+                  Отправить материалы
+                </Button>
+                <p className="text-xs text-white/60 text-center mt-6 leading-tight">
+                  Отправляя данные, вы соглашаетесь с <PrivacyModal><button type="button" className="underline underline-offset-2 hover:text-white transition-colors cursor-pointer">Политикой конфиденциальности</button></PrivacyModal>
+                </p>
+                <p className="text-base text-white/50 mt-8 text-center max-w-xl">
+                  Если полного комплекта документов нет, опишите задачу в свободной форме. 
+                  Инженер подскажет, какие данные потребуются.
+                </p>
+              </div>
+            </form>
+          </div>
+        </FocusScrollBlock>
+      </div>
     </div>
   );
 }

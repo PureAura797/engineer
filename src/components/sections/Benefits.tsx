@@ -48,16 +48,16 @@ export function Benefits() {
   ];
 
   const steps = [
-    { id: "01", title: "Анализ исходных\nданных", icon: "/images/process-icons/step-1.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "-translate-y-8 pl-12" },
-    { id: "02", title: "Обследование\nшкафа", icon: "/images/process-icons/step-2.png", scale: "scale-[1.5]", hoverScale: "group-hover:scale-[1.65]", pos: "-translate-y-6 pl-12" },
-    { id: "03", title: "Разработка\nсхемного решения", icon: "/images/process-icons/step-3.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "-translate-y-8 pl-12" },
-    { id: "04", title: "Подбор\nкомпонентов", icon: "/images/process-icons/step-4.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "-translate-y-8 pl-12" },
-    { id: "05", title: "Сборка\nшкафа", icon: "/images/process-icons/step-5.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "-translate-y-8 pl-12" },
-    { id: "06", title: "Программирование\nПЛК", icon: "/images/process-icons/step-6.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "-translate-y-8 pl-12" },
-    { id: "07", title: "Тестирование", icon: "/images/process-icons/step-7.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "-translate-y-8 pl-12" },
-    { id: "08", title: "Монтаж и\nподключение", icon: "/images/process-icons/step-8.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "-translate-y-8 pl-12" },
-    { id: "09", title: "Пусконаладка", icon: "/images/process-icons/step-9.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "-translate-y-8 pl-12" },
-    { id: "10", title: "Документация", icon: "/images/process-icons/step-10.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "-translate-y-8 pl-12" },
+    { id: "01", title: "Анализ исходных\nданных", icon: "/images/process-icons/step-1.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "md:-translate-y-8 md:pl-12" },
+    { id: "02", title: "Обследование\nшкафа", icon: "/images/process-icons/step-2.png", scale: "scale-[1.5]", hoverScale: "group-hover:scale-[1.65]", pos: "md:-translate-y-6 md:pl-12" },
+    { id: "03", title: "Разработка\nсхемного решения", icon: "/images/process-icons/step-3.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
+    { id: "04", title: "Подбор\nкомпонентов", icon: "/images/process-icons/step-4.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
+    { id: "05", title: "Сборка\nшкафа", icon: "/images/process-icons/step-5.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
+    { id: "06", title: "Программирование\nПЛК", icon: "/images/process-icons/step-6.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
+    { id: "07", title: "Тестирование", icon: "/images/process-icons/step-7.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
+    { id: "08", title: "Монтаж и\nподключение", icon: "/images/process-icons/step-8.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
+    { id: "09", title: "Пусконаладка", icon: "/images/process-icons/step-9.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
+    { id: "10", title: "Документация", icon: "/images/process-icons/step-10.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
   ];
 
   return (
@@ -98,29 +98,36 @@ export function Benefits() {
               if (absOffset > 2) return null;
 
               return (
-                <motion.div
-                  key={i}
-                  className="absolute w-[280px] sm:w-[320px] md:w-[380px] border border-white/60 bg-white/40 backdrop-blur-md p-8 cursor-pointer flex flex-col justify-center group overflow-hidden"
-                  style={{ 
-                    height: '320px',
-                    boxShadow: "10px 10px 30px rgba(48,99,122,0.05), -10px -10px 30px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.8)"
-                  }}
-                  animate={{
-                    x: offset * (typeof window !== 'undefined' ? (window.innerWidth < 768 ? 80 : 180) : 180),
-                    scale: 1 - absOffset * 0.15,
-                    zIndex: 10 - absOffset,
-                    opacity: isActive ? 1 : Math.max(0, 1 - absOffset * 0.4),
-                    filter: `blur(${absOffset * 2}px)`,
-                  }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  onClick={() => setActiveIndex(activeIndex + offset)}
-                >
-                  <div className={`w-12 h-12 flex items-center justify-center border border-border/50 mb-6 transition-colors duration-300 ${isActive ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
-                    0{i + 1}
-                  </div>
-                  <h3 className="font-display font-medium text-xl mb-4">{typograph(benefit.title)}</h3>
-                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base">{typograph(benefit.desc)}</p>
-                </motion.div>
+                  <motion.div
+                    key={i}
+                    className="absolute w-[280px] sm:w-[320px] md:w-[380px] border border-white/60 bg-white/40 backdrop-blur-md cursor-pointer flex flex-col group overflow-hidden"
+                    style={{ 
+                      height: '320px',
+                      boxShadow: "10px 10px 30px rgba(48,99,122,0.05), -10px -10px 30px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.8)"
+                    }}
+                    animate={{
+                      x: offset * (typeof window !== 'undefined' ? (window.innerWidth < 768 ? 80 : 180) : 180),
+                      scale: 1 - absOffset * 0.15,
+                      zIndex: 10 - absOffset,
+                      opacity: isActive ? 1 : Math.max(0, 1 - absOffset * 0.4),
+                      filter: `blur(${absOffset * 2}px)`,
+                    }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    onClick={() => setActiveIndex(activeIndex + offset)}
+                  >
+                    {/* The Stripe (Variant 04: Solid Dark Slate) */}
+                    <div className="absolute top-0 left-0 w-full h-16 px-8 flex items-center bg-[#182025]">
+                      <div className="font-display font-bold text-2xl text-white">
+                        0{i + 1}
+                      </div>
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="pt-24 px-8 pb-8 flex flex-col flex-1 justify-center">
+                      <h3 className="font-display font-medium text-xl mb-4 text-foreground">{typograph(benefit.title)}</h3>
+                      <p className="text-muted-foreground leading-relaxed text-sm md:text-base">{typograph(benefit.desc)}</p>
+                    </div>
+                  </motion.div>
               );
             })}
           </div>
@@ -138,7 +145,7 @@ export function Benefits() {
               <Button 
                 variant="outline" 
                 size="icon"
-                className="rounded-none border-border h-12 w-12 hover:bg-muted transition-colors"
+                className="rounded-full border-border h-12 w-12 hover:bg-muted transition-colors"
                 onClick={() => setActiveIndex(activeIndex - 1)}
               >
                 <ArrowLeft className="w-5 h-5" />
@@ -146,7 +153,7 @@ export function Benefits() {
               <Button 
                 variant="outline" 
                 size="icon"
-                className="rounded-none border-border h-12 w-12 hover:bg-muted transition-colors"
+                className="rounded-full border-border h-12 w-12 hover:bg-muted transition-colors"
                 onClick={() => setActiveIndex(activeIndex + 1)}
               >
                 <ArrowRight className="w-5 h-5" />
@@ -190,7 +197,11 @@ export function Benefits() {
                 
                 <div className={`absolute inset-0 flex items-center justify-center pointer-events-none z-0 ${step.pos}`}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={step.icon} className={`w-full h-full object-contain ${step.scale} ${step.hoverScale} transition-transform duration-700 ease-out max-w-none mix-blend-darken`} alt={step.title} />
+                    <img 
+                      src={step.icon} 
+                      className={`w-full h-full object-contain ${step.scale} ${step.hoverScale} transition-transform duration-700 ease-out max-w-none mix-blend-darken`} 
+                      alt={step.title} 
+                    />
                 </div>
                 
                 {/* Fog gradient to cover the pedestal bottoms */}
@@ -204,7 +215,7 @@ export function Benefits() {
                   <h4 className="text-lg md:text-xl font-display font-semibold leading-tight text-foreground group-hover:text-primary transition-colors whitespace-pre-line">
                     {typograph(step.title)}
                   </h4>
-                  <ArrowDownRight className="absolute bottom-0 right-0 w-5 h-5 text-primary/40 group-hover:text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:translate-y-1 hidden lg:block z-10" />
+                  <ArrowDownRight className="absolute bottom-0 right-0 w-5 h-5 text-primary/40 group-hover:text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:translate-y-1 z-10" />
                 </div>
               </motion.div>
             ))}
@@ -216,9 +227,7 @@ export function Benefits() {
       <FocusScrollBlock bgClass="bg-[#182025]" shadowClass="shadow-[0_30px_60px_-15px_rgba(24,32,37,0.5)]">
           <div className="container mx-auto px-4 md:px-6 flex flex-col lg:flex-row items-center w-full max-w-6xl py-16 md:py-24 gap-12">
             <div className="lg:w-1/2 flex flex-col justify-center text-center lg:text-left">
-              <div className="mb-6 w-12 h-12 flex items-center justify-center bg-[#11171A] text-[#577E95] mx-auto lg:mx-0">
-                <Download className="w-5 h-5" />
-              </div>
+
               <h3 className="text-2xl md:text-4xl font-display font-bold mb-4 text-[#E6F0F4]">
                 {typograph("Опросный лист для расчета шкафа автоматики")}
               </h3>
@@ -244,8 +253,9 @@ export function Benefits() {
                   </div>
                   <div className="pt-4">
                     <Button 
+                      type="submit" 
                       disabled={!contact.trim()}
-                      className="w-full h-14 rounded-none text-base bg-[#E6F0F4] text-[#182025] hover:bg-[#FAFCFD] font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full h-14 rounded-full text-base bg-[#E6F0F4] text-[#182025] hover:bg-[#FAFCFD] font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       Скачать файл
                     </Button>

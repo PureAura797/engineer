@@ -42,7 +42,7 @@ export function CookieBanner() {
           <div className="flex gap-3">
             <Button 
               onClick={acceptCookies}
-              className="w-full bg-[#E6F0F4] text-[#182025] hover:bg-white rounded-none h-12 font-medium transition-colors"
+              className="w-full bg-[#E6F0F4] text-[#182025] hover:bg-white rounded-full h-12 font-medium transition-colors"
             >
               Понятно
             </Button>

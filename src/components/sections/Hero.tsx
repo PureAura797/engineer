@@ -55,7 +55,7 @@ function HeroGridFlip() {
     <div 
       ref={containerRef} 
       id="block-grid" 
-      className="relative flex-[0.6] w-full overflow-hidden border border-[#182025]/20 bg-transparent perspective-1000"
+      className="relative flex-[0.6] min-h-[250px] md:min-h-0 w-full overflow-hidden border border-[#182025]/20 bg-transparent perspective-1000"
     >
       {totalTiles === 0 ? (
          <div className="p-8 lg:p-10 flex flex-col justify-center items-start h-full">
@@ -64,6 +64,7 @@ function HeroGridFlip() {
       ) : (
         <>
           <div 
+            key={`grid-${cols}-${rows}`}
             className="absolute inset-0 z-0 grid"
             style={{ 
               gridTemplateColumns: `repeat(${cols}, 1fr)`,
@@ -135,7 +136,16 @@ export function Hero() {
   const { scrollY } = useScroll();
   const blurValue = useTransform(scrollY, [0, 600], [0, 20]);
   const opacityValue = useTransform(scrollY, [0, 600], [1, 0.2]);
-  const filter = useTransform(blurValue, (v) => `blur(${v}px)`);
+  
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const filter = useTransform(blurValue, (v) => isMobile ? "none" : `blur(${v}px)`);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -159,28 +169,28 @@ export function Hero() {
 
 
   return (
-    <section className="relative h-[100dvh] flex flex-col justify-center pt-20 overflow-hidden bg-white">
+    <section id="hero" className="relative min-h-[100dvh] lg:h-[100dvh] flex flex-col justify-start lg:justify-center pt-24 lg:pt-20 overflow-hidden bg-white">
       {/* Solid Light Background */}
       <div className="absolute inset-0 z-0 bg-[#F3F7F9]" />
       
       <motion.div 
-        style={{ filter, opacity: opacityValue }}
-        className="container mx-auto px-4 md:px-6 z-10 flex flex-col justify-center h-full pb-12"
+        style={{ filter, opacity: isMobile ? 1 : opacityValue }}
+        className="container mx-auto px-4 md:px-6 z-10 flex flex-col justify-start lg:justify-center h-full pb-12 pt-4 lg:pt-0"
       >
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="w-full my-auto"
+          className="w-full lg:my-auto mt-4 lg:mt-auto mb-8 lg:mb-auto"
         >
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 w-full">
             
             {/* Title Block */}
-            <motion.div id="block-title" variants={itemVariants} className="md:col-span-8 border border-[#182025]/20 bg-transparent p-8 md:p-12 lg:p-16 flex flex-col justify-center text-[#182025] min-h-[40vh]">
+            <motion.div id="block-title" variants={itemVariants} className="md:col-span-8 border border-[#182025]/20 bg-transparent p-8 md:p-12 lg:p-16 flex flex-col justify-center text-[#182025] min-h-[30vh] lg:min-h-[40vh]">
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-display font-semibold leading-[1.1] tracking-tight">
-                Модернизация и сборка <br className="hidden lg:block" />
+                Модернизация и&nbsp;сборка <br className="hidden lg:block" />
                 <span className="text-[#30637A]">шкафов автоматики</span> <br className="hidden lg:block" />
-                для бизнес-центров
+                для&nbsp;бизнес-центров
               </h1>
             </motion.div>
             
@@ -190,7 +200,7 @@ export function Hero() {
               {/* CTA Box - Reversed to dark for contrast on light background */}
               <div id="block-cta" className="bg-[#182025] text-white p-8 lg:p-10 flex-[0.4] flex flex-col justify-between cursor-pointer hover:bg-[#182025]/90 transition-colors group">
                 <h3 className="text-xl font-medium font-display mb-8">Отправить ТЗ инженеру</h3>
-                <div className="w-10 h-10 border border-white/30 flex items-center justify-center group-hover:border-white transition-colors">
+                <div className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center group-hover:border-white transition-colors">
                   <ArrowRight className="w-5 h-5 transform -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
                 </div>
               </div>
@@ -207,7 +217,7 @@ export function Hero() {
               </p>
               <div className="font-medium mt-auto text-white flex items-center gap-4 transition-colors w-max">
                 Обсудить модернизацию
-                <div className="w-10 h-10 border border-white/30 flex items-center justify-center group-hover/block:border-white transition-colors">
+                <div className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center group-hover/block:border-white transition-colors">
                   <ArrowRight className="w-5 h-5 transform -rotate-45 group-hover/block:rotate-0 transition-transform duration-300 text-white" />
                 </div>
               </div>

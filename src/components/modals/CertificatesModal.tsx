@@ -4,47 +4,49 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { ReactNode } from "react";
 
 interface CertificatesModalProps {
-  children: ReactNode;
+  children?: ReactNode;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }
 
 const certificates = [
   {
     id: 1,
-    title: "Лицензия МЧС",
-    img: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=800", // Placeholder for a document
+    title: "Сертификат ТР ТС на шкафы автоматизации",
+    img: "/images/certificates/eng-sert-1.jpg",
   },
   {
     id: 2,
-    title: "СРО Проектирование",
-    img: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=800",
+    title: "Допуск СРО: Проектирование инженерных систем",
+    img: "/images/certificates/eng-sert-2.jpg",
   },
   {
     id: 3,
-    title: "СРО Строительство",
-    img: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=800",
+    title: "Свидетельство СРО: Проектная документация",
+    img: "/images/certificates/eng-sert-3.jpg",
   },
   {
     id: 4,
-    title: "Сертификат ISO 9001",
-    img: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=800",
+    title: "Допуск СРО: Монтаж инженерных систем",
+    img: "/images/certificates/eng-sert-4.jpg",
   },
   {
     id: 5,
-    title: "Официальный партнер Segnetics",
-    img: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=800",
+    title: "Свидетельство СРО: Строительно-монтажные работы",
+    img: "/images/certificates/eng-sert-5.jpg",
   },
 ];
 
-export function CertificatesModal({ children }: CertificatesModalProps) {
+export function CertificatesModal({ children, open, onOpenChange }: CertificatesModalProps) {
   return (
-    <Dialog>
-      <DialogTrigger render={children as any} />
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      {children && <DialogTrigger render={children as any} />}
       <DialogContent className="max-w-5xl sm:max-w-5xl lg:max-w-[80vw] xl:max-w-[1200px] w-[95vw] h-[calc(100vh-140px)] p-0 rounded-none border-border overflow-hidden flex flex-col bg-background">
         <DialogHeader className="px-8 py-6 border-b border-border/50 shrink-0 bg-background/95 backdrop-blur-sm z-10">
           <DialogTitle className="text-3xl font-display font-bold">Лицензии и сертификаты</DialogTitle>
         </DialogHeader>
         
-        <div className="flex-1 overflow-y-auto p-8 bg-muted/10 custom-scrollbar">
+        <div className="flex-1 overflow-y-auto p-8 bg-muted/10 custom-scrollbar" data-lenis-prevent>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {certificates.map((cert) => (
               <div 
