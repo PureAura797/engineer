@@ -2,6 +2,7 @@
 
 import { ReactLenis, useLenis } from 'lenis/react';
 import { ReactNode, useEffect } from 'react';
+import { LazyMotion, domAnimation } from 'framer-motion';
 
 interface SmoothScrollProviderProps {
   children: ReactNode;
@@ -37,7 +38,9 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
       }}
     >
       <LenisResizer />
-      {children}
+      <LazyMotion features={domAnimation} strict>
+        {children}
+      </LazyMotion>
     </ReactLenis>
   );
 }

@@ -13,34 +13,44 @@ const certificates = [
   {
     id: 1,
     title: "Сертификат ТР ТС на шкафы автоматизации",
-    img: "/images/certificates/eng-sert-1.jpg",
+    img: "/images/certificates/eng-sert-1.webp",
   },
   {
     id: 2,
     title: "Допуск СРО: Проектирование инженерных систем",
-    img: "/images/certificates/eng-sert-2.jpg",
+    img: "/images/certificates/eng-sert-2.webp",
   },
   {
     id: 3,
     title: "Свидетельство СРО: Проектная документация",
-    img: "/images/certificates/eng-sert-3.jpg",
+    img: "/images/certificates/eng-sert-3.webp",
   },
   {
     id: 4,
     title: "Допуск СРО: Монтаж инженерных систем",
-    img: "/images/certificates/eng-sert-4.jpg",
+    img: "/images/certificates/eng-sert-4.webp",
   },
   {
     id: 5,
     title: "Свидетельство СРО: Строительно-монтажные работы",
-    img: "/images/certificates/eng-sert-5.jpg",
+    img: "/images/certificates/eng-sert-5.webp",
   },
 ];
 
+import { useModal } from "@/components/providers/modal-provider";
+
 export function CertificatesModal({ children, open, onOpenChange }: CertificatesModalProps) {
+  const { activeModal, openModal, closeModal } = useModal();
+  
+  const isOpen = open !== undefined ? open : activeModal === 'certificates';
+  const handleOpenChange = onOpenChange !== undefined ? onOpenChange : (val: boolean) => {
+    if (val) openModal('certificates');
+    else closeModal();
+  };
+
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      {children && <DialogTrigger render={children as any} />}
+    <Dialog open={isOpen} onOpenChange={handleOpenChange}>
+      {children && <DialogTrigger asChild>{children}</DialogTrigger>}
       <DialogContent className="max-w-5xl sm:max-w-5xl lg:max-w-[80vw] xl:max-w-[1200px] w-[95vw] h-[calc(100vh-140px)] p-0 rounded-none border-border overflow-hidden flex flex-col bg-background">
         <DialogHeader className="px-8 py-6 border-b border-border/50 shrink-0 bg-background/95 backdrop-blur-sm z-10">
           <DialogTitle className="text-3xl font-display font-bold">Лицензии и сертификаты</DialogTitle>

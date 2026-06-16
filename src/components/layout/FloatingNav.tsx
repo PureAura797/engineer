@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { ArrowUp, ArrowDown, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -130,7 +130,7 @@ export function FloatingNav() {
       {/* Messenger Popup Menu */}
       <AnimatePresence>
         {isVisible && isMenuOpen && (
-          <motion.div
+          <m.div
             variants={menuVariants}
             initial="hidden"
             animate="visible"
@@ -145,14 +145,14 @@ export function FloatingNav() {
               <MaxIcon className="w-5 h-5 text-foreground group-hover:scale-110 transition-transform" />
               MAX
             </button>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 
       {/* Buttons */}
       <AnimatePresence>
         {isVisible && (
-          <motion.div
+          <m.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -160,7 +160,7 @@ export function FloatingNav() {
             className="flex flex-col gap-3"
           >
             {/* Scroll Up */}
-            <motion.button
+            <m.button
               variants={itemVariants}
               whileTap={{ scale: 0.9, z: -20, rotateX: 10 }}
               onClick={() => scrollToSection("hero")}
@@ -168,10 +168,10 @@ export function FloatingNav() {
               aria-label="Scroll to top"
             >
               <ArrowUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
-            </motion.button>
+            </m.button>
 
             {/* Messenger Toggle */}
-            <motion.button
+            <m.button
               variants={itemVariants}
               whileTap={{ scale: 0.9, z: -20, rotateX: 10 }}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -182,10 +182,10 @@ export function FloatingNav() {
               aria-label="Open messengers"
             >
               <MessageCircle className="w-5 h-5" />
-            </motion.button>
+            </m.button>
 
             {/* Scroll Down */}
-            <motion.button
+            <m.button
               variants={itemVariants}
               whileTap={{ scale: 0.9, z: -20, rotateX: 10 }}
               onClick={() => scrollToSection("final-form")}
@@ -193,9 +193,9 @@ export function FloatingNav() {
               aria-label="Scroll to bottom"
             >
               <ArrowDown className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
-            </motion.button>
+            </m.button>
 
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>

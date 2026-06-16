@@ -1,18 +1,19 @@
 "use client";
 
 import { useState, useEffect, useMemo, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, FileText, Settings, Zap, Network, BookOpen } from "lucide-react";
 import { typograph } from "@/lib/utils";
+import { useModal } from "@/components/providers/modal-provider";
 
 const initialFeatures = [
-  { id: 1, num: "01", title: "Для бизнес-центров" },
-  { id: 2, num: "02", title: "Новый шкаф или модернизация" },
-  { id: 3, num: "03", title: "Программирование и ПНР" },
-  { id: 4, num: "04", title: "Интеграция с BMS" },
-  { id: 5, num: "05", title: "Документация для эксплуатации" },
+  { id: 1, num: "01", icon: "/3d_icons/icon_3d_building 1.webp", title: "Для бизнес-центров" },
+  { id: 2, num: "02", icon: "/3d_icons/icon_3d_cabinet 1.webp", title: "Новый шкаф или модернизация" },
+  { id: 3, num: "03", icon: "/3d_icons/icon_3d_code 1.webp", title: "Программирование и ПНР" },
+  { id: 4, num: "04", icon: "/3d_icons/icon_3d_network 1.webp", title: "Интеграция с BMS" },
+  { id: 5, num: "05", icon: "/3d_icons/icon_3d_document 1.webp", title: "Документация для эксплуатации" },
 ];
 
 const extendedFeatures = [
@@ -126,6 +127,7 @@ function HeroGridFlip() {
 
 export function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { openModal } = useModal();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -173,11 +175,11 @@ export function Hero() {
       {/* Solid Light Background */}
       <div className="absolute inset-0 z-0 bg-[#F3F7F9]" />
       
-      <motion.div 
+      <m.div 
         style={{ filter, opacity: isMobile ? 1 : opacityValue }}
         className="container mx-auto px-4 md:px-6 z-10 flex flex-col justify-start lg:justify-center h-full pb-12 pt-4 lg:pt-0"
       >
-        <motion.div
+        <m.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -186,28 +188,29 @@ export function Hero() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 w-full">
             
             {/* Title Block */}
-            <motion.div id="block-title" variants={itemVariants} className="md:col-span-8 border border-[#182025]/20 bg-transparent p-8 md:p-12 lg:p-16 flex flex-col justify-center text-[#182025] min-h-[30vh] lg:min-h-[40vh]">
+            <m.div id="block-title" variants={itemVariants} className="md:col-span-8 border border-[#182025]/20 bg-transparent p-8 md:p-12 lg:p-16 flex flex-col justify-center text-[#182025] min-h-[30vh] lg:min-h-[40vh]">
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-display font-semibold leading-[1.1] tracking-tight">
                 Модернизация и&nbsp;сборка <br className="hidden lg:block" />
                 <span className="text-[#30637A]">шкафов автоматики</span> <br className="hidden lg:block" />
                 для&nbsp;бизнес-центров
               </h1>
-            </motion.div>
+            </m.div>
             
             {/* Top Right Block */}
-            <motion.div variants={itemVariants} className="md:col-span-4 flex flex-col gap-4 perspective-1000">
+            <m.div variants={itemVariants} className="md:col-span-4 flex flex-col gap-4 perspective-1000">
               <HeroGridFlip />
               {/* CTA Box - Reversed to dark for contrast on light background */}
-              <div id="block-cta" className="bg-[#182025] text-white p-8 lg:p-10 flex-[0.4] flex flex-col justify-between cursor-pointer hover:bg-[#182025]/90 transition-colors group">
+              <div onClick={() => openModal('hero-tz')} id="block-cta" className="bg-[#182025] text-white p-8 lg:p-10 flex-[0.4] flex flex-col justify-between cursor-pointer hover:bg-[#182025]/90 transition-colors group">
                 <h3 className="text-xl font-medium font-display mb-8">Отправить ТЗ инженеру</h3>
                 <div className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center group-hover:border-white transition-colors">
                   <ArrowRight className="w-5 h-5 transform -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
                 </div>
               </div>
-            </motion.div>
+            </m.div>
             
             {/* Bottom Left Block */}
-            <motion.div 
+            <m.div 
+              onClick={() => openModal('hero-consult')}
               id="block-blue"
               variants={itemVariants} 
               className="md:col-span-5 border border-[#30637A] bg-[#30637A] p-8 lg:p-10 flex flex-col justify-between text-white/80 cursor-pointer hover:bg-[#285366] transition-colors group/block"
@@ -221,10 +224,10 @@ export function Hero() {
                   <ArrowRight className="w-5 h-5 transform -rotate-45 group-hover/block:rotate-0 transition-transform duration-300 text-white" />
                 </div>
               </div>
-            </motion.div>
+            </m.div>
             
             {/* Bottom Right Block - Blueprint Cut Fan (Light) */}
-            <motion.div id="block-steps" variants={itemVariants} className="md:col-span-7 border border-[#182025]/20 bg-transparent flex flex-col justify-center relative overflow-hidden min-h-[300px]">
+            <m.div id="block-steps" variants={itemVariants} className="md:col-span-7 border border-[#182025]/20 bg-transparent flex flex-col justify-center relative overflow-hidden min-h-[300px]">
               <div 
                 className="w-full relative h-[312px] overflow-hidden" 
                 style={{ 
@@ -258,10 +261,13 @@ export function Hero() {
                       >
                         <div className="flex items-center gap-6 pl-8 md:pl-16 w-full">
                           <div 
-                            className="text-[#182025] font-light w-8 transition-all duration-700"
-                            style={{ fontSize: isActive ? '1.5rem' : '1.25rem' }} 
+                            className="w-12 h-12 md:w-16 md:h-16 flex-shrink-0 transition-all duration-700"
+                            style={{ 
+                              transform: `scale(${isActive ? 1.15 : 0.85})`, 
+                              opacity: isActive ? 1 : 0.5 
+                            }} 
                           >
-                            {feature.num}
+                            <img src={feature.icon} alt="3D Icon" className="w-full h-full object-contain drop-shadow-md" />
                           </div>
                           <div className="flex flex-col justify-center h-full">
                             <div 
@@ -290,11 +296,11 @@ export function Hero() {
                   })}
                 </div>
               </div>
-            </motion.div>
+            </m.div>
             
           </div>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </section>
   );
 }

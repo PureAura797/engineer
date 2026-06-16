@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 interface FocusScrollBlockProps {
   children: React.ReactNode;
@@ -19,7 +19,7 @@ export function FocusScrollBlock({
         {/* Wrapper to maintain consistent layout height */}
         <div className="relative z-10 w-full flex flex-col items-center justify-center">
           {/* Interactive plate - now uses safe transform: scale instead of layout-altering padding */}
-          <motion.div 
+          <m.div 
             className={`w-full flex flex-col items-center justify-center overflow-hidden origin-center ${bgClass} ${shadowClass}`}
             initial={{ scale: 0.92 }}
             whileInView={{ scale: 1 }}
@@ -29,7 +29,7 @@ export function FocusScrollBlock({
             <div className="w-full transform scale-[0.85] md:scale-[0.8] origin-center">
                {children}
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </div>

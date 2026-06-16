@@ -4,6 +4,7 @@ import "./globals.css";
 import { CookieBanner } from "@/components/ui/cookie-banner";
 
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
+import { ModalProvider } from "@/components/providers/modal-provider";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -16,8 +17,26 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://mzta.ru"),
   title: "МЗТА Инжиниринг | Модернизация и сборка шкафов автоматики",
   description: "Модернизируем и собираем шкафы автоматики вентиляции для бизнес-центров в Москве — от обследования и схемы до ПНР, документации и интеграции в диспетчеризацию.",
+  keywords: ["шкаф автоматики", "модернизация вентиляции", "сборка щитов управления", "ПНР вентиляции", "диспетчеризация", "BMS", "МЗТА"],
+  openGraph: {
+    title: "МЗТА Инжиниринг | Модернизация и сборка шкафов автоматики",
+    description: "Комплексные решения для автоматизации вентиляции бизнес-центров в Москве.",
+    url: "/",
+    siteName: "МЗТА Инжиниринг",
+    locale: "ru_RU",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "МЗТА Инжиниринг",
+    description: "Модернизация и сборка шкафов автоматики вентиляции в Москве.",
+  },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({
@@ -32,8 +51,10 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col font-sans">
         <SmoothScrollProvider>
-          {children}
-          <CookieBanner />
+          <ModalProvider>
+            {children}
+            <CookieBanner />
+          </ModalProvider>
         </SmoothScrollProvider>
       </body>
     </html>

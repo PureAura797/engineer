@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { typograph } from "@/lib/utils";
+import { typograph, formatContact, isValidContact } from "@/lib/utils";
 import { PrivacyModal } from "@/components/ui/privacy-modal";
 import { ArrowRight, CheckCircle2, Download } from "lucide-react";
 import { FocusScrollBlock } from "@/components/ui/focus-scroll-block";
@@ -76,11 +76,12 @@ export function Scenarios() {
     <section id="scenarios" className="pt-16 md:pt-24 pb-0 bg-transparent relative z-40">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
+          <m.div 
+            initial={{ opacity: 0, x: -60, rotateY: -60 }}
+            whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+            viewport={{ once: true, margin: "-20px" }}
+            style={{ transformOrigin: "left center", transformPerspective: 1200 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-2xl"
           >
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
@@ -89,14 +90,15 @@ export function Scenarios() {
             <p className="text-lg text-muted-foreground">
               {typograph("Не даем длинный список услуг, а раскладываем нашу работу по понятным сценариям. Если у вас нестандартная задача — обсудим её индивидуально.")}
             </p>
-          </motion.div>
+          </m.div>
         </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+        <m.div 
+          initial={{ opacity: 0, x: -60, rotateY: -60 }}
+          whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+          viewport={{ once: true, margin: "-20px" }}
+          style={{ transformOrigin: "left center", transformPerspective: 1200 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           className="mb-24"
         >
           <Accordion className="w-full" defaultValue={["item-1"]}>
@@ -149,7 +151,7 @@ export function Scenarios() {
               </AccordionItem>
             ))}
           </Accordion>
-        </motion.div>
+        </m.div>
 
       </div>
 
@@ -167,21 +169,31 @@ export function Scenarios() {
           
           <div className="lg:w-1/2 flex flex-col justify-center">
             <h4 className="text-xl font-display font-medium mb-6 text-[#E6F0F4] text-center lg:text-left">{typograph("Скачать чек-лист")}</h4>
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-4" onSubmit={(e) => {
+              e.preventDefault();
+              if (isValidContact(contact)) {
+                const link = document.createElement('a');
+                link.href = '/downloads/check_list_modernizatsiya.docx';
+                link.download = 'check_list_modernizatsiya.docx';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }
+            }}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input placeholder={typograph("Имя")} className="bg-transparent border-0 border-b border-[#577E95]/50 focus:border-[#E6F0F4] focus:ring-0 text-[#E6F0F4] placeholder:text-[#577E95] rounded-none px-0 h-12" />
                 <Input placeholder={typograph("Компания")} className="bg-transparent border-0 border-b border-[#577E95]/50 focus:border-[#E6F0F4] focus:ring-0 text-[#E6F0F4] placeholder:text-[#577E95] rounded-none px-0 h-12" />
               </div>
               <Input 
-                placeholder={typograph("Email или телефон *")}
+                placeholder={typograph("Телефон или Email *")}
                 required 
                 value={contact}
-                onChange={(e) => setContact(e.target.value)}
+                onChange={(e) => setContact(formatContact(e.target.value))}
                 className="bg-transparent border-0 border-b border-[#577E95]/50 focus:border-[#E6F0F4] focus:ring-0 text-[#E6F0F4] placeholder:text-[#577E95] rounded-none px-0 h-12" 
               />
               <Button 
                 type="submit" 
-                disabled={!contact.trim()}
+                disabled={!isValidContact(contact)}
                 className="w-full rounded-full h-14 bg-[#E6F0F4] text-[#182025] hover:bg-[#FAFCFD] text-base font-medium transition-colors mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {typograph("Скачать материал")}

@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export function GlobalBackground() {
   return (
@@ -8,7 +8,7 @@ export function GlobalBackground() {
       <div className="absolute inset-0 bg-gradient-to-br from-secondary/40 via-background to-primary/10 opacity-60" />
       
       {/* Анимированные блюр-пятна */}
-      <motion.div 
+      <m.div 
         className="absolute top-[10%] left-[10%] w-[600px] h-[600px] bg-primary rounded-full blur-[120px] opacity-[0.06]"
         animate={{
           x: [0, 100, 0],
@@ -18,7 +18,7 @@ export function GlobalBackground() {
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
       />
       
-      <motion.div 
+      <m.div 
         className="absolute top-[40%] right-[10%] w-[700px] h-[700px] bg-secondary rounded-full blur-[150px] opacity-[0.08]"
         animate={{
           x: [0, -100, 0],
@@ -28,7 +28,7 @@ export function GlobalBackground() {
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
       
-      <motion.div 
+      <m.div 
         className="absolute bottom-[20%] left-[20%] w-[500px] h-[500px] bg-destructive rounded-full blur-[150px] opacity-[0.03]"
         animate={{
           x: [0, 50, 0],
@@ -37,7 +37,7 @@ export function GlobalBackground() {
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />
       
-      <motion.div 
+      <m.div 
         className="absolute bottom-[10%] right-[30%] w-[600px] h-[600px] bg-primary rounded-full blur-[150px] opacity-[0.05]"
         animate={{
           x: [0, -50, 0],

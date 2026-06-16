@@ -1,63 +1,35 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Settings, Eye, HandIcon, FileText, CheckSquare, TrendingUp, Download, ArrowDownRight, ArrowLeft, ArrowRight } from "lucide-react";
+import { Download, ArrowDownRight } from "lucide-react";
+import dynamic from "next/dynamic";
+
+const BenefitsSlider = dynamic(() => import("./BenefitsSlider").then(mod => mod.BenefitsSlider), {
+  ssr: false,
+  loading: () => <div className="w-full h-[530px] flex items-center justify-center"><div className="w-8 h-8 border-4 border-primary/20 border-t-primary rounded-full animate-spin" /></div>
+});
 import { PrivacyModal } from "@/components/ui/privacy-modal";
 import { FocusScrollBlock } from "@/components/ui/focus-scroll-block";
-import { typograph } from "@/lib/utils";
+import { typograph, formatContact, isValidContact } from "@/lib/utils";
 
 export function Benefits() {
-  const [activeIndex, setActiveIndex] = useState(2);
   const [contact, setContact] = useState("");
 
-  const benefits = [
-    {
-      title: "Понятная логика управления",
-      desc: "Режимы работы, аварийные сценарии, расписания и команды управления описаны и переданы эксплуатационной службе.",
-      icon: <Settings className="w-5 h-5" />
-    },
-    {
-      title: "Видимость статусов и аварий",
-      desc: "При интеграции с диспетчеризацией эксплуатация видит состояние вентиляционной системы в едином интерфейсе здания.",
-      icon: <Eye className="w-5 h-5" />
-    },
-    {
-      title: "Меньше ручного контроля",
-      desc: "Часть операций, которые раньше требовали ручной проверки или обхода, может быть переведена в автоматическое управление и мониторинг.",
-      icon: <HandIcon className="w-5 h-5" />
-    },
-    {
-      title: "Актуальная документация",
-      desc: "После работ передаются схемы, спецификации, описание логики и другие материалы, необходимые для обслуживания.",
-      icon: <FileText className="w-5 h-5" />
-    },
-    {
-      title: "Проверка в реальных режимах",
-      desc: "На этапе ПНР проверяются режимы работы, сигналы, аварии и взаимодействие шкафа с вентиляционным оборудованием.",
-      icon: <CheckSquare className="w-5 h-5" />
-    },
-    {
-      title: "Возможность развития",
-      desc: "Шкаф можно проектировать с учетом будущей диспетчеризации, замены компонентов или расширения системы.",
-      icon: <TrendingUp className="w-5 h-5" />
-    }
-  ];
-
   const steps = [
-    { id: "01", title: "Анализ исходных\nданных", icon: "/images/process-icons/step-1.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "md:-translate-y-8 md:pl-12" },
-    { id: "02", title: "Обследование\nшкафа", icon: "/images/process-icons/step-2.png", scale: "scale-[1.5]", hoverScale: "group-hover:scale-[1.65]", pos: "md:-translate-y-6 md:pl-12" },
-    { id: "03", title: "Разработка\nсхемного решения", icon: "/images/process-icons/step-3.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
-    { id: "04", title: "Подбор\nкомпонентов", icon: "/images/process-icons/step-4.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
-    { id: "05", title: "Сборка\nшкафа", icon: "/images/process-icons/step-5.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
-    { id: "06", title: "Программирование\nПЛК", icon: "/images/process-icons/step-6.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
-    { id: "07", title: "Тестирование", icon: "/images/process-icons/step-7.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
-    { id: "08", title: "Монтаж и\nподключение", icon: "/images/process-icons/step-8.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
-    { id: "09", title: "Пусконаладка", icon: "/images/process-icons/step-9.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
-    { id: "10", title: "Документация", icon: "/images/process-icons/step-10.png", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
+    { id: "01", title: "Анализ исходных\nданных", icon: "/images/process-icons/step-1.webp", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "md:-translate-y-8 md:pl-12" },
+    { id: "02", title: "Обследование\nшкафа", icon: "/images/process-icons/step-2.webp", scale: "scale-[1.5]", hoverScale: "group-hover:scale-[1.65]", pos: "md:-translate-y-6 md:pl-12" },
+    { id: "03", title: "Разработка\nсхемного решения", icon: "/images/process-icons/step-3.webp", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
+    { id: "04", title: "Подбор\nкомпонентов", icon: "/images/process-icons/step-4.webp", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
+    { id: "05", title: "Сборка\nшкафа", icon: "/images/process-icons/step-5.webp", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
+    { id: "06", title: "Программирование\nПЛК", icon: "/images/process-icons/step-6.webp", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
+    { id: "07", title: "Тестирование", icon: "/images/process-icons/step-7.webp", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
+    { id: "08", title: "Монтаж и\nподключение", icon: "/images/process-icons/step-8.webp", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
+    { id: "09", title: "Пусконаладка", icon: "/images/process-icons/step-9.webp", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
+    { id: "10", title: "Документация", icon: "/images/process-icons/step-10.webp", scale: "scale-[1.4]", hoverScale: "group-hover:scale-[1.54]", pos: "translate-x-12 md:translate-x-0 md:-translate-y-8 md:pl-12" },
   ];
 
   return (
@@ -65,11 +37,12 @@ export function Benefits() {
       <div className="container mx-auto px-4 md:px-6">
         {/* Section 4: Benefits */}
         <div className="mb-24">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
+          <m.div 
+            initial={{ opacity: 0, x: -60, rotateY: -60 }}
+            whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+            viewport={{ once: true, margin: "-20px" }}
+            style={{ transformOrigin: "left center", transformPerspective: 1200 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-3xl mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
@@ -78,98 +51,21 @@ export function Benefits() {
             <p className="text-lg text-muted-foreground">
               {typograph("Хороший шкаф автоматики — это не только компоненты внутри корпуса. Для эксплуатации важнее другое: понятная логика, видимость аварий, документация, возможность обслуживания и предсказуемая работа вентиляции после запуска.")}
             </p>
-          </motion.div>
+          </m.div>
 
-          {/* Coverflow Slider */}
-          <div className="relative h-[450px] w-full flex items-center justify-center perspective-[1000px] mb-8 overflow-hidden py-10 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
-
-            {benefits.map((benefit, i) => {
-              const N = benefits.length;
-              const normalizedActive = ((activeIndex % N) + N) % N;
-              let offset = i - normalizedActive;
-              
-              if (offset > N / 2) offset -= N;
-              if (offset < -N / 2) offset += N;
-              
-              const absOffset = Math.abs(offset);
-              const isActive = offset === 0;
-              
-              // Only render items close to active
-              if (absOffset > 2) return null;
-
-              return (
-                  <motion.div
-                    key={i}
-                    className="absolute w-[280px] sm:w-[320px] md:w-[380px] border border-white/60 bg-white/40 backdrop-blur-md cursor-pointer flex flex-col group overflow-hidden"
-                    style={{ 
-                      height: '320px',
-                      boxShadow: "10px 10px 30px rgba(48,99,122,0.05), -10px -10px 30px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.8)"
-                    }}
-                    animate={{
-                      x: offset * (typeof window !== 'undefined' ? (window.innerWidth < 768 ? 80 : 180) : 180),
-                      scale: 1 - absOffset * 0.15,
-                      zIndex: 10 - absOffset,
-                      opacity: isActive ? 1 : Math.max(0, 1 - absOffset * 0.4),
-                      filter: `blur(${absOffset * 2}px)`,
-                    }}
-                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                    onClick={() => setActiveIndex(activeIndex + offset)}
-                  >
-                    {/* The Stripe (Variant 04: Solid Dark Slate) */}
-                    <div className="absolute top-0 left-0 w-full h-16 px-8 flex items-center bg-[#182025]">
-                      <div className="font-display font-bold text-2xl text-white">
-                        0{i + 1}
-                      </div>
-                    </div>
-
-                    {/* Card Content */}
-                    <div className="pt-24 px-8 pb-8 flex flex-col flex-1 justify-center">
-                      <h3 className="font-display font-medium text-xl mb-4 text-foreground">{typograph(benefit.title)}</h3>
-                      <p className="text-muted-foreground leading-relaxed text-sm md:text-base">{typograph(benefit.desc)}</p>
-                    </div>
-                  </motion.div>
-              );
-            })}
-          </div>
-
-          <div className="flex items-center gap-8 w-full">
-            <div className="flex-1 h-[2px] bg-border/50 relative overflow-hidden">
-              <motion.div 
-                className="absolute top-0 left-0 h-full bg-primary"
-                initial={false}
-                animate={{ width: `${((((activeIndex % benefits.length) + benefits.length) % benefits.length) + 1) / benefits.length * 100}%` }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-              />
-            </div>
-            <div className="flex gap-2 shrink-0">
-              <Button 
-                variant="outline" 
-                size="icon"
-                className="rounded-full border-border h-12 w-12 hover:bg-muted transition-colors"
-                onClick={() => setActiveIndex(activeIndex - 1)}
-              >
-                <ArrowLeft className="w-5 h-5" />
-              </Button>
-              <Button 
-                variant="outline" 
-                size="icon"
-                className="rounded-full border-border h-12 w-12 hover:bg-muted transition-colors"
-                onClick={() => setActiveIndex(activeIndex + 1)}
-              >
-                <ArrowRight className="w-5 h-5" />
-              </Button>
-            </div>
-          </div>
+          {/* Lazy Loaded Coverflow Slider */}
+          <BenefitsSlider />
         </div>
 
         {/* Section 5: Process Steps */}
         <div className="mb-24 relative py-16 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12 overflow-hidden">
 
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
+          <m.div 
+            initial={{ opacity: 0, x: -60, rotateY: -60 }}
+            whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+            viewport={{ once: true, margin: "-20px" }}
+            style={{ transformOrigin: "left center", transformPerspective: 1200 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-3xl mb-16 relative z-10"
           >
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
@@ -178,18 +74,20 @@ export function Benefits() {
             <p className="text-lg text-muted-foreground">
               {typograph("Состав работ зависит от исходной задачи: новый шкаф по проекту, модернизация действующего решения или интеграция в диспетчеризацию. Ниже — полный набор этапов, из которых формируется проект.")}
             </p>
-          </motion.div>
+          </m.div>
 
           <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {steps.map((step, i) => (
-              <motion.div
+              <m.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
+                initial={{ opacity: 0, x: -60, rotateY: -60 }}
+                whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+                viewport={{ once: true, margin: "-20px" }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
                 className="relative p-8 border border-white/60 bg-white/40 backdrop-blur-md flex flex-col justify-between aspect-square group transition-transform duration-300 hover:-translate-y-1 glass-panel overflow-hidden"
                 style={{
+                  transformOrigin: "left center", 
+                  transformPerspective: 1200,
                   boxShadow: "10px 10px 30px rgba(48,99,122,0.05), -10px -10px 30px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.8)"
                 }}
               >
@@ -199,6 +97,8 @@ export function Benefits() {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img 
                       src={step.icon} 
+                      loading="lazy"
+                      decoding="async"
                       className={`w-full h-full object-contain ${step.scale} ${step.hoverScale} transition-transform duration-700 ease-out max-w-none mix-blend-darken`} 
                       alt={step.title} 
                     />
@@ -217,7 +117,7 @@ export function Benefits() {
                   </h4>
                   <ArrowDownRight className="absolute bottom-0 right-0 w-5 h-5 text-primary/40 group-hover:text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:translate-y-1 z-10" />
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -239,27 +139,37 @@ export function Benefits() {
             <div className="lg:w-1/2 flex items-center justify-center lg:justify-end w-full">
               <div className="w-full max-w-md">
                 <h4 className="text-xl font-display font-medium mb-6 text-[#E6F0F4] text-center lg:text-left">Скачать опросный лист</h4>
-                <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                <form className="space-y-4" onSubmit={(e) => {
+                e.preventDefault();
+                if (isValidContact(contact)) {
+                  const link = document.createElement('a');
+                  link.href = '/downloads/oprosnyy_list.docx';
+                  link.download = 'oprosnyy_list.docx';
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }
+              }}>
                   <div className="space-y-4">
                     <Input placeholder="Имя" className="bg-transparent border-0 border-b border-[#577E95]/50 focus:border-[#E6F0F4] focus:ring-0 text-[#E6F0F4] placeholder:text-[#577E95] rounded-none px-0 h-12" />
                     <Input placeholder="Компания" className="bg-transparent border-0 border-b border-[#577E95]/50 focus:border-[#E6F0F4] focus:ring-0 text-[#E6F0F4] placeholder:text-[#577E95] rounded-none px-0 h-12" />
                     <Input 
-                      placeholder="Email или телефон *" 
+                      placeholder="Телефон или Email *" 
                       required 
                       value={contact}
-                      onChange={(e) => setContact(e.target.value)}
+                      onChange={(e) => setContact(formatContact(e.target.value))}
                       className="bg-transparent border-0 border-b border-[#577E95]/50 focus:border-[#E6F0F4] focus:ring-0 text-[#E6F0F4] placeholder:text-[#577E95] rounded-none px-0 h-12" 
                     />
                   </div>
-                  <div className="pt-4">
+                  <div className="pt-4 flex flex-col gap-3 w-full">
                     <Button 
-                      type="submit" 
-                      disabled={!contact.trim()}
+                      size="lg" 
+                      disabled={!isValidContact(contact)}
                       className="w-full h-14 rounded-full text-base bg-[#E6F0F4] text-[#182025] hover:bg-[#FAFCFD] font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       Скачать файл
                     </Button>
-                    <p className="text-[11px] text-[#577E95] text-center mt-3 leading-tight">
+                    <p className="text-[11px] text-[#577E95] text-left leading-tight mt-1">
                       Скачивая файл, вы соглашаетесь с <PrivacyModal><button type="button" className="underline underline-offset-2 hover:text-[#E6F0F4] transition-colors cursor-pointer">Политикой конфиденциальности</button></PrivacyModal>
                     </p>
                   </div>

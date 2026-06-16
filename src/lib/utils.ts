@@ -22,3 +22,39 @@ export function typograph(text: string): string {
 
   return result;
 }
+
+export function formatContact(value: string) {
+  if (!value) return value;
+  
+  const isPhone = /^[\d+]/.test(value);
+  if (isPhone) {
+    let digits = value.replace(/\D/g, "");
+    if (!digits) return value;
+    
+    if (digits[0] === "9") digits = "7" + digits;
+    else if (digits[0] === "8") digits = "7" + digits.substring(1);
+    
+    if (digits[0] !== "7") return "+" + digits;
+
+    let res = "+7";
+    if (digits.length > 1) res += ` (${digits.substring(1, 4)}`;
+    if (digits.length > 4) res += `) ${digits.substring(4, 7)}`;
+    if (digits.length > 7) res += `-${digits.substring(7, 9)}`;
+    if (digits.length > 9) res += `-${digits.substring(9, 11)}`;
+    return res;
+  }
+  
+  return value.trim();
+}
+
+export function isValidContact(value: string) {
+  if (!value) return false;
+  const isPhone = /^[\d+]/.test(value);
+  if (isPhone) {
+    const digits = value.replace(/\D/g, "");
+    return digits.length >= 11 && digits[0] === "7";
+  } else {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(value);
+  }
+}

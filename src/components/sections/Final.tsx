@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { typograph } from "@/lib/utils";
-import { Upload, ArrowRight } from "lucide-react";
+import { typograph, formatContact, isValidContact } from "@/lib/utils";
+import { Upload, ArrowRight, X, Loader2 } from "lucide-react";
 import { PrivacyModal } from "@/components/ui/privacy-modal";
 
 import { FocusScrollBlock } from "@/components/ui/focus-scroll-block";
@@ -15,6 +15,9 @@ import { FocusScrollBlock } from "@/components/ui/focus-scroll-block";
 export function Final() {
   const [contact1, setContact1] = useState("");
   const [contact2, setContact2] = useState("");
+  const [files, setFiles] = useState<File[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const faqs = [
     { q: "Можно ли начать, если у нас нет полного ТЗ?", a: "Да. Можно начать с фото шкафа, схемы, спецификации, описания вентиляционной установки или проблемы. Инженер подскажет, каких данных не хватает для предварительной оценки." },
@@ -33,11 +36,12 @@ export function Final() {
       <section className="py-16 md:py-24 border-t border-border/50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
+            <m.div 
+              initial={{ opacity: 0, x: -60, rotateY: -60 }}
+              whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+              viewport={{ once: true, margin: "-20px" }}
+              style={{ transformOrigin: "left center", transformPerspective: 1200 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-5 lg:sticky lg:top-32 h-fit"
             >
               <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
@@ -46,13 +50,14 @@ export function Final() {
               <p className="text-lg text-muted-foreground">
                 {typograph("Собрали ответы на самые популярные вопросы от инженеров и руководителей эксплуатации.")}
               </p>
-            </motion.div>
+            </m.div>
 
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+            <m.div 
+              initial={{ opacity: 0, x: -60, rotateY: -60 }}
+              whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+              viewport={{ once: true, margin: "-20px" }}
+              style={{ transformOrigin: "left center", transformPerspective: 1200 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
               className="lg:col-span-7"
             >
               <Accordion className="w-full">
@@ -67,7 +72,7 @@ export function Final() {
                   </AccordionItem>
                 ))}
               </Accordion>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -91,20 +96,30 @@ export function Final() {
               <span>{typograph("Интегратору")}</span>
             </div>
           </div>
-          <form className="w-full max-w-md lg:w-auto shrink-0 flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
+          <form className="w-full max-w-md lg:w-auto shrink-0 flex flex-col gap-4" onSubmit={(e) => {
+            e.preventDefault();
+            if (isValidContact(contact1)) {
+              const link = document.createElement('a');
+              link.href = '/downloads/shablon_ishodnyh_dannyh.docx';
+              link.download = 'shablon_ishodnyh_dannyh.docx';
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            }
+          }}>
             <Input placeholder="Имя" className="bg-transparent border-0 border-b border-[#577E95]/50 focus:border-[#E6F0F4] focus:ring-0 text-[#E6F0F4] placeholder:text-[#577E95] rounded-none px-0 h-12 w-full lg:w-80" />
             <Input placeholder="Компания" className="bg-transparent border-0 border-b border-[#577E95]/50 focus:border-[#E6F0F4] focus:ring-0 text-[#E6F0F4] placeholder:text-[#577E95] rounded-none px-0 h-12 w-full lg:w-80" />
             <Input 
-              placeholder="Email или телефон *" 
+              placeholder="Телефон или Email *" 
               required 
               value={contact1}
-              onChange={(e) => setContact1(e.target.value)}
+              onChange={(e) => setContact1(formatContact(e.target.value))}
               className="bg-transparent border-0 border-b border-[#577E95]/50 focus:border-[#E6F0F4] focus:ring-0 text-[#E6F0F4] placeholder:text-[#577E95] rounded-none px-0 h-12 w-full lg:w-80" 
             />
             <div className="pt-6">
               <Button 
                 size="lg" 
-                disabled={!contact1.trim()}
+                disabled={!isValidContact(contact1)}
                 className="w-full lg:w-80 h-14 rounded-full text-base bg-[#E6F0F4] text-[#182025] hover:bg-[#FAFCFD] font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {typograph("Скачать шаблон")}
@@ -131,7 +146,31 @@ export function Final() {
               </p>
             </div>
 
-            <form className="relative w-full" onSubmit={(e) => e.preventDefault()}>
+            <form className="relative w-full" onSubmit={async (e) => {
+              e.preventDefault();
+              if (isValidContact(contact2)) {
+                setIsSubmitting(true);
+                try {
+                  const formData = new FormData();
+                  formData.append("name", "Не указано");
+                  formData.append("phone", contact2);
+                  formData.append("source", "Финальная форма");
+                  files.forEach((f) => formData.append("files", f));
+
+                  await fetch("/api/send-lead", {
+                    method: "POST",
+                    body: formData,
+                  });
+                  
+                  setContact2("");
+                  setFiles([]);
+                } catch (err) {
+                  console.error("Submit error", err);
+                } finally {
+                  setIsSubmitting(false);
+                }
+              }
+            }}>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-12">
                 {/* Left Col */}
                 <div className="space-y-8">
@@ -144,7 +183,7 @@ export function Final() {
                       placeholder="Телефон или Email *" 
                       required 
                       value={contact2}
-                      onChange={(e) => setContact2(e.target.value)}
+                      onChange={(e) => setContact2(formatContact(e.target.value))}
                       className="bg-white/10 border-transparent focus:bg-white/20 focus:border-white text-white placeholder:text-white/50 rounded-none h-14 transition-colors text-lg" 
                     />
                   </div>
@@ -162,10 +201,59 @@ export function Final() {
                   />
 
                   <h3 className="font-display font-medium text-2xl text-white border-b border-white/20 pb-4 mt-auto pt-8">Исходные данные</h3>
-                  <div className="border border-dashed border-white/30 bg-white/5 hover:bg-white/10 transition-colors p-8 flex flex-col items-center justify-center cursor-pointer group mt-2 min-h-[140px]">
-                    <Upload className="w-10 h-10 text-white/60 mb-4 group-hover:text-white transition-colors" />
-                    <span className="text-lg font-medium text-white/80 group-hover:text-white transition-colors">Загрузить фото/схемы/ТЗ/другое</span>
-                    <span className="text-sm text-white/50 mt-2 text-center">До 10 МБ. Файлы: pdf, docx, jpg, png</span>
+                  <div 
+                    onClick={() => files.length === 0 && fileInputRef.current?.click()}
+                    className={`border border-dashed transition-colors p-6 flex flex-col items-center justify-center mt-2 min-h-[140px] ${files.length > 0 ? 'border-white/60 bg-white/5 cursor-default' : 'border-white/30 bg-white/5 hover:bg-white/10 cursor-pointer group'}`}
+                  >
+                    <input 
+                      type="file" 
+                      multiple
+                      className="hidden" 
+                      ref={fileInputRef} 
+                      accept=".pdf,.doc,.docx,.dwg,.webp,.webp"
+                      onChange={(e) => {
+                        if (e.target.files && e.target.files.length > 0) {
+                          setFiles(prev => [...prev, ...Array.from(e.target.files!)]);
+                        }
+                      }}
+                    />
+                    {files.length > 0 ? (
+                      <div className="flex flex-col w-full h-full">
+                        <div className="flex items-center justify-between mb-4 px-2">
+                          <span className="font-medium text-white text-base">Файлы ({files.length}):</span>
+                          <button 
+                            type="button" 
+                            onClick={(e) => { e.stopPropagation(); fileInputRef.current?.click(); }}
+                            className="text-sm text-white/60 hover:text-white hover:underline cursor-pointer transition-colors"
+                          >
+                            + Добавить
+                          </button>
+                        </div>
+                        <div className="space-y-2 overflow-y-auto max-h-[160px] pr-2 custom-scrollbar">
+                          {files.map((f, i) => (
+                            <div key={i} className="flex items-center justify-between bg-white/10 p-3 border border-white/20">
+                              <span className="text-sm text-white/90 truncate mr-2">{f.name}</span>
+                              <button 
+                                type="button" 
+                                onClick={(e) => { 
+                                  e.stopPropagation(); 
+                                  setFiles(prev => prev.filter((_, index) => index !== i)); 
+                                }}
+                                className="text-white/50 hover:text-red-400 transition-colors shrink-0"
+                              >
+                                <X className="w-4 h-4" />
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <>
+                        <Upload className="w-10 h-10 text-white/60 mb-4 group-hover:text-white transition-colors" />
+                        <span className="text-lg font-medium text-white/80 group-hover:text-white transition-colors text-center">Загрузить фото/схемы/ТЗ/другое</span>
+                        <span className="text-sm text-white/50 mt-2 text-center">До 10 МБ. Файлы: pdf, docx, jpg, png</span>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -173,10 +261,11 @@ export function Final() {
               <div className="mt-16 flex flex-col items-center border-t border-white/20 pt-12">
                 <Button 
                   size="lg" 
-                  disabled={!contact2.trim()}
-                  className="w-full md:w-auto px-20 h-20 text-xl rounded-full bg-white text-[#30637A] hover:bg-[#F3F7F9] hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  disabled={!isValidContact(contact2) || isSubmitting}
+                  className="w-full md:w-auto px-20 h-20 text-xl rounded-full bg-white text-[#30637A] hover:bg-[#F3F7F9] hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-3"
                 >
-                  Отправить материалы
+                  {isSubmitting && <Loader2 className="w-6 h-6 animate-spin" />}
+                  {isSubmitting ? "Отправка..." : "Отправить материалы"}
                 </Button>
                 <p className="text-xs text-white/60 text-center mt-6 leading-tight">
                   Отправляя данные, вы соглашаетесь с <PrivacyModal><button type="button" className="underline underline-offset-2 hover:text-white transition-colors cursor-pointer">Политикой конфиденциальности</button></PrivacyModal>

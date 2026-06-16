@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Mail, Phone, MapPin, Menu, X } from "lucide-react";
@@ -10,15 +10,17 @@ import Image from "next/image";
 
 import { CasesModal } from "@/components/modals/CasesModal";
 import { CertificatesModal } from "@/components/modals/CertificatesModal";
+import { ContactsModal } from "@/components/modals/ContactsModal";
+import { HeroTzModal } from "@/components/modals/HeroTzModal";
+import { HeroConsultModal } from "@/components/modals/HeroConsultModal";
+import { useModal } from "@/components/providers/modal-provider";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
-  const [casesOpen, setCasesOpen] = useState(false);
-  const [certsOpen, setCertsOpen] = useState(false);
-  const [contactOpen, setContactOpen] = useState(false);
+  const { openModal } = useModal();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -55,7 +57,7 @@ export function Header() {
   }, []);
 
   return (
-    <motion.header
+    <m.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 3.8 }}
@@ -71,7 +73,7 @@ export function Header() {
         {/* Logo (Left) */}
         <Link href="/" className="flex items-center group relative z-50">
           <Image 
-            src="/logo.png" 
+            src="/logo.webp" 
             alt="МЗТА" 
             width={120} 
             height={65} 
@@ -83,68 +85,21 @@ export function Header() {
         {/* Nav & CTA (Right) */}
         <div className="flex items-center gap-4 md:gap-8">
           <nav className="hidden md:flex items-center gap-6">
-            <CasesModal>
-              <button className="text-sm font-medium text-[#182025] hover:text-[#182025]/70 transition-colors relative group">
-                Кейсы
-                <span className="absolute left-0 -bottom-1 w-0 h-px bg-foreground transition-all duration-300 group-hover:w-full"></span>
-              </button>
-            </CasesModal>
-            <CertificatesModal>
-              <button className="text-sm font-medium text-[#182025] hover:text-[#182025]/70 transition-colors relative group">
-                Сертификаты
-                <span className="absolute left-0 -bottom-1 w-0 h-px bg-foreground transition-all duration-300 group-hover:w-full"></span>
-              </button>
-            </CertificatesModal>
+            <button onClick={() => openModal('cases')} className="text-sm font-medium text-[#182025] hover:text-[#182025]/70 transition-colors relative group">
+              Кейсы
+              <span className="absolute left-0 -bottom-1 w-0 h-px bg-foreground transition-all duration-300 group-hover:w-full"></span>
+            </button>
+            <button onClick={() => openModal('certificates')} className="text-sm font-medium text-[#182025] hover:text-[#182025]/70 transition-colors relative group">
+              Сертификаты
+              <span className="absolute left-0 -bottom-1 w-0 h-px bg-foreground transition-all duration-300 group-hover:w-full"></span>
+            </button>
           </nav>
 
           {/* Desktop Contact Button */}
           <div className="hidden md:block">
-            <Dialog>
-              <DialogTrigger 
-                render={<Button variant="outline" className="rounded-full border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors h-10 px-6" />}
-              >
-                Контакты
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-md rounded-none border-border p-0 overflow-hidden">
-                <div className="p-8">
-                  <DialogHeader className="mb-6">
-                    <DialogTitle className="text-2xl font-display font-bold">Свяжитесь с нами</DialogTitle>
-                  </DialogHeader>
-                  
-                  <div className="space-y-6">
-                    <a href="tel:+74951234567" className="flex items-start gap-4 p-4 border border-border hover:bg-muted/50 transition-colors group">
-                      <div className="w-10 h-10 bg-muted flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                        <Phone className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <div className="text-sm text-muted-foreground mb-1">По телефону</div>
-                        <div className="text-lg font-medium">+7 (495) 123-45-67</div>
-                      </div>
-                    </a>
-                    
-                    <a href="mailto:info@mzta.ru" className="flex items-start gap-4 p-4 border border-border hover:bg-muted/50 transition-colors group">
-                      <div className="w-10 h-10 bg-muted flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                        <Mail className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <div className="text-sm text-muted-foreground mb-1">По почте</div>
-                        <div className="text-lg font-medium">info@mzta.ru</div>
-                      </div>
-                    </a>
-
-                    <div className="flex items-start gap-4 p-4 border border-border">
-                      <div className="w-10 h-10 bg-muted flex items-center justify-center shrink-0">
-                        <MapPin className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <div className="text-sm text-muted-foreground mb-1">Офис</div>
-                        <div className="text-base font-medium">г. Москва, ул. Примерная, 12</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </DialogContent>
-            </Dialog>
+            <Button onClick={() => openModal('contacts')} variant="outline" className="rounded-full border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors h-10 px-6">
+              Контакты
+            </Button>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -161,7 +116,7 @@ export function Header() {
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div
+          <m.div
             initial="hidden"
             animate="visible"
             exit="exit"
@@ -194,36 +149,36 @@ export function Header() {
             style={{ transformOrigin: "0% 50%", perspective: "1500px" }}
             className="fixed inset-0 w-full h-[100dvh] bg-background md:hidden flex flex-col items-center justify-center gap-8 z-40"
           >
-            <motion.button 
+            <m.button 
               variants={{
                 hidden: { opacity: 0, x: 50 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } },
                 exit: { opacity: 0, x: -30, transition: { duration: 0.2, ease: [0.7, 0, 0.84, 0] } }
               }}
               onClick={() => {
-                setCasesOpen(true);
+                openModal('cases');
                 setMobileMenuOpen(false);
               }} 
               className="text-3xl font-display font-medium text-[#182025] hover:text-[#182025]/70 transition-colors relative group"
             >
               Кейсы
-            </motion.button>
-            <motion.button 
+            </m.button>
+            <m.button 
               variants={{
                 hidden: { opacity: 0, x: 50 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } },
                 exit: { opacity: 0, x: -30, transition: { duration: 0.2, ease: [0.7, 0, 0.84, 0] } }
               }}
               onClick={() => {
-                setCertsOpen(true);
+                openModal('certificates');
                 setMobileMenuOpen(false);
               }} 
               className="text-3xl font-display font-medium text-[#182025] hover:text-[#182025]/70 transition-colors relative group"
             >
               Сертификаты
-            </motion.button>
+            </m.button>
             
-            <motion.div 
+            <m.div 
               variants={{
                 hidden: { opacity: 0, x: 50 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } },
@@ -235,51 +190,23 @@ export function Header() {
                 variant="outline" 
                 className="rounded-full border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors h-14 px-10 text-lg font-medium" 
                 onClick={() => {
-                  setContactOpen(true);
+                  openModal('contacts');
                   setMobileMenuOpen(false);
                 }}
               >
                 Контакты
               </Button>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         )}
       </AnimatePresence>
 
-      {/* Controlled Modals for Mobile Menu */}
-      <CasesModal open={casesOpen} onOpenChange={setCasesOpen} />
-      <CertificatesModal open={certsOpen} onOpenChange={setCertsOpen} />
-      <Dialog open={contactOpen} onOpenChange={setContactOpen}>
-        <DialogContent className="sm:max-w-md rounded-none border-border p-0 overflow-hidden w-[95vw] max-w-[400px] z-[100]">
-          <div className="p-6 md:p-8">
-            <DialogHeader className="mb-6">
-              <DialogTitle className="text-xl md:text-2xl font-display font-bold">Свяжитесь с нами</DialogTitle>
-            </DialogHeader>
-            
-            <div className="space-y-4 md:space-y-6">
-              <a href="tel:+74951234567" className="flex items-start gap-4 p-4 border border-border hover:bg-muted/50 transition-colors group">
-                <div className="w-10 h-10 bg-muted flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  <Phone className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-sm text-muted-foreground mb-1">По телефону</div>
-                  <div className="text-base md:text-lg font-medium">+7 (495) 123-45-67</div>
-                </div>
-              </a>
-              
-              <a href="mailto:info@mzta.ru" className="flex items-start gap-4 p-4 border border-border hover:bg-muted/50 transition-colors group">
-                <div className="w-10 h-10 bg-muted flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-sm text-muted-foreground mb-1">По почте</div>
-                  <div className="text-base md:text-lg font-medium">info@mzta.ru</div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
-    </motion.header>
+      {/* Controlled Modals */}
+      <CasesModal />
+      <CertificatesModal />
+      <ContactsModal />
+      <HeroTzModal />
+      <HeroConsultModal />
+    </m.header>
   );
 }
