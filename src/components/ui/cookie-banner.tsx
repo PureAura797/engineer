@@ -12,8 +12,10 @@ export function CookieBanner() {
     // Check if the user has already accepted cookies
     const hasAccepted = localStorage.getItem("cookiesAccepted");
     if (!hasAccepted) {
-      // Delay showing the banner slightly for better UX
-      const timer = setTimeout(() => setIsVisible(true), 2000);
+      // Задерживаем появление куки-баннера на 4.5 секунды, 
+      // чтобы он всплывал ровно ПОСЛЕ того, как прелоадер полностью 
+      // соберется в Hero секцию (анимация прелоадера занимает около 4 секунд)
+      const timer = setTimeout(() => setIsVisible(true), 4500);
       return () => clearTimeout(timer);
     }
   }, []);
