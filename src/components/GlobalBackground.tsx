@@ -15,7 +15,7 @@ export function GlobalBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 h-[100dvh] w-full z-0 pointer-events-none bg-background overflow-hidden">
+    <div className="sticky top-0 h-[100dvh] w-full z-0 pointer-events-none bg-background overflow-hidden">
       {/* Мягкий базовый градиент */}
       <div className="absolute inset-0 bg-gradient-to-br from-secondary/40 via-background to-primary/10 opacity-60" />
       
