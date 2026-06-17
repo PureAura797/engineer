@@ -169,7 +169,7 @@ export function Benefits() {
                     >
                       Скачать файл
                     </Button>
-                    <p className="text-[11px] text-[#577E95] text-left leading-tight mt-1">
+                    <p className="text-[11px] text-[#577E95] text-center leading-tight mt-1">
                       Скачивая файл, вы соглашаетесь с <PrivacyModal><button type="button" className="underline underline-offset-2 hover:text-[#E6F0F4] transition-colors cursor-pointer">Политикой конфиденциальности</button></PrivacyModal>
                     </p>
                   </div>

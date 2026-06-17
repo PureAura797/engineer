@@ -110,16 +110,16 @@ export function CasesModal({ children, open, onOpenChange }: CasesModalProps) {
                 />
                 
                 {/* Overlay that darkens on hover */}
-                <div className="absolute inset-0 bg-black/20 transition-colors duration-500 group-hover:bg-black/70" />
+                <div className="absolute inset-0 bg-black/60 md:bg-black/20 transition-colors duration-500 md:group-hover:bg-black/70" />
 
                 {/* Content */}
                 <div className="absolute inset-0 p-6 flex flex-col justify-end text-white">
-                  <h3 className="text-2xl font-display font-bold mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <h3 className="text-xl md:text-2xl font-display font-bold mb-2 transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-500">
                     {project.title}
                   </h3>
                   
                   {/* Hidden description that slides up and fades in */}
-                  <div className="grid grid-rows-[0fr] opacity-0 group-hover:grid-rows-[1fr] group-hover:opacity-100 transition-all duration-500 ease-in-out">
+                  <div className="grid grid-rows-[1fr] md:grid-rows-[0fr] opacity-100 md:opacity-0 md:group-hover:grid-rows-[1fr] md:group-hover:opacity-100 transition-all duration-500 ease-in-out">
                     <div className="overflow-hidden">
                       <p className="text-white/80 mt-2 text-sm md:text-base leading-relaxed border-l-2 border-primary pl-4">
                         {project.desc}

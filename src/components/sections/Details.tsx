@@ -381,14 +381,14 @@ export function Details() {
             <h3 className="text-2xl md:text-4xl font-display font-bold mb-6 text-[#E6F0F4]">
               Инженерный разбор по фото шкафа, схеме или ТЗ
             </h3>
-            <p className="text-[#E6F0F4] opacity-80 text-lg mb-6 leading-relaxed max-w-xl">
+            <p className="text-xl md:text-2xl font-medium text-[#E6F0F4] mb-6 leading-snug max-w-xl">
               Если вы не уверены, нужен новый шкаф или достаточно модернизации, отправьте фото текущего шкафа, схему или описание проблемы. 
             </p>
-            <p className="text-[#E6F0F4] opacity-80 mb-8 max-w-xl">
+            <p className="text-base text-[#E6F0F4]/60 mb-8 max-w-xl leading-relaxed">
               Инженер посмотрит исходные данные и подскажет, какой следующий шаг нужен: обследование, расчет, модернизация или сборка нового шкафа.
             </p>
             
-            <div className="text-sm text-[#C5D6E0] p-4 bg-[#11171A] inline-block mb-8 lg:mb-0">
+            <div className="text-sm text-[#C5D6E0] p-4 bg-[#11171A] inline-block mb-8 lg:mb-0 border-l-2 border-[#577E95]">
               Это не коммерческое предложение, а первичная оценка исходных данных.
             </div>
           </div>
