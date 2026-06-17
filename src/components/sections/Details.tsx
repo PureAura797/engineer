@@ -197,7 +197,7 @@ export function Details() {
             className="relative overflow-hidden py-10 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12 mb-8"
           >
 
-            <div className="flex flex-col md:flex-row w-full h-[800px] sm:h-[600px] md:h-[450px] gap-4 relative z-10">
+            <div className="flex flex-col md:flex-row w-full h-[880px] sm:h-[600px] md:h-[450px] gap-4 relative z-10">
               {components.map((comp, i) => {
                 const isActive = activeComponent === i;
                 const imgClasses = isActive 
@@ -216,7 +216,7 @@ export function Details() {
                     whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
                     viewport={{ once: true, margin: "-20px" }}
                     animate={{
-                      flex: isActive ? (typeof window !== 'undefined' ? (window.innerWidth < 768 ? 3 : 4.5) : 4.5) : 1,
+                      flex: isActive ? (typeof window !== 'undefined' ? (window.innerWidth < 768 ? 3.5 : 4.5) : 4.5) : 1,
                     }}
                     transition={{ 
                       flex: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
@@ -248,7 +248,7 @@ export function Details() {
                     </div>
                   
                     <div className="relative z-10 w-full mt-auto">
-                        <h4 className={`font-display font-medium text-lg md:text-xl text-foreground transition-all duration-500 pr-[100px] sm:pr-0 ${isActive ? 'opacity-100' : 'opacity-70'} ${!isActive ? 'line-clamp-2 md:line-clamp-1' : ''}`}>
+                        <h4 className={`font-display font-medium text-lg md:text-xl text-foreground transition-all duration-500 sm:pr-0 ${isActive ? 'pr-[60px] opacity-100' : 'pr-[100px] opacity-70 line-clamp-2 md:line-clamp-1'}`}>
                             {typograph(comp.title)}
                         </h4>
                         
