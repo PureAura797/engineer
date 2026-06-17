@@ -32,7 +32,7 @@ export function CasesSlider() {
 
   return (
     <>
-      <div className="relative h-[650px] sm:h-[600px] md:h-[650px] lg:h-[600px] w-full flex items-center justify-center perspective-[1200px] mb-8 overflow-hidden py-4 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
+      <div className="relative h-[750px] sm:h-[650px] md:h-[650px] lg:h-[650px] w-full flex items-start justify-center perspective-[1200px] mb-8 overflow-visible pt-10 pb-4 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
         {cases.map((c, i) => {
           const N = cases.length;
           const normalizedActive = ((activeCase % N) + N) % N;
@@ -49,12 +49,14 @@ export function CasesSlider() {
           return (
             <m.div
               key={i}
-              className={`absolute w-[320px] sm:w-[450px] md:w-[600px] lg:w-[700px] h-max min-h-[500px] border border-white/60 bg-white cursor-pointer flex flex-col group overflow-hidden ${isActive ? 'shadow-2xl' : 'shadow-md'}`}
+              style={{ transformOrigin: 'top center' }}
+              className={`absolute w-[320px] sm:w-[450px] md:w-[600px] lg:w-[700px] h-max min-h-[500px] border border-white/60 cursor-pointer flex flex-col group overflow-hidden ${isActive ? 'bg-white shadow-2xl' : 'bg-white/20'}`}
               animate={{
-                x: offset * (typeof window !== 'undefined' ? (window.innerWidth < 768 ? 60 : window.innerWidth < 1024 ? 150 : 250) : 250),
+                x: offset * (typeof window !== 'undefined' ? (window.innerWidth < 768 ? 90 : window.innerWidth < 1024 ? 200 : 300) : 300),
                 scale: 1 - absOffset * 0.1,
                 zIndex: 10 - absOffset,
-                opacity: isActive ? 1 : Math.max(0.4, 1 - absOffset * 0.4),
+                opacity: isActive ? 1 : Math.max(0.2, 1 - absOffset * 0.4),
+                filter: `blur(${absOffset * 3}px)`,
               }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               onClick={() => setActiveCase(activeCase + offset)}
