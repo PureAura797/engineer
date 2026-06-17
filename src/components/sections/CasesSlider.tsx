@@ -32,7 +32,7 @@ export function CasesSlider() {
 
   return (
     <>
-      <div className="relative h-[850px] sm:h-[800px] md:h-[750px] lg:h-[700px] w-full flex items-center justify-center perspective-[1200px] mb-12 overflow-hidden py-10 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
+      <div className="relative h-[650px] sm:h-[600px] md:h-[650px] lg:h-[600px] w-full flex items-center justify-center perspective-[1200px] mb-8 overflow-hidden py-4 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
         {cases.map((c, i) => {
           const N = cases.length;
           const normalizedActive = ((activeCase % N) + N) % N;
@@ -49,18 +49,14 @@ export function CasesSlider() {
           return (
             <m.div
               key={i}
-              className="absolute w-[320px] sm:w-[450px] md:w-[600px] lg:w-[700px] h-max min-h-[500px] border border-white/60 bg-white/40 backdrop-blur-md cursor-pointer flex flex-col group overflow-hidden"
-              style={{ 
-                boxShadow: "10px 10px 30px rgba(48,99,122,0.05), -10px -10px 30px rgba(255,255,255,0.8), inset 1px 1px 2px rgba(255,255,255,0.8)"
-              }}
+              className={`absolute w-[320px] sm:w-[450px] md:w-[600px] lg:w-[700px] h-max min-h-[500px] border border-white/60 bg-white cursor-pointer flex flex-col group overflow-hidden ${isActive ? 'shadow-2xl' : 'shadow-md'}`}
               animate={{
-                x: offset * (typeof window !== 'undefined' ? (window.innerWidth < 768 ? 100 : window.innerWidth < 1024 ? 200 : 300) : 300),
+                x: offset * (typeof window !== 'undefined' ? (window.innerWidth < 768 ? 60 : window.innerWidth < 1024 ? 150 : 250) : 250),
                 scale: 1 - absOffset * 0.1,
                 zIndex: 10 - absOffset,
-                opacity: isActive ? 1 : Math.max(0.3, 1 - absOffset * 0.5),
-                filter: `blur(${absOffset * 3}px)`,
+                opacity: isActive ? 1 : Math.max(0.4, 1 - absOffset * 0.4),
               }}
-              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               onClick={() => setActiveCase(activeCase + offset)}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
