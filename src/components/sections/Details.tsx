@@ -242,13 +242,13 @@ export function Details() {
                             src={comp.img} 
                             loading="lazy"
                             decoding="async"
-                            className={`w-[200px] md:w-[300px] h-auto max-w-none object-contain mix-blend-darken transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${imgClasses}`} 
+                            className={`w-[120px] sm:w-[200px] md:w-[300px] h-auto max-w-none object-contain mix-blend-darken transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${imgClasses}`} 
                             alt={comp.title} 
                         />
                     </div>
                   
-                    <div className="relative z-10 w-full mt-auto">
-                        <h4 className={`font-display font-medium text-lg whitespace-nowrap overflow-hidden text-ellipsis text-foreground transition-all duration-500 ${isActive ? 'opacity-100' : 'opacity-70'}`}>
+                    <div className="relative z-10 w-full mt-auto pr-[110px] sm:pr-0">
+                        <h4 className={`font-display font-medium text-lg md:text-xl text-foreground transition-all duration-500 ${isActive ? 'opacity-100' : 'opacity-70'} ${!isActive ? 'line-clamp-2 md:line-clamp-1' : ''}`}>
                             {typograph(comp.title)}
                         </h4>
                         
@@ -262,7 +262,7 @@ export function Details() {
                             transition: `all 400ms cubic-bezier(0.16, 1, 0.3, 1) ${isActive ? '200ms' : '0s'}`
                           }}
                         >
-                            <p className="text-muted-foreground text-sm md:text-base leading-relaxed w-[260px] md:w-[320px]">
+                            <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-[260px] md:max-w-[320px]">
                                 {typograph(comp.desc)}
                             </p>
                         </div>
