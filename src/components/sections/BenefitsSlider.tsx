@@ -89,14 +89,6 @@ export function BenefitsSlider() {
       </div>
 
       <div className="flex items-center gap-8 w-full">
-        <div className="flex-1 h-[2px] bg-border/50 relative overflow-hidden">
-          <m.div 
-            className="absolute top-0 left-0 h-full w-full bg-primary origin-left"
-            initial={false}
-            animate={{ scaleX: ((((activeIndex % benefits.length) + benefits.length) % benefits.length) + 1) / benefits.length }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          />
-        </div>
         <div className="flex gap-2 shrink-0">
           <Button 
             variant="outline" 
@@ -114,6 +106,14 @@ export function BenefitsSlider() {
           >
             <ArrowRight className="w-5 h-5" />
           </Button>
+        </div>
+        <div className="flex-1 h-[2px] bg-border/50 relative overflow-hidden">
+          <m.div 
+            className="absolute top-0 left-0 h-full w-full bg-primary origin-left"
+            initial={false}
+            animate={{ scaleX: ((((activeIndex % benefits.length) + benefits.length) % benefits.length) + 1) / benefits.length }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          />
         </div>
       </div>
     </>

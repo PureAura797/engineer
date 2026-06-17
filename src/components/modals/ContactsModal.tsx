@@ -24,7 +24,7 @@ export function ContactsModal({ children, open, onOpenChange }: ContactsModalPro
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       {children && <DialogTrigger render={children as any} />}
-      <DialogContent className="max-w-lg p-8 md:p-12 rounded-none border border-border shadow-[0_20px_60px_rgba(0,0,0,0.1)] [&>button]:hidden outline-none">
+      <DialogContent className="sm:max-w-lg p-8 md:p-12 border border-border shadow-[0_20px_60px_rgba(0,0,0,0.1)] [&>button]:hidden">
         <div className="flex justify-between items-center mb-10">
           <DialogTitle className="text-3xl font-display font-bold text-[#182025]">Контакты</DialogTitle>
           <DialogClose className="w-10 h-10 rounded-full bg-transparent hover:bg-slate-100 active:bg-slate-200 text-slate-500 flex items-center justify-center transition-colors outline-none focus:ring-0">

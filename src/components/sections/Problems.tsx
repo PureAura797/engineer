@@ -55,7 +55,7 @@ export function Problems() {
             whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             style={{ transformOrigin: "left center", transformPerspective: 1200 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="text-3xl md:text-5xl font-display font-bold mb-6"
           >
             Когда шкаф вентиляции становится <span className="text-[#577E95]">проблемой</span>
@@ -65,7 +65,7 @@ export function Problems() {
             whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             style={{ transformOrigin: "left center", transformPerspective: 1200 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1], delay: 0.03 }}
             className="text-lg text-muted-foreground"
           >
             {typograph("В бизнес-центре вентиляция должна работать стабильно и предсказуемо. Но на действующих объектах автоматика часто устаревает: шкаф работает нестабильно, документация неполная, а любая модернизация кажется риском для эксплуатации и арендаторов.")}
@@ -79,7 +79,7 @@ export function Problems() {
               initial={{ opacity: 0, x: -60, rotateY: -60 }}
               whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
               viewport={{ once: true, margin: "-20px" }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1], delay: i * 0.03 }}
               className="relative p-6 border border-slate-100 bg-white flex flex-col md:aspect-square group transition-all duration-500 hover:-translate-y-1 hover:shadow-xl overflow-hidden min-h-[320px] md:min-h-0"
               style={{
                 transformOrigin: "left center", 

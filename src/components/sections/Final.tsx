@@ -41,7 +41,7 @@ export function Final() {
               whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
               viewport={{ once: true, margin: "-20px" }}
               style={{ transformOrigin: "left center", transformPerspective: 1200 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-5 lg:sticky lg:top-32 h-fit"
             >
               <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
@@ -57,7 +57,7 @@ export function Final() {
               whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
               viewport={{ once: true, margin: "-20px" }}
               style={{ transformOrigin: "left center", transformPerspective: 1200 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1], delay: 0.03 }}
               className="lg:col-span-7"
             >
               <Accordion className="w-full">
@@ -210,7 +210,7 @@ export function Final() {
                       multiple
                       className="hidden" 
                       ref={fileInputRef} 
-                      accept=".pdf,.doc,.docx,.dwg,.webp,.webp"
+                      accept="*/*"
                       onChange={(e) => {
                         if (e.target.files && e.target.files.length > 0) {
                           setFiles(prev => [...prev, ...Array.from(e.target.files!)]);

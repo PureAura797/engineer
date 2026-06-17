@@ -60,7 +60,7 @@ export function CasesSlider() {
                 opacity: isActive ? 1 : Math.max(0.3, 1 - absOffset * 0.5),
                 filter: `blur(${absOffset * 3}px)`,
               }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
               onClick={() => setActiveCase(activeCase + offset)}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
@@ -108,14 +108,6 @@ export function CasesSlider() {
       </div>
 
       <div className="flex items-center gap-8 w-full">
-        <div className="flex-1 h-[2px] bg-border/50 relative overflow-hidden">
-          <m.div 
-            className="absolute top-0 left-0 h-full w-full bg-primary origin-left"
-            initial={false}
-            animate={{ scaleX: ((((activeCase % cases.length) + cases.length) % cases.length) + 1) / cases.length }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          />
-        </div>
         <div className="flex gap-2 shrink-0">
           <Button 
             variant="outline" 
@@ -133,6 +125,14 @@ export function CasesSlider() {
           >
             <ArrowRight className="w-5 h-5" />
           </Button>
+        </div>
+        <div className="flex-1 h-[2px] bg-border/50 relative overflow-hidden">
+          <m.div 
+            className="absolute top-0 left-0 h-full w-full bg-primary origin-left"
+            initial={false}
+            animate={{ scaleX: ((((activeCase % cases.length) + cases.length) % cases.length) + 1) / cases.length }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          />
         </div>
       </div>
     </>

@@ -133,7 +133,7 @@ export function Details() {
               whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
               viewport={{ once: true, margin: "-20px" }}
               style={{ transformOrigin: "left center", transformPerspective: 1200 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             >
               <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
                 Шкаф вентиляции как часть <span className="text-[#577E95]">диспетчеризации</span>
@@ -160,7 +160,7 @@ export function Details() {
               whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
               viewport={{ once: true, margin: "-20px" }}
               style={{ transformOrigin: "left center", transformPerspective: 1200 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1], delay: 0.03 }}
               className="py-4"
             >
               <div className="text-[0.65rem] uppercase tracking-widest text-muted-foreground flex items-center justify-center gap-4 w-full mb-4">
@@ -182,7 +182,7 @@ export function Details() {
             whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             style={{ transformOrigin: "left center", transformPerspective: 1200 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-3xl mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
@@ -220,7 +220,7 @@ export function Details() {
                     }}
                     transition={{ 
                       flex: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-                      default: { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }
+                      default: { duration: 0.25, ease: [0.16, 1, 0.3, 1], delay: i * 0.03 }
                     }}
                     onClick={() => setActiveComponent(i)}
                   >
@@ -278,7 +278,7 @@ export function Details() {
             whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             style={{ transformOrigin: "left center", transformPerspective: 1200 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
             className="p-8 border border-primary/20 bg-primary/5 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
           >
             <div>
@@ -303,7 +303,7 @@ export function Details() {
             whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             style={{ transformOrigin: "left center", transformPerspective: 1200 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-3xl mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
@@ -321,7 +321,7 @@ export function Details() {
                 initial={{ opacity: 0, x: -60, rotateY: -60 }}
                 whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
                 viewport={{ once: true, margin: "-20px" }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
+                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1], delay: i * 0.03 }}
                 className="relative p-6 border border-white/60 bg-white/40 backdrop-blur-md flex flex-col justify-between aspect-[4/5] md:aspect-square group transition-transform duration-300 hover:-translate-y-1 overflow-hidden cursor-pointer"
                 style={{
                   transformOrigin: "left center",
@@ -363,7 +363,7 @@ export function Details() {
             whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
             viewport={{ once: true }}
             style={{ transformOrigin: "left center", transformPerspective: 1200 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
             className="mt-16 p-6 border-l-2 border-primary bg-primary/5 text-muted-foreground"
           >
             <strong className="text-foreground">Важно:</strong> Возможность работ без длительной остановки 
@@ -440,7 +440,7 @@ export function Details() {
                   multiple
                   className="hidden" 
                   ref={fileInputRef} 
-                  accept=".pdf,.doc,.docx,.dwg,.webp,.webp"
+                  accept="*/*"
                   onChange={(e) => {
                     if (e.target.files && e.target.files.length > 0) {
                       setFiles(prev => [...prev, ...Array.from(e.target.files!)]);

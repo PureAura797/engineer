@@ -53,7 +53,7 @@ function DialogContent({
       <DialogPrimitive.Popup
         data-slot="dialog-content"
         className={cn(
-          "fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] max-h-[calc(100vh-120px)] -translate-x-1/2 -translate-y-1/2 mt-10 gap-4 rounded-xl bg-popover p-4 text-sm text-popover-foreground ring-1 ring-foreground/10 outline-none sm:max-w-sm overflow-hidden flex flex-col origin-bottom",
+          "fixed z-50 grid w-full max-w-[calc(100%-2rem)] sm:max-w-sm left-1/2 -translate-x-1/2 top-24 sm:top-1/2 translate-y-0 sm:-translate-y-1/2 sm:mt-10 max-h-[calc(100dvh-7rem)] sm:max-h-[calc(100vh-120px)] gap-4 rounded-none bg-popover p-4 text-sm text-popover-foreground ring-1 ring-foreground/10 outline-none overflow-y-auto flex flex-col origin-bottom",
           !(typeof className === 'string' && className.includes('anim-')) && "data-open:anim-unfold-in data-closed:anim-unfold-out",
           className
         )}
@@ -66,13 +66,11 @@ function DialogContent({
             render={
               <Button
                 variant="ghost"
-                className="absolute top-6 right-6 z-50 rounded-full"
-                size="icon"
+                className="absolute top-4 right-4 z-50 rounded-full w-10 h-10 p-0 flex items-center justify-center sm:top-6 sm:right-6 sm:w-8 sm:h-8 bg-current/5 hover:bg-current/10 text-current/70 hover:text-current transition-colors"
               />
             }
           >
-            <XIcon
-            />
+            <XIcon className="w-5 h-5 sm:w-4 sm:h-4 text-inherit" />
             <span className="sr-only">Close</span>
           </DialogPrimitive.Close>
         )}
@@ -123,7 +121,7 @@ function DialogTitle({ className, ...props }: DialogPrimitive.Title.Props) {
     <DialogPrimitive.Title
       data-slot="dialog-title"
       className={cn(
-        "text-base leading-none font-medium",
+        "text-base leading-none font-medium pr-12",
         className
       )}
       {...props}

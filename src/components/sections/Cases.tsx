@@ -32,7 +32,7 @@ export function Cases() {
             whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             style={{ transformOrigin: "left center", transformPerspective: 1200 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
@@ -55,7 +55,7 @@ export function Cases() {
               whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
               viewport={{ once: true, margin: "-20px" }}
               style={{ transformOrigin: "left center", transformPerspective: 1200 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
               className="lg:sticky lg:top-32 h-fit"
             >
               <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
@@ -71,7 +71,7 @@ export function Cases() {
               whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
               viewport={{ once: true, margin: "-20px" }}
               style={{ transformOrigin: "left center", transformPerspective: 1200 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1], delay: 0.03 }}
               className="flex flex-col h-[650px] sm:h-[600px] md:h-[600px] gap-4"
             >
               {advantages.map((adv, i) => {

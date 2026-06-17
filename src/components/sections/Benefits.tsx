@@ -42,7 +42,7 @@ export function Benefits() {
             whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             style={{ transformOrigin: "left center", transformPerspective: 1200 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-3xl mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
@@ -65,7 +65,7 @@ export function Benefits() {
             whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             style={{ transformOrigin: "left center", transformPerspective: 1200 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-3xl mb-16 relative z-10"
           >
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
@@ -83,7 +83,7 @@ export function Benefits() {
                 initial={{ opacity: 0, x: -60, rotateY: -60 }}
                 whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
                 viewport={{ once: true, margin: "-20px" }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
+                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1], delay: i * 0.03 }}
                 className="relative p-8 border border-white/60 bg-white/40 backdrop-blur-md flex flex-col justify-between aspect-square group transition-transform duration-300 hover:-translate-y-1 glass-panel overflow-hidden"
                 style={{
                   transformOrigin: "left center", 
