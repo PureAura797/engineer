@@ -80,20 +80,13 @@ const cases = [
 import { useModal } from "@/components/providers/modal-provider";
 
 export function CasesModal({ children, open, onOpenChange }: CasesModalProps) {
-  const [isOpen, setIsOpen] = useState(open ?? false);
+  const { activeModal, openModal, closeModal } = useModal();
   const [activeMobileCard, setActiveMobileCard] = useState<number | null>(null);
 
-  useEffect(() => {
-    if (open !== undefined) {
-      setIsOpen(open);
-    }
-  }, [open]);
-
-  const handleOpenChange = (newOpen: boolean) => {
-    setIsOpen(newOpen);
-    if (onOpenChange) {
-      onOpenChange(newOpen);
-    }
+  const isOpen = open !== undefined ? open : activeModal === 'cases';
+  const handleOpenChange = onOpenChange !== undefined ? onOpenChange : (val: boolean) => {
+    if (val) openModal('cases');
+    else closeModal();
   };
 
   return (
