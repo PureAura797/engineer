@@ -32,7 +32,7 @@ export function CasesSlider() {
 
   return (
     <>
-      <div className="relative h-[750px] sm:h-[650px] md:h-[650px] lg:h-[650px] w-full flex items-start justify-center perspective-[1200px] mb-8 overflow-visible pt-10 pb-4 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
+      <div className="relative h-[750px] sm:h-[700px] md:h-[750px] lg:h-[750px] w-full flex items-start justify-center perspective-[1200px] mb-8 overflow-visible pt-10 pb-4 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
         {cases.map((c, i) => {
           const N = cases.length;
           const normalizedActive = ((activeCase % N) + N) % N;
@@ -69,13 +69,13 @@ export function CasesSlider() {
                 </div>
               </div>
               
-              <div className="pt-16 px-5 pb-6 md:pt-24 md:px-10 md:pb-10 flex-1 flex flex-col relative z-10">
+              <div className="pt-16 px-5 pb-6 md:pt-16 md:px-10 md:pb-8 flex-1 flex flex-col relative z-10">
                 <div className="flex-1">
-                  <div className="mb-4 md:mb-8">
+                  <div className="mb-4 md:mb-6">
                     <h3 className="font-display font-medium text-xl md:text-3xl leading-tight text-foreground/90">{typograph(c.title)}</h3>
                   </div>
 
-                  <div className="mb-4 md:mb-8">
+                  <div className="mb-4 md:mb-6">
                     <div className="flex items-center gap-3 mb-2 md:mb-3">
                       <div className="h-px w-6 bg-muted-foreground/30" />
                       <span className="font-display text-[10px] uppercase tracking-widest text-muted-foreground">Ситуация</span>
@@ -85,7 +85,7 @@ export function CasesSlider() {
                     </p>
                   </div>
 
-                  <div className="mb-4 md:mb-8 pl-4 md:pl-6 border-l border-primary/20">
+                  <div className="mb-4 md:mb-6 pl-4 md:pl-6 border-l border-primary/20">
                     <div className="flex items-center gap-3 mb-2 md:mb-3">
                       <span className="font-display text-[10px] uppercase tracking-widest text-primary">Что делаем</span>
                     </div>
@@ -95,7 +95,7 @@ export function CasesSlider() {
                   </div>
                 </div>
 
-                <div className="mt-2 md:mt-8 bg-card py-4 px-5 md:py-6 md:px-6 border border-border/50 border-l-2 border-l-primary/40 shrink-0 shadow-sm flex flex-col justify-center">
+                <div className="mt-2 md:mt-6 bg-card py-4 px-5 md:py-5 md:px-6 border border-border/50 border-l-2 border-l-primary/40 shrink-0 shadow-sm flex flex-col justify-center">
                   <p className="font-display text-[10px] uppercase tracking-widest text-muted-foreground mb-1.5">Что получает эксплуатация</p>
                   <p className="text-sm md:text-base font-medium text-foreground leading-relaxed">{typograph(c.result)}</p>
                 </div>
