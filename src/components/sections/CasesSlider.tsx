@@ -50,7 +50,7 @@ export function CasesSlider() {
             <m.div
               key={i}
               style={{ transformOrigin: 'top center' }}
-              className={`absolute w-[320px] sm:w-[450px] md:w-[600px] lg:w-[700px] h-max min-h-[500px] border border-white/60 cursor-pointer flex flex-col group overflow-hidden ${isActive ? 'bg-white/80 backdrop-blur-2xl shadow-2xl' : 'bg-white/20 backdrop-blur-md'}`}
+              className={`absolute w-[320px] sm:w-[450px] md:w-[600px] lg:w-[700px] h-max min-h-[500px] border border-white/60 cursor-pointer flex flex-col group overflow-hidden ${isActive ? 'bg-white/40 backdrop-blur-md shadow-2xl' : 'bg-white/20 backdrop-blur-md'}`}
               animate={{
                 x: offset * (typeof window !== 'undefined' ? (window.innerWidth < 768 ? 90 : window.innerWidth < 1024 ? 200 : 300) : 300),
                 scale: 1 - absOffset * 0.1,
