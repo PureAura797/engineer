@@ -7,14 +7,20 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
+import { XIcon } from "lucide-react";
 
 export function PrivacyModal({ children }: { children: React.ReactNode }) {
   return (
     <Dialog>
       <DialogTrigger render={children as any} />
-      <DialogContent className="sm:max-w-4xl p-0 gap-0 bg-[#182025]/95 backdrop-blur-2xl border border-white/10 text-[#E6F0F4] shadow-[0_0_80px_rgba(0,0,0,0.8)]">
-        <DialogHeader className="p-6 md:p-10 pb-4 md:pb-6 border-b border-white/5 sticky top-0 bg-[#182025]/50 backdrop-blur-md z-10">
-          <DialogTitle className="text-2xl md:text-3xl font-display font-bold">Политика конфиденциальности</DialogTitle>
+      <DialogContent showCloseButton={false} className="sm:max-w-4xl p-0 gap-0 bg-[#182025]/95 backdrop-blur-2xl border border-white/10 text-[#E6F0F4] shadow-[0_0_80px_rgba(0,0,0,0.8)]">
+        <DialogHeader className="p-6 md:p-10 pb-4 md:pb-6 border-b border-white/5 sticky top-0 bg-[#182025]/50 backdrop-blur-md z-10 flex flex-row items-start justify-between">
+          <DialogTitle className="text-2xl md:text-3xl font-display font-bold pr-8">Политика конфиденциальности</DialogTitle>
+          <DialogPrimitive.Close className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 rounded-full w-10 h-10 p-0 flex items-center justify-center sm:w-10 sm:h-10 bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-colors outline-none focus-visible:ring-2 focus-visible:ring-white/50">
+            <XIcon className="w-5 h-5" />
+            <span className="sr-only">Закрыть</span>
+          </DialogPrimitive.Close>
         </DialogHeader>
         
         <div className="flex-1 p-6 md:p-10 pt-4 md:pt-6 overflow-y-auto custom-scrollbar text-[#84A2B4] text-sm md:text-base leading-relaxed space-y-6 text-left" data-lenis-prevent>
