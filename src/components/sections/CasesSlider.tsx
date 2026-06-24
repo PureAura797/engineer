@@ -69,7 +69,7 @@ export function CasesSlider() {
                 </div>
               </div>
               
-              <div className="pt-16 px-5 pb-6 md:pt-16 md:px-10 md:pb-8 flex-1 flex flex-col relative z-10">
+              <div className="pt-16 px-5 pb-6 md:pt-24 md:px-10 md:pb-8 flex-1 flex flex-col relative z-10">
                 <div className="flex-1">
                   <div className="mb-4 md:mb-6">
                     <h3 className="font-display font-medium text-xl md:text-3xl leading-tight text-foreground/90">{typograph(c.title)}</h3>
